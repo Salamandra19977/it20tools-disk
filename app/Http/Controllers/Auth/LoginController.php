@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
@@ -35,14 +36,12 @@ class LoginController extends Controller
 
     public function redirect()
     {
-
         $query = http_build_query([
             'client_id' => config('client_auth.client_id'),
             'redirect_uri' => config('client_auth.redirect_uri'),
             'response_type' => 'code',
             'scope' => '',
         ]);
-
         return redirect(config('client_auth.server_uri').'/oauth/authorize?'.$query);
     }
 
@@ -59,7 +58,6 @@ class LoginController extends Controller
                 'code' => $request->code,
             ],
         ]);
-
 
         $access = json_decode((string)$response->getBody());
 
@@ -157,6 +155,14 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+        $access_token = Auth::user()->token;
+        $http = new Client;
+        $response = $http->request('GET', config('client_auth.server_uri').'/api/revokeToken', [
+            'headers' => [
+                'Authorization' => 'Bearer '.$access_token,
+                'Accept' => 'application/json',
+            ],
+        ]);
         $this->guard()->logout();
         $request->session()->invalidate();
 

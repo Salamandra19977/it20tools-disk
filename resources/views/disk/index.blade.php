@@ -4,6 +4,6 @@
 
 @section('content')
     <div id="app">
-        {{--<app></app>--}}
+        <app></app>
     </div>
 @endsection

@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/redirect','Auth\LoginController@redirect')->name('login');
+Route::get('/auth/callback', 'Auth\LoginController@callback')->name('callback');
+Route::get('/token', 'Auth\LoginController@authByToken');
+
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/', function () {
-        return view('disk.index');
-    });
+    Route::get('/{any}', 'SpaController@index')->where('any', '.*');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
-Route::get('/redirect','Auth\LoginController@redirect')->name('login');
-Route::get('/auth/callback', 'Auth\LoginController@callback');
-Route::get('/token', 'Auth\LoginController@authByToken');

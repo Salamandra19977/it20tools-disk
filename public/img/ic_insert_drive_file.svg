@@ -1,0 +1,27 @@
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="7" y="5" width="16" height="20">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 5C7.9 5 7.01 5.9 7.01 7L7 23C7 24.1 7.89 25 8.99 25H21C22.1 25 23 24.1 23 23V11L17 5H9ZM16 12V6.5L21.5 12H16Z" fill="white"/>
+</mask>
+<g mask="url(#mask0)">
+<rect x="2" y="2" width="26" height="26" fill="#D8D8D8"/>
+<rect x="2" y="2" width="26" height="26" fill="#D8D8D8"/>
+<mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="7" width="16" height="16">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 15L1.41 16.41L7 10.83V23H9V10.83L14.58 16.42L16 15L8 7L0 15Z" fill="white"/>
+</mask>
+<g mask="url(#mask1)">
+<rect x="-5" y="2" width="26" height="26" fill="#D8D8D8"/>
+</g>
+<mask id="mask2" mask-type="alpha" maskUnits="userSpaceOnUse" x="7" y="7" width="16" height="16">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7 15L8.41 16.41L14 10.83V23H16V10.83L21.58 16.42L23 15L15 7L7 15Z" fill="white"/>
+</mask>
+<g mask="url(#mask2)">
+<rect x="2" y="2" width="26" height="26" fill="#D8D8D8"/>
+<rect x="2" y="6" width="26" height="26" fill="#D8D8D8"/>
+</g>
+<mask id="mask3" mask-type="alpha" maskUnits="userSpaceOnUse" x="7" y="7" width="16" height="16">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7 15L8.41 16.41L14 10.83V23H16V10.83L21.58 16.42L23 15L15 7L7 15Z" fill="white"/>
+</mask>
+<g mask="url(#mask3)">
+</g>
+</g>
+</svg>
