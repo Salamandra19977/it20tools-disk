@@ -4,7 +4,6 @@
     <b-row>
       <b-col lg="6" class="my-1">
         <b-form-group
-          label="Filter"
           label-cols-sm="3"
           label-align-sm="right"
           label-size="sm"
@@ -16,19 +15,17 @@
               v-model="filter"
               type="search"
               id="filterInput"
-              placeholder="Type to Search"
+              placeholder="Поиск на диске"
             ></b-form-input>
 
-            <b-input-group-append>
-              <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
-            </b-input-group-append>
           </b-input-group>
         </b-form-group>
       </b-col>
     </b-row>
 
     <!-- Main table element -->
-    <b-table
+    <b-table 
+      class="table-item table-item__file"
       :items="items"
       :fields="fields"
       :filter="filter"
@@ -57,11 +54,11 @@
     data() {
       return {
         fields: [
-          { key: 'name', sortable: true },
-          { key: 'owner', sortable: false},
-          { key: 'date', sortable: true },
-          { key: 'time', sortable: true },
-          { key: 'size', sortable: true }
+          { key: 'name', sortable: true, label: 'Название' },
+          { key: 'owner', sortable: false, label: 'Владелец', style:'color:red'},
+          { key: 'date', sortable: true, label: 'Дата' },
+          { key: 'time', sortable: true, label: 'Время' },
+          { key: 'size', sortable: true, label: 'Размер'}
         ],
 
         items: [
@@ -91,3 +88,11 @@
     }
   }
 </script>
+
+<style scoped>
+
+.main-table {
+  background-color: red;
+}
+
+</style>

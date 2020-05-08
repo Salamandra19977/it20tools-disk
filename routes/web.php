@@ -23,6 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/template', 'TemplateController@index')->name('template');
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+    // Route::get('/{any}', 'SpaController@index')->where('any', '.*');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
+
+    Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+
