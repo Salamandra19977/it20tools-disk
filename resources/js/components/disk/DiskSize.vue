@@ -1,6 +1,6 @@
 <template>
     <div class="disk">
-        <!-- <img src="{{asset('/img/disk-flag.jpg')}}" alt="flag"> -->
+        <img src="/img/disk-flag.png" alt="flag">
         <div class="disk-usage">
             <p>Хранилище Disk</p>
             <div class="progress">

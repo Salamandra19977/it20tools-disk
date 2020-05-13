@@ -21,6 +21,7 @@ class CreateFilesTable extends Migration
             $table->string('extension');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('folder_id')->nullable();
             $table->timestamps();
         });
 
@@ -32,6 +33,10 @@ class CreateFilesTable extends Migration
             $table->foreign('status_id')
                 ->references('id')
                 ->on('statuses')
+                ->onDelete('cascade');
+            $table->foreign('folder_id')
+                ->references('id')
+                ->on('folders')
                 ->onDelete('cascade');
         });
     }
