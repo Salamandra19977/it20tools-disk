@@ -24,6 +24,16 @@ class FolderController extends Controller
         return response()->json($folders, 200);
     }
 
+    public function showDiskFolder($id)
+    {
+        $folders = Folder::with('user')
+            ->where('user_id',Auth::id())
+            ->where('parent_id', $id)
+            ->get();
+
+        return response()->json($folders, 200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

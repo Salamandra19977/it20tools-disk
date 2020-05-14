@@ -32,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/disk';
 
     public function redirect()
     {
@@ -100,7 +100,7 @@ class LoginController extends Controller
                 Auth::login($user);
             }
 
-            return response()->redirectTo('/');
+            return response()->redirectTo('/disk');
         }
     }
 
@@ -150,7 +150,7 @@ class LoginController extends Controller
             Auth::login($user);
         }
 
-        return response()->redirectTo('/');
+        return response()->redirectTo('/disk');
     }
 
     public function logout(Request $request)
