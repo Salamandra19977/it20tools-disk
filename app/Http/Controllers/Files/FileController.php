@@ -24,6 +24,16 @@ class FileController extends Controller
         return response()->json($files, 200);
     }
 
+    public function showDiskFileInFolder($id)
+    {
+        $files = File::with('user')
+            ->where('user_id',Auth::id())
+            ->where('folder_id', $id)
+            ->get();
+
+        return response()->json($files, 200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

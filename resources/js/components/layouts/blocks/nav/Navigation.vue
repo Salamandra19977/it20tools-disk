@@ -24,7 +24,7 @@
             <ul class="nav__item-container collapse show" id="navcollapse-2" aria-labelledby="navitem-2"
                 data-parent="#nav-accordion">
 
-                <router-link tag="li" active-class="active" to="/">
+                <router-link tag="li" active-class="active" to="/disk">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="3. Icons/ic_cloud_download">
                             <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="7" width="24"

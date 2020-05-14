@@ -36,7 +36,6 @@
                         <object
                                 type="image/svg+xml"
                                 data="img/ic_content_copy.svg">
-
                         </object>
                     </button>
                 </form>

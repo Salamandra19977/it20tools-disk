@@ -7,7 +7,7 @@ import Basket from './components/basket/Index'
 export default new VueRouter ({
     routes: [
         {
-            path: '/',
+            path: '/disk',
             component: Disk,
             name: 'Disk',
         },

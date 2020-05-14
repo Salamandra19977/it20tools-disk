@@ -4,7 +4,7 @@
         <tr class="table-item table-item__folder"
             v-for="(folder, index) in folders"
             v-on:click="selectFolder(folder)"
-            v-on:dbclick="openFolder(folder)"
+            v-on:dblclick="openFolder(folder)"
             v-bind:class="{ selected: checkSelectFolder(folder)}"
             :folder = folder>
             <td class="name-data">
@@ -52,12 +52,6 @@
     export default {
         name: "FullTable",
         components: {HeaderTable},
-        data() {
-            return {
-                selectedFiles: [],
-                selectedFolders: [],
-            }
-        },
         computed: {
             files() {
                 return this.$store.getters['disk/getFiles']
@@ -69,6 +63,9 @@
         methods: {
             selectFolder(obj) {
                 this.$store.commit('disk/selectFolder',obj);
+            },
+            openFolder(obj) {
+                this.$store.commit('disk/openFolder',obj);
             },
             selectFile(obj) {
                 this.$store.commit('disk/selectFile',obj);
@@ -90,7 +87,11 @@
             },
         },
         created() {
-            this.setFiles();
+            if(this.$store.state.disk.curent_folder.id != null)
+                this.openFolder(this.$store.state.disk.curent_folder);
+            else {
+                this.setFiles();
+            }
         }
 
     }
