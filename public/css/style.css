@@ -11901,9 +11901,9 @@ main .main-table__table .table-item__folder .name-data i {
   background: url("../img/ic_folder.svg") no-repeat center;
 }
 
-main .main-table__table .table-item__folder .size-data {
-  padding-right: 80px !important;
-}
+/*main .main-table__table .table-item__folder .size-data {*/
+  /*padding-right: 80px !important;*/
+/*}*/
 
 main .main-table__table .table-item__file .name-data i {
   background: url("../img/ic_insert_drive_file.svg") no-repeat center;

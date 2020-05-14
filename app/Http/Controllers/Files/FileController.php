@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Files;
 
+use App\Http\Controllers\Controller;
+use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class TemplateController extends Controller
+class FileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,12 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        return view('template');
+        $files = File::with('user')
+            ->where('user_id', Auth::id())
+            ->where('folder_id', null)
+            ->get();
+
+        return response()->json($files, 200);
     }
 
     /**

@@ -18,37 +18,30 @@
             </div>
             <ul class="nav__item-container collapse show" id="navcollapse-1"
                 aria-labelledby="navitem-1" data-parent="#nav-accordion">
-                <!--<li>-->
-                <!--lorem-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--ipsum-->
-                <!--</li>-->
             </ul>
         </li>
         <li class="nav__item">
-
-            <div class="nav__item-heading" id="navitem-2" data-toggle="collapse" data-target="#navcollapse-2"
-                 aria-expanded="true" aria-controls="navcollapse-2">
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="3. Icons/ic_cloud_download">
-                        <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="7" width="24"
-                              height="16">
-                            <path id="Icon" fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M22.35 13.04C21.67 9.59 18.64 7 15 7C12.11 7 9.6 8.64 8.35 11.04C5.34 11.36 3 13.91 3 17C3 20.31 5.69 23 9 23H22C24.76 23 27 20.76 27 18C27 15.36 24.95 13.22 22.35 13.04ZM20 16L15 21L10 16H13V12H17V16H20Z"
-                                  fill="white" />
-                        </mask>
-                        <g mask="url(#mask0)">
-                            <g id="Icon Color">
-                                <rect id="Gray 85" x="2" y="2" width="26" height="26" fill="#D8D8D8" />
-                            </g>
-                        </g>
-                    </g>
-                </svg>
-                <span>Диск</span>
-            </div>
             <ul class="nav__item-container collapse show" id="navcollapse-2" aria-labelledby="navitem-2"
                 data-parent="#nav-accordion">
+
+                <router-link tag="li" active-class="active" to="/">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="3. Icons/ic_cloud_download">
+                            <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="7" width="24"
+                                  height="16">
+                                <path id="Icon" fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M22.35 13.04C21.67 9.59 18.64 7 15 7C12.11 7 9.6 8.64 8.35 11.04C5.34 11.36 3 13.91 3 17C3 20.31 5.69 23 9 23H22C24.76 23 27 20.76 27 18C27 15.36 24.95 13.22 22.35 13.04ZM20 16L15 21L10 16H13V12H17V16H20Z"
+                                      fill="white" />
+                            </mask>
+                            <g mask="url(#mask0)">
+                                <g id="Icon Color">
+                                    <rect id="Gray 85" x="2" y="2" width="26" height="26" fill="#D8D8D8" />
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <span>Диск</span>
+                </router-link>
 
                 <router-link tag="li" active-class="active" to="/available">
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none"

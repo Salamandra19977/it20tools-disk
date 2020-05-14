@@ -15,7 +15,7 @@
         </i>
     </a>
     <div class="user-info">
-        {{--<span class="user-info__name">{{ Auth::user()->name }}</span>--}}
+        <span class="user-info__name">{{ Auth::user()->name }}</span>
         <img src="{{asset('/img/avatar.jpg')}}" alt="user-img" class="user-info__img">
         <div class="user-info__dropdown">
                 <span role="button" id="user-info__list" data-toggle="dropdown" aria-haspopup="true"
