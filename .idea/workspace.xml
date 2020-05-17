@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e51dc430-cfa6-4bee-9261-cad1d8dfb651" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/available/layouts/blocks/navigateFolder/NavigateFolder.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/available/layouts/blocks/option_panel/ControlPanel.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/available/layouts/blocks/option_panel/search/OptionSearch.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/available/layouts/blocks/table/FullTable.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/available/layouts/blocks/table/header/HeaderTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Disk/DiskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Disk/DiskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Accesse.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Accesse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/File.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/available/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/available/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/navigateFolder/NavigateFolder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/navigateFolder/NavigateFolder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/option_panel/ControlPanel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/option_panel/ControlPanel.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/table/FullTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/table/FullTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +54,7 @@
     <session id="413227167">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="16" />
+          <entry key="project.closed" value="17" />
           <entry key="project.open.time.114" value="1" />
           <entry key="project.open.time.118" value="1" />
           <entry key="project.open.time.12" value="1" />
@@ -97,8 +78,8 @@
         <counts>
           <entry key="css" value="21" />
           <entry key="js" value="2930" />
-          <entry key="php" value="3072" />
-          <entry key="vue" value="2628" />
+          <entry key="php" value="3073" />
+          <entry key="vue" value="2629" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -106,8 +87,8 @@
           <entry key="Blade" value="177" />
           <entry key="CSS" value="21" />
           <entry key="JavaScript" value="2930" />
-          <entry key="PHP" value="2895" />
-          <entry key="Vue.js" value="2628" />
+          <entry key="PHP" value="2896" />
+          <entry key="Vue.js" value="2629" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -149,7 +130,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Available/AvailableController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
+            <state relative-caret-position="364">
               <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
               <folding>
                 <element signature="e#50#86#0#PHP" expanded="true" />
@@ -179,8 +160,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Disk/DiskController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+            <state relative-caret-position="288">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="e#45#81#0#PHP" expanded="true" />
               </folding>
@@ -212,8 +193,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/table/FullTable.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="49" column="47" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
+            <state relative-caret-position="-704">
+              <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -303,7 +284,6 @@
         <option value="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/navigateFolder/NavigateFolder.vue" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Recent/RecentController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Disk/DiskController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Basket/BasketController.php" />
         <option value="$PROJECT_DIR$/resources/views/disk/layouts/default.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/File.php" />
@@ -312,6 +292,7 @@
         <option value="$PROJECT_DIR$/resources/js/components/available/layouts/blocks/table/FullTable.vue" />
         <option value="$PROJECT_DIR$/resources/js/store/modules/available.js" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Disk/DiskController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/table/FullTable.vue" />
       </list>
     </option>
@@ -891,12 +872,12 @@
       <workItem from="1589433844764" duration="31647000" />
       <workItem from="1589522973964" duration="18901000" />
       <workItem from="1589624942510" duration="7022000" />
-      <workItem from="1589701806643" duration="2034000" />
+      <workItem from="1589701806643" duration="2526000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="233164000" />
+    <option name="totallyTimeSpent" value="233656000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -909,7 +890,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.37793177" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1201,16 +1181,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Available/AvailableController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-          <folding>
-            <element signature="e#50#86#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/store/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
@@ -1229,16 +1199,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Disk/DiskController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
-          <folding>
-            <element signature="e#45#81#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1273,10 +1233,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Disk/DiskController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#45#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Available/AvailableController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding>
+            <element signature="e#50#86#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/table/FullTable.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="49" column="47" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
+        <state relative-caret-position="-704">
+          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
         </state>
       </provider>
     </entry>

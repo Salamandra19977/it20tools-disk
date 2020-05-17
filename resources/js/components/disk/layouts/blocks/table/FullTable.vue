@@ -20,7 +20,7 @@
                 <span>{{folder.created_at | shortTime}}</span>
             </td>
             <td class="size-data">
-                <span>{{folder.size}}</span>
+                <span>{{folder.size | convertSize}}</span>
                 <div class="dots-right" role="button" id="item0dots" data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false">
                     <div class="dropdown-menu" aria-labelledby="item0dots">
