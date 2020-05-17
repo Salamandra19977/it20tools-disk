@@ -1,6 +1,7 @@
 <template>
-    <div class="navigate-folder ">
-        <ul class="navigate-folder-links" v-if="folderPath">
+    <div class="navigate-folder"
+         v-show="folderPath">
+        <ul class="navigate-folder-links">
             <li class="navigate-folder-links-item"
                 v-on:click="setFiles()">
                 Мой диск
@@ -46,6 +47,10 @@
 </script>
 
 <style scoped>
+    ul {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
     .navigate-folder-links {
         display: flex;
         flex-direction: row;

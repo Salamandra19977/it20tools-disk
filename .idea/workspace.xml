@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e51dc430-cfa6-4bee-9261-cad1d8dfb651" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Disk/DiskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Disk/DiskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Accesse.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Accesse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Files/FileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Files/FileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Folders/FolderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Folders/FolderController.php" afterDir="false" />
@@ -18,12 +23,11 @@
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/available/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/available/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/navigateFolder/NavigateFolder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/navigateFolder/NavigateFolder.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/option_panel/ControlPanel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/option_panel/ControlPanel.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/disk/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/disk/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/table/FullTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/disk/layouts/blocks/table/FullTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/blocks/nav/Navigation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/blocks/nav/Navigation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/store/modules/disk.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/modules/disk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/disk/layouts/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/disk/layouts/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/disk/DiskSize.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/disk/DiskSize.vue" afterDir="false" />
@@ -93,7 +97,7 @@
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.58" value="1" />
           <entry key="project.open.time.60" value="1" />
-          <entry key="project.open.time.66" value="1" />
+          <entry key="project.open.time.66" value="2" />
           <entry key="project.open.time.68" value="1" />
           <entry key="project.open.time.77" value="1" />
           <entry key="project.open.time.78" value="2" />
@@ -114,14 +118,10 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
 
-          <entry key="scss" value="1" />
-
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-
-          <entry key="SCSS" value="1" />
 
         </counts>
       </usages-collector>
@@ -183,7 +183,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
 
           <provider selected="true" editor-type-id="text-editor">
 
@@ -227,17 +226,6 @@
     <option name="CHANGED_PATHS">
       <list>
 
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/config/auth.php" />
-        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SpaController.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/DiskSize.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/recent/Index.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/favorites/Index.vue" />
-        <option value="$PROJECT_DIR$/resources/views/disk/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/App.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/layouts/blocks/modals/basket/RemoveObject.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/layouts/blocks/modals/basket/RestoreObject.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/basket/Index.vue" />
 
@@ -416,7 +404,7 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Folders" type="462c0819:PsiDirectoryNode" />
+              <item name="Recent" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="php.loc" type="b2602c69:ProjectViewProjectNode" />
@@ -476,9 +464,10 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="disk" type="462c0819:PsiDirectoryNode" />
+              <item name="available" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
               <item name="blocks" type="462c0819:PsiDirectoryNode" />
+              <item name="option_panel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="php.loc" type="b2602c69:ProjectViewProjectNode" />
@@ -545,6 +534,12 @@
               <item name="php.loc" type="b2602c69:ProjectViewProjectNode" />
               <item name="php.loc" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="sass" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="php.loc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="php.loc" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -561,21 +556,12 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="disk" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="php.loc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="php.loc" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="disk" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="blocks" type="462c0819:PsiDirectoryNode" />
 
             </path>
             <path>
               <item name="php.loc" type="b2602c69:ProjectViewProjectNode" />
               <item name="php.loc" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
+
             </path>
             <path>
               <item name="php.loc" type="b2602c69:ProjectViewProjectNode" />
@@ -603,18 +589,6 @@
   </component>
   <component name="RecentsManager">
 
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\OpenServer\OSPanel\domains\php.loc\public\img" />
-      <recent name="D:\OpenServer\OSPanel\domains\php.loc\public\js" />
-      <recent name="D:\OpenServer\OSPanel\domains\php.loc\public" />
-      <recent name="D:\OpenServer\OSPanel\domains\php.loc\public\css" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\OpenServer\OSPanel\domains\php.loc\resources\js\components\disk\layouts\blocks\table\content" />
-      <recent name="D:\OpenServer\OSPanel\domains\php.loc\resources\js\components\disk\layouts\blocks\table\header" />
-      <recent name="D:\OpenServer\OSPanel\domains\php.loc\resources\js\components\disk" />
-      <recent name="D:\OpenServer\OSPanel\domains\php.loc\app\Models" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -762,8 +736,6 @@
       </provider>
     </entry>
 
-    </entry>
-
       <provider selected="true" editor-type-id="text-editor">
 
         </state>
@@ -771,8 +743,8 @@
     </entry>
 
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+        <state relative-caret-position="394">
+          <caret line="92" column="19" selection-start-line="88" selection-end-line="96" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -782,13 +754,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Cover.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/disk/DiskSize.vue">
+    <entry file="file://$PROJECT_DIR$/resources/js/components/available/layouts/blocks/option_panel/ControlPanel.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
+        <state relative-caret-position="1808">
+          <caret line="113" column="58" selection-start-line="113" selection-start-column="58" selection-end-line="113" selection-end-column="58" />
         </state>
       </provider>
     </entry>

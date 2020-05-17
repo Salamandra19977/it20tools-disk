@@ -8,6 +8,8 @@ import axios from 'axios'
 import store from './store/index.js'
 
 import { VBModal } from 'bootstrap-vue'
+
+
 // Note: Vue automatically prefixes the directive name with 'v-'
 Vue.directive('b-modal', VBModal)
 // Vue.use(FileManager, {store})
@@ -29,13 +31,25 @@ Vue.config.productionTip = false;
 Vue.filter('shortDate', function(str) {
     let date = new Date(str);
 
-    return date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
+    let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    let month = (Number(date.getMonth()) + 1) < 10 ? '0' + (Number(date.getMonth()) + 1) : (Number(date.getMonth()) + 1);
+
+    return day + "." + month + "." + date.getFullYear();
 });
 
 Vue.filter('shortTime', function(str) {
     let time = new Date(str);
 
-    return time.getHours() + ":" + time.getMinutes();
+    let hour = time.getHours() < 10 ? '0' + time.getHours() : time.getHours();
+    let minutes = time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes();
+
+    return hour + ":" + minutes;
+});
+
+Vue.filter('convertSize', function(size) {
+    let i = Math.floor( Math.log(size) / Math.log(1024) );
+
+    return ( size / Math.pow(1024, i) ).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
 });
 
 Vue.component('search', require('./components/Search.vue').default);

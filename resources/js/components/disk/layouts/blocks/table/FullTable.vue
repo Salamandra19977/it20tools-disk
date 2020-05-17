@@ -21,6 +21,12 @@
             </td>
             <td class="size-data">
                 <span>{{folder.size}}</span>
+                <div class="dots-right" role="button" id="item0dots" data-toggle="dropdown"
+                     aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown-menu" aria-labelledby="item0dots">
+                        <a class="dropdown-item delete-delete" href="#">Удалить</a>
+                    </div>
+                </div>
             </td>
         </tr>
         <tr  class="table-item table-item__file"
@@ -41,7 +47,13 @@
                 <span>{{file.created_at | shortTime}}</span>
             </td>
             <td class="size-data">
-                <span>{{file.size}}</span>
+                <span>{{file.size | convertSize}}</span>
+                <div class="dots-right" role="button" id="item0dots" data-toggle="dropdown"
+                     aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown-menu" aria-labelledby="item0dots">
+                        <a class="dropdown-item delete-delete" href="#">Удалить</a>
+                    </div>
+                </div>
             </td>
         </tr>
     </table>
@@ -87,11 +99,7 @@
             },
         },
         created() {
-            if(this.$store.state.disk.curent_folder.id != null)
-                this.openFolder(this.$store.state.disk.curent_folder);
-            else {
-                this.setFiles();
-            }
+            this.setFiles();
         }
 
     }
