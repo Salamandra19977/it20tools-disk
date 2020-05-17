@@ -15,10 +15,13 @@ class DiskController extends Controller
         $files = File::with('user')
             ->where('user_id',Auth::id())
             ->where('folder_id', null)
+            ->where('status_id',1)
             ->get();
+
         $folders = Folder::with('user')
             ->where('user_id',Auth::id())
             ->where('parent_id', null)
+            ->where('status_id',1)
             ->get();
 
         $data = [
@@ -34,10 +37,12 @@ class DiskController extends Controller
         $files = File::with('user')
             ->where('user_id',Auth::id())
             ->where('folder_id', $id)
+            ->where('status_id',1)
             ->get();
         $folders = Folder::with('user')
             ->where('user_id',Auth::id())
             ->where('parent_id', $id)
+            ->where('status_id',1)
             ->get();
 
         $data = [
