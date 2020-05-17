@@ -27,6 +27,7 @@
                         <a class="dropdown-item delete-delete" href="#">Удалить</a>
                     </div>
                 </div>
+                <button @click="addFolderToFavorites(folder)">{{folder.status_id == 3 ? 'Удалить из избранных' : 'Добавить в избранное'}}</button>
             </td>
         </tr>
         <tr  class="table-item table-item__file"
@@ -54,6 +55,7 @@
                         <a class="dropdown-item delete-delete" href="#">Удалить</a>
                     </div>
                 </div>
+                <button @click="addFileToFavorites(file)">{{file.status_id == 3 ? 'Удалить из избранных' : 'Добавить в избранное'}}</button>
             </td>
         </tr>
     </table>
@@ -73,6 +75,17 @@
             },
         },
         methods: {
+            addFileToFavorites(obj) {
+                const file = obj
+                axios.put("/favorites/${fileId}", {file: file})
+                console.log(file.id);               
+            },
+            addFolderToFavorites(obj) {
+                const folder = obj
+                axios.put("/favorites/${folder}", {folder: folder})
+                console.log(folder.id);  
+                console.log(folder);   
+            },
             selectFolder(obj) {
                 this.$store.commit('disk/selectFolder',obj);
             },

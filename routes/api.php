@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/available/show/{id}', 'Available\AvailableController@show');
 
     Route::get('/recent', 'Recent\RecentController@index');
-    Route::get('/recent/show/{id}', 'Recent\ReventController@show');
+    Route::get('/recent/show/{id}', 'Recent\RecentController@show');
 
     Route::get('/basket', 'Basket\BasketController@index');
     Route::get('/basket/show/{id}', 'Basket\BasketController@show');
