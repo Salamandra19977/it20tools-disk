@@ -8,7 +8,6 @@ body {
     font-weight: 500;
     font-size: 13px;
     color: #999999;
-    min-width: 390px;
 }
 
 ul {
@@ -58,7 +57,7 @@ ul {
         justify-content: flex-start;
 
         .btn-default {
-            color: #b2b2b2;
+            color: #B2B2B2;
             border: 1px solid #f5f5f5;
         }
     }
@@ -81,15 +80,6 @@ header {
         align-items: center;
         margin-left: auto;
         margin-right: 30px;
-
-        &__profile {
-            text-decoration: none;
-            color: #999999;
-
-            &:hover {
-                color: #333333;
-            }
-        }
 
         &__name {
             font-size: 14px;
@@ -126,108 +116,52 @@ header {
     }
 
     .nav-brand {
+        width: 255px;
         display: flex;
         align-items: center;
-        height: 88px;
-        width: 185px;
+        border-right: 1px solid #fafafa;
 
         img {
             margin: 20px 0 15px 0;
-            object-fit: cover;
         }
-    }
-
-    .header-nav-arrow {
-        position: relative;
-        height: 88px;
-        width: 70px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-right: 1px solid #fafafa;
-        cursor: pointer;
 
         i {
-            transition: all .2s ease-in;
-            transform: rotateY(0deg);
             display: inline-block;
             height: 30px;
             width: 30px;
-        }
+            // background: url("../img/ic_keyboard_arrow_left.svg") no-repeat center;
+            margin-left: 40px;
 
-        &:hover {
-            svg rect {
-                fill: #999999;
-                stroke: #999999;
+            &:hover {
+                svg rect {
+                    fill: #999999;
+                    stroke: #999999;
+                }
             }
-        }
-    }
-
-    .arrow-active {
-        i {
-            transform: rotateY(180deg);
         }
     }
 }
 
 .main-content {
     display: flex;
-    overflow: hidden;
-    position: relative;
-
-    &-collapsed {
-        aside {
-            left: -255px;
-        }
-
-        main {
-            left: 0;
-            width: calc(100% - 60px);
-            max-width: none;
-            min-height: auto;
-        }
-    }
 }
 
 aside {
-    width: 254px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: all .3s ease-in;
-
+    width: 255px;
+    // overflow: hidden;
     .nav {
         background: #fff;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
         flex-direction: column;
+        width: 255px;
 
         &__item {
             border-top: 1px solid #f5f5f5;
             border-bottom: 1px solid #f5f5f5;
+            padding: 15px 15px;
             background: #fff;
             min-height: 60px;
             cursor: pointer;
-
-            &-active {
-                .nav__item-heading {
-                    border-left: 3px solid #1875f0;
-
-                    a {
-                        span {
-                            color: #1875f0;
-                        }
-
-                        svg rect {
-                            fill: #1875f0;
-                            stroke: #1875f0;
-                        }
-                    }
-                }
-            }
-
-            a {
-                text-decoration: none;
-            }
 
             svg {
                 margin-right: 20px;
@@ -256,15 +190,6 @@ aside {
             &-heading {
                 display: flex;
                 align-items: center;
-                height: 60px;
-                padding: 0 15px;
-
-                a {
-                    display: flex;
-                    align-items: center;
-                    width: 100%;
-                    height: 100%;
-                }
 
                 &[aria-expanded="true"] {
                     span {
@@ -280,28 +205,9 @@ aside {
 
             &-container {
                 li {
-                    a {
-                        display: flex;
-                        width: 100%;
-                        height: 100%;
-                        display: flex;
-                        align-items: center;
-                        padding: 15px 0;
-
-                        text-decoration: none;
-
-                        span {
-                            color: #999999;
-                        }
-
-                        svg rect {
-                            fill: #999999;
-                            stroke: #999999;
-                        }
-
-                    }
-
-                    padding: 0 15px;
+                    margin: 25px 0;
+                    display: flex;
+                    align-items: center;
 
                     svg {
                         margin-right: 15px;
@@ -309,8 +215,6 @@ aside {
                 }
 
                 .active {
-                    border-left: 3px solid #1875f0;
-
                     span {
                         color: #1875f0 !important;
                     }
@@ -346,7 +250,6 @@ aside {
                 }
             }
         }
-
     }
 
     .disk {
@@ -359,7 +262,7 @@ aside {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        width: 254px;
+        width: 255px;
 
         img {
             margin-bottom: 70px;
@@ -382,12 +285,20 @@ aside {
     }
 }
 
+.active1 {
+    span {
+        color: #1875f0 !important;
+    }
+
+    svg rect {
+        fill: #1875f0 !important;
+        stroke: #1875f0 !important;
+    }
+}
+
 main {
-    margin: 10px 35px 25px 35px;
-    width: calc(100% - 330px);
-    position: relative;
-    left: 255px;
-    transition: all .3s ease-in;
+    margin: 10px 35px 0 35px;
+    width: 100%;
 
     .main-heading {
         font-weight: 300;
@@ -408,7 +319,7 @@ main {
                 padding: 25px 20px 20px 15px;
 
                 &__btn {
-                    background: #1875f0;
+                    background: #1875F0;
                     display: inline-block;
                     position: relative;
                     color: #fff;
@@ -420,7 +331,7 @@ main {
                     text-decoration: none;
 
                     &:hover {
-                        opacity: 0.9;
+                        opacity: .9;
                     }
 
                     &::before {
@@ -432,7 +343,7 @@ main {
                         background: #000;
                         top: 25%;
                         left: 18%;
-                        background: url("../img/ic_add.svg") no-repeat center;
+                        background: url('../img/ic_add.svg') no-repeat center;
                     }
                 }
 
@@ -467,19 +378,19 @@ main {
 
                 .add-folder {
                     &::before {
-                        background: url("../img/ic_add.png");
+                        background: url('../img/ic_add.png');
                     }
                 }
 
                 .upload-file {
                     &::before {
-                        background: url("../img/ic_insert_drive_file.svg");
+                        background: url('../img/ic_insert_drive_file.svg');
                     }
                 }
 
                 .upload-folder {
                     &::before {
-                        background: url("../img/ic_folder.svg");
+                        background: url('../img/ic_folder.svg');
                     }
                 }
             }
@@ -487,45 +398,9 @@ main {
             .option-search {
                 border-right: 2px solid #f5f5f5;
                 padding: 25px 20px 20px 15px;
-                width: 60%;
+                width: 58%;
                 display: flex;
                 align-items: center;
-
-                &__field-container {
-                    width: 100%;
-                    position: relative;
-                    overflow: hidden;
-
-                    span {
-                        width: 100%;
-                        position: absolute;
-                        height: 0;
-                        left: 0;
-                        background: #000;
-                        bottom: 0;
-
-                        &::before,
-                        &::after {
-                            content: '';
-                            display: block;
-                            position: absolute;
-                            bottom: 0;
-                            width: 0px;
-                            height: 2px;
-                            background: #D8D8D8;
-                            transition: all .3s ease-in-out;
-                        }
-
-                        &::before {
-                            left: 50%;
-                        }
-
-                        &::after {
-                            right: 50%;
-                        }
-                    }
-
-                }
 
                 &__field {
                     border: none;
@@ -536,12 +411,6 @@ main {
 
                     &::placeholder {
                         color: #cccccc;
-                        transition: all .3s ease;
-                    }
-
-                    &:focus~span::before,
-                    &:focus~span::after {
-                        width: 50%;
                     }
 
                     &:focus {
@@ -549,19 +418,9 @@ main {
                     }
                 }
 
-                &__field:focus {
-                    &::placeholder {
-                        opacity: 0;
-                    }
-                }
-
                 &__btn {
                     border: none;
                     background: #fff;
-                    position: absolute;
-                    right: 0;
-                    top: 10px;
-
                     &:hover {
                         svg rect {
                             fill: #999999;
@@ -601,8 +460,8 @@ main {
                 }
 
                 svg rect {
-                    stroke: #d8d8d8;
-                    fill: #d8d8d8;
+                    stroke: #D8D8D8;
+                    fill: #D8D8D8;
                 }
 
                 .dropdown-menu {
@@ -633,13 +492,38 @@ main {
 
                     .delete-return {
                         &::before {
-                            background: url("../img/ic_replay.svg");
+                            background: url('../img/ic_replay.svg');
                         }
                     }
-
+                    .delete-cloud {
+                        &::before {
+                            background: url('../img/ic_cloud_download.svg');
+                        }
+                    }
+                    .delete-copy {
+                        &::before {
+                            background: url('../img/ic_content_copy.svg');
+                        }
+                    }
+                    .delete-star {
+                        &::before {
+                            background: url('../img/ic_star.svg');
+                        }
+                    }
+                    .delete-return {
+                        &::before {
+                            background: url('../img/ic_replay.svg');
+                        }
+                    }
+                    .delete-add {
+                        &::before {
+                            background: url('../img/ic_person_add.svg');
+                        }
+                    }
                     .delete-delete {
                         &::before {
-                            background: url("../img/ic_delete.png");
+                            background: url('../img/ic_delete.png');
+
                         }
                     }
                 }
@@ -669,8 +553,8 @@ main {
                 }
 
                 svg rect {
-                    stroke: #d8d8d8;
-                    fill: #d8d8d8;
+                    stroke: #D8D8D8;
+                    fill: #D8D8D8;
                 }
 
                 &__bulleted {
@@ -695,7 +579,7 @@ main {
 
             .table-head,
             .table-item {
-                border: 1px solid #f5f5f5;
+                border: 1px solid #F5F5F5;
             }
 
             .table-head,
@@ -722,8 +606,8 @@ main {
                 width: 20px;
 
                 svg rect {
-                    fill: #d8d8d8;
-                    stroke: #d8d8d8;
+                    fill: #D8D8D8;
+                    stroke: #D8D8D8;
                 }
 
                 &:hover {
@@ -774,18 +658,17 @@ main {
                 align-items: center;
             }
 
+            .table-body {
+                min-height: 1050px;
+            }
+
             .table-item:hover {
-                background: #fcfcfc;
+                background: #FCFCFC;
                 cursor: pointer;
             }
 
             .table-item {
                 position: relative;
-            }
-
-            .selected {
-                background: #FCFCFC !important;
-                border-left: 2px solid #1875F0;
             }
 
             .table-item {
@@ -796,17 +679,16 @@ main {
                     height: 30px;
                     top: 15px;
                     right: 10px;
-                    background: url("../img/ic_more_vert.png") no-repeat center;
+                    background: url('../img/ic_more_vert.png') no-repeat center;
                     cursor: pointer;
 
                     &:hover {
-                        background: url("../img/ic_more_vert1.png") no-repeat center;
+                        background: url('../img/ic_more_vert1.png') no-repeat center;
                     }
 
                     .dropdown-menu {
                         flex-direction: column;
-                        left: -30px !important;
-                        top: -130px !important;
+                        left: -110px !important;
                         width: 255px;
 
                         .dropdown-item {
@@ -829,31 +711,19 @@ main {
                                 height: 30px;
                                 background-position: center;
                                 background-repeat: no-repeat;
-                                background-size: cover;
                             }
                         }
 
                         .delete-return {
                             &::before {
-                                background-image: url("../img/ic_replay.svg");
+                                background: url('../img/ic_replay.svg');
                             }
                         }
 
                         .delete-delete {
                             &::before {
-                                background-image: url("../img/ic_delete.png");
-                            }
-                        }
+                                background: url('../img/ic_delete.png');
 
-                        .delete-information {
-                            display: none;
-
-                            &::before {
-                                width: 25px;
-                                height: 25px;
-                                left: 25px;
-                                background-image: url('../img/ic_information.png');
-                                opacity: .3;
                             }
                         }
                     }
@@ -861,6 +731,7 @@ main {
 
                 div:not(.dropdown-menu) {
                     padding-right: 10px;
+
                 }
             }
 
@@ -874,10 +745,9 @@ main {
             .table-item__folder {
                 .name-data {
                     i {
-                        background: url("../img/ic_folder.svg") no-repeat center;
+                        background: url('../img/ic_folder.svg') no-repeat center;
                     }
                 }
-
                 .size-data {
                     padding-right: 80px !important;
                 }
@@ -886,7 +756,8 @@ main {
             .table-item__file {
                 .name-data {
                     i {
-                        background: url("../img/ic_insert_drive_file.svg") no-repeat center;
+                        background: url('../img/ic_insert_drive_file.svg') no-repeat center;
+
                     }
                 }
             }
@@ -894,18 +765,8 @@ main {
             .name-data {
                 padding-left: 15px;
             }
+
         }
-    }
-
-    .disk-usage__sm-only {
-        display: none;
-        text-align: center;
-        margin: 15px;
-
-        p {
-            margin-top: 15px;
-        }
-
     }
 }
 
@@ -913,7 +774,7 @@ main {
     background: #fff;
     padding-top: 50px;
     padding: 50px 0 60px 0;
-    border-bottom: 10px solid #fafafa;
+    border-bottom: 10px solid #FAFAFA;
 
     h3 {
         font-size: 16px;
@@ -926,15 +787,9 @@ main {
         margin: auto;
         display: flex;
         justify-content: space-between;
-        flex-wrap: wrap;
-        padding: 0 15px;
     }
 
     .footer-logo-block {
-        a {
-            display: block;
-        }
-
         p {
             margin-left: 20px;
             font-size: 14px;
@@ -956,37 +811,28 @@ main {
             flex-direction: column;
             flex-wrap: wrap;
         }
-
         li {
             margin-bottom: 20px;
-
             a {
                 font-size: 14px;
                 color: #9b9b9b;
             }
-
             float: left;
         }
     }
-
     .footer-contacts-block {
-        margin-top: 10px;
-
         .contacts {
             display: flex;
             align-items: center;
-
             .number {
                 font-size: 16px;
                 color: #808080;
             }
-
             .mail {
                 font-size: 14px;
                 color: #808080;
                 margin-left: 20px;
             }
-
             &-line {
                 width: 65px;
                 height: 2px;
@@ -994,38 +840,37 @@ main {
                 margin: 30px 0 20px 0;
             }
         }
-
         .social {
             display: flex;
             align-items: center;
             margin-left: -10px;
-
             a {
                 text-decoration: none;
             }
-
             .facebook:hover {
                 svg rect {
-                    fill: #4064ad;
-                    stroke: #4064ad;
+                    fill: #4064AD;
+                    stroke: #4064AD;
                 }
             }
-
             .twitter:hover {
                 svg rect {
-                    fill: #04b9d9;
-                    stroke: #04b9d9;
+                    fill: #04B9D9;
+                    stroke: #04B9D9;
                 }
             }
-
             .instagram:hover {
                 svg rect {
-                    fill: #d72062;
-                    stroke: #d72062;
+                    fill: #D72062;
+                    stroke: #D72062;
                 }
             }
         }
     }
+}
+
+.footer-contacts-block {
+    margin-top: 10px;
 }
 
 @import "media";
