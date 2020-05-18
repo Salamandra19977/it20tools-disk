@@ -7,6 +7,7 @@ use App\Models\File;
 use App\Models\Folder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
 
 class FavoritesController extends Controller
 {
@@ -36,8 +37,71 @@ class FavoritesController extends Controller
 
         // dd($favorites);
 
-        return response()->json($favorites, 200);
+        return response()->json($favorites, Response::HTTP_OK);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        // dd($request->folder['status_id']);
+        // dd($request->folder);
+
+        if (isset($request->file['id'])) {
+            $favoriteFiles = File::findOrFail($request->file['id']);
+            if ($favoriteFiles->status_id == 1) {
+                $favoriteFiles->status_id = 3;
+                $favoriteFiles->save();
+                return response(null, Response::HTTP_OK);
+            }
+            elseif ($favoriteFiles->status_id == 3) {
+                $favoriteFiles->status_id = 1;
+                $favoriteFiles->save();
+                return response(null, Response::HTTP_OK);
+            }
+        }
+        
+        
+        if (isset($request->folder['id'])) {
+            $favoriteFolders = Folder::findOrFail($request->folder['id']);
+            // dd($favoriteFolders);
+
+            if ($favoriteFolders->status_id == 1) {
+                $favoriteFolders->status_id = 3;
+                $favoriteFolders->save();
+                return response(null, Response::HTTP_OK);
+            }
+            elseif ($favoriteFolders->status_id == 3) {
+                $favoriteFolders->status_id = 1;
+                $favoriteFolders->save();
+                return response(null, Response::HTTP_OK);
+            }
+        }
+        
+
+
+
+
+        // $favoriteFiles->status_id = 1;
+        // $favoriteFiles->save();
+        // return response(null, Response::HTTP_OK);
+    }
+
+    // public function addToFavorites(Request $request, $id)
+    // {
+    //     dd($request->file['status_id']);
+
+    //     $favoriteFiles = File::findOrFail($request->file['id']);
+    //     $favoriteFiles->status_id = 3;
+    //     $favoriteFiles->save();
+    //     return response(null, Response::HTTP_OK);
+    // }
+
 
     /**
      * Show the form for creating a new resource.
@@ -82,17 +146,7 @@ class FavoritesController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    
 
     /**
      * Remove the specified resource from storage.

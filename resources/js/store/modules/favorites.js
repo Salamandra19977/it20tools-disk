@@ -8,9 +8,13 @@ export default {
                     this.commit('favorites/favoriteFolders', response.data.favoriteFolders)
                 });
         },
-        // deleteFromFavorites(state){
-        //     axios.put('/favorites' + state.selectedFavoriteFiles[])
-        // }
+        showFolder(state) {
+            axios.get('/favorites'+ state.state.curent_folder.id)
+                .then(response => {
+                    this.commit('disk/files', response.data.files);
+                    this.commit('disk/folders', response.data.folders);
+                });
+        }
     },
     mutations:{
         favoriteFiles(state, obj) {
