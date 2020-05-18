@@ -1,8 +1,7 @@
 @import "vars";
 @import "libs";
 @import "fonts";
-@import 'node_modules/bootstrap/scss/bootstrap';
-@import 'node_modules/bootstrap-vue/src/index.scss';
+
 body {
     background-color: #fafafa;
     font-family: "Roboto", sans-serif;
@@ -496,7 +495,31 @@ main {
                             background: url('../img/ic_replay.svg');
                         }
                     }
-
+                    .delete-cloud {
+                        &::before {
+                            background: url('../img/ic_cloud_download.svg');
+                        }
+                    }
+                    .delete-copy {
+                        &::before {
+                            background: url('../img/ic_content_copy.svg');
+                        }
+                    }
+                    .delete-star {
+                        &::before {
+                            background: url('../img/ic_star.svg');
+                        }
+                    }
+                    .delete-return {
+                        &::before {
+                            background: url('../img/ic_replay.svg');
+                        }
+                    }
+                    .delete-add {
+                        &::before {
+                            background: url('../img/ic_person_add.svg');
+                        }
+                    }
                     .delete-delete {
                         &::before {
                             background: url('../img/ic_delete.png');

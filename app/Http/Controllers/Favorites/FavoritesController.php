@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Favorites;
 
+use App\Http\Controllers\Controller;
+use App\Models\File;
+use App\Models\Folder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class TemplateController extends Controller
+class FavoritesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +17,26 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        return view('template');
+        $favoriteFiles = File::with('user')
+            ->where('user_id', Auth::id())
+            ->where('folder_id', null)
+            ->where('status_id', 3)
+            ->get();
+
+        $favoriteFolders = Folder::with('user')
+            ->where('user_id',Auth::id())
+            ->where('parent_id', null)
+            ->where('status_id', 3)
+            ->get();
+
+        $favorites = [
+            'favoriteFolders' => $favoriteFolders,
+            'favoriteFiles' => $favoriteFiles
+        ];
+
+        // dd($favorites);
+
+        return response()->json($favorites, 200);
     }
 
     /**

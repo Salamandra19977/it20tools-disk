@@ -2,8 +2,7 @@
     <ul class="nav" id="nav-accordion">
         <li class="nav__item">
             <div class="nav__item-heading" id="navitem-1" data-toggle="collapse" data-target="#navcollapse-1"
-                 aria-expanded="false
-            aria-controls=" navcollapse-1>
+                 aria-expanded="false" aria-controls="navcollapse-1">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <mask id="nav-home" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="20"
                           height="17">
@@ -16,98 +15,126 @@
                 </svg>
                 <span>Главная страница</span>
             </div>
-            <ul class="nav__item-container collapse show" id="navcollapse-1"
-                aria-labelledby="navitem-1" data-parent="#nav-accordion">
-            </ul>
         </li>
-        <li class="nav__item">
-            <ul class="nav__item-container collapse show" id="navcollapse-2" aria-labelledby="navitem-2"
-                data-parent="#nav-accordion">
+        <!--<ul class="nav__item-container collapse show" id="navcollapse-1"-->
+            <!--aria-labelledby="navitem-1" data-parent="#nav-accordion">-->
+            <!--<li>-->
+                <!--lorem-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--ipsum-->
+            <!--</li>-->
+        <!--</ul>-->
+        <!--<router-link class="nav__item" active-class="nav__item-active active" tag="li" to="/disk">-->
+            <!--<div class="nav__item-heading" id="navitem-2" data-toggle="collapse" data-target="#navcollapse-2"-->
+                 <!--aria-expanded="true" aria-controls="navcollapse-2">-->
+                <!--<svg width="30" height="30" viewBox="0 0 30 30" fill="none"-->
+                     <!--xmlns="http://www.w3.org/2000/svg">-->
+                    <!--<g id="3. Icons/ic_cloud_download">-->
+                        <!--<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="7" width="24"-->
+                              <!--height="16">-->
+                            <!--<path id="Icon" fill-rule="evenodd" clip-rule="evenodd"-->
+                                  <!--d="M22.35 13.04C21.67 9.59 18.64 7 15 7C12.11 7 9.6 8.64 8.35 11.04C5.34 11.36 3 13.91 3 17C3 20.31 5.69 23 9 23H22C24.76 23 27 20.76 27 18C27 15.36 24.95 13.22 22.35 13.04ZM20 16L15 21L10 16H13V12H17V16H20Z"-->
+                                  <!--fill="white" />-->
+                        <!--</mask>-->
+                        <!--<g mask="url(#mask0)">-->
+                            <!--<g id="Icon Color">-->
+                                <!--<rect id="Gray 85" x="2" y="2" width="26" height="26" fill="#D8D8D8" />-->
+                            <!--</g>-->
+                        <!--</g>-->
+                    <!--</g>-->
+                <!--</svg>-->
+                <!--<span>Диск</span>-->
+            <!--</div>-->
+        <!--</router-link>-->
+        <ul class="nav__item-container collapse show" id="navcollapse-2" aria-labelledby="navitem-2"
+            data-parent="#nav-accordion">
 
-                <router-link tag="li" active-class="active" to="/disk">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="3. Icons/ic_cloud_download">
-                            <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="7" width="24"
-                                  height="16">
-                                <path id="Icon" fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M22.35 13.04C21.67 9.59 18.64 7 15 7C12.11 7 9.6 8.64 8.35 11.04C5.34 11.36 3 13.91 3 17C3 20.31 5.69 23 9 23H22C24.76 23 27 20.76 27 18C27 15.36 24.95 13.22 22.35 13.04ZM20 16L15 21L10 16H13V12H17V16H20Z"
-                                      fill="white" />
-                            </mask>
-                            <g mask="url(#mask0)">
-                                <g id="Icon Color">
-                                    <rect id="Gray 85" x="2" y="2" width="26" height="26" fill="#D8D8D8" />
-                                </g>
+            <router-link class="nav__item-inner" active-class="nav__item-active active" tag="li" to="/disk">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <g id="3. Icons/ic_cloud_download">
+                        <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="7" width="24"
+                              height="16">
+                            <path id="Icon" fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M22.35 13.04C21.67 9.59 18.64 7 15 7C12.11 7 9.6 8.64 8.35 11.04C5.34 11.36 3 13.91 3 17C3 20.31 5.69 23 9 23H22C24.76 23 27 20.76 27 18C27 15.36 24.95 13.22 22.35 13.04ZM20 16L15 21L10 16H13V12H17V16H20Z"
+                                  fill="white" />
+                        </mask>
+                        <g mask="url(#mask0)">
+                            <g id="Icon Color">
+                                <rect id="Gray 85" x="2" y="2" width="26" height="26" fill="#D8D8D8" />
                             </g>
                         </g>
-                    </svg>
-                    <span>Диск</span>
-                </router-link>
+                    </g>
+                </svg>
+                <span>Диск</span>
+            </router-link>
 
-                <router-link tag="li" active-class="active" to="/available">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <mask id="nav-contacts1" mask-type="alpha" maskUnits="userSpaceOnUse" x="4" y="8"
-                              width="22" height="14">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M19 14C20.66 14 21.99 12.66 21.99 11C21.99 9.34 20.66 8 19 8C17.34 8 16 9.34 16 11C16 12.66 17.34 14 19 14ZM11 14C12.66 14 13.99 12.66 13.99 11C13.99 9.34 12.66 8 11 8C9.34 8 8 9.34 8 11C8 12.66 9.34 14 11 14ZM11 16C8.67 16 4 17.17 4 19.5V22H18V19.5C18 17.17 13.33 16 11 16ZM19 16C18.71 16 18.38 16.02 18.03 16.05C19.19 16.89 20 18.02 20 19.5V22H26V19.5C26 17.17 21.33 16 19 16Z"
-                                  fill="white" />
-                        </mask>
-                        <g mask="url(#nav-contacts1)">
-                            <rect x="2" y="2" width="26" height="26" fill="#999999" />
-                        </g>
-                    </svg>
-                    <span>Доступные</span>
-                </router-link>
+            <router-link class="nav__item-inner" active-class="nav__item-active active" tag="li" to="/available">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <mask id="nav-contacts1" mask-type="alpha" maskUnits="userSpaceOnUse" x="4" y="8"
+                          width="22" height="14">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M19 14C20.66 14 21.99 12.66 21.99 11C21.99 9.34 20.66 8 19 8C17.34 8 16 9.34 16 11C16 12.66 17.34 14 19 14ZM11 14C12.66 14 13.99 12.66 13.99 11C13.99 9.34 12.66 8 11 8C9.34 8 8 9.34 8 11C8 12.66 9.34 14 11 14ZM11 16C8.67 16 4 17.17 4 19.5V22H18V19.5C18 17.17 13.33 16 11 16ZM19 16C18.71 16 18.38 16.02 18.03 16.05C19.19 16.89 20 18.02 20 19.5V22H26V19.5C26 17.17 21.33 16 19 16Z"
+                              fill="white" />
+                    </mask>
+                    <g mask="url(#nav-contacts1)">
+                        <rect x="2" y="2" width="26" height="26" fill="#999999" />
+                    </g>
+                </svg>
+                <span>Доступные</span>
+            </router-link>
 
-                <router-link tag="li" active-class="active" to="/recent">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <mask id="nav-recent1" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5"
-                              width="20" height="20">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M15 5C9.5 5 5 9.5 5 15C5 20.5 9.5 25 15 25C20.5 25 25 20.5 25 15C25 9.5 20.5 5 15 5ZM19.2 19.2L14 16V10H15.5V15.2L20 17.9L19.2 19.2Z"
-                                  fill="white" />
-                        </mask>
-                        <g mask="url(#nav-recent1)">
-                            <rect x="2" y="2" width="26" height="26" fill="#999999" />
-                        </g>
-                    </svg>
-                    <span>Недавние</span>
-                </router-link>
+            <router-link class="nav__item-inner" active-class="nav__item-active active" tag="li" to="/recent">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <mask id="nav-recent1" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5"
+                          width="20" height="20">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M15 5C9.5 5 5 9.5 5 15C5 20.5 9.5 25 15 25C20.5 25 25 20.5 25 15C25 9.5 20.5 5 15 5ZM19.2 19.2L14 16V10H15.5V15.2L20 17.9L19.2 19.2Z"
+                              fill="white" />
+                    </mask>
+                    <g mask="url(#nav-recent1)">
+                        <rect x="2" y="2" width="26" height="26" fill="#999999" />
+                    </g>
+                </svg>
+                <span>Недавние</span>
+            </router-link>
 
-                <router-link tag="li" active-class="active" to="/favorities">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <mask id="nav-star" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="20"
-                              height="19">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M15 20.27L21.18 24L19.54 16.97L25 12.24L17.81 11.63L15 5L12.19 11.63L5 12.24L10.46 16.97L8.82 24L15 20.27Z"
-                                  fill="white" />
-                        </mask>
-                        <g mask="url(#nav-star)">
-                            <rect x="2" y="2" width="26" height="26" fill="#999999" />
-                        </g>
-                    </svg>
-                    <span>Избранное</span>
-                </router-link>
+            <router-link class="nav__item-inner" active-class="nav__item-active active" tag="li" to="/favorities">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <mask id="nav-star" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="20"
+                          height="19">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M15 20.27L21.18 24L19.54 16.97L25 12.24L17.81 11.63L15 5L12.19 11.63L5 12.24L10.46 16.97L8.82 24L15 20.27Z"
+                              fill="white" />
+                    </mask>
+                    <g mask="url(#nav-star)">
+                        <rect x="2" y="2" width="26" height="26" fill="#999999" />
+                    </g>
+                </svg>
+                <span>Избранное</span>
+            </router-link>
 
-                <router-link tag="li" active-class="active" to="/basket">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <mask id="nav-delete" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6"
-                              width="14" height="18">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M9 22C9 23.1 9.9 24 11 24H19C20.1 24 21 23.1 21 22V10H9V22ZM22 7H18.5L17.5 6H12.5L11.5 7H8V9H22V7Z"
-                                  fill="white" />
-                        </mask>
-                        <g mask="url(#nav-delete)">
-                            <rect x="2" y="2" width="26" height="26" fill="#1875F0" />
-                        </g>
-                    </svg>
-                    <span>Корзина</span>
-                </router-link>
-            </ul>
-        </li>
+            <router-link class="nav__item-inner" active-class="nav__item-active active" tag="li" to="/basket">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <mask id="nav-delete" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6"
+                          width="14" height="18">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M9 22C9 23.1 9.9 24 11 24H19C20.1 24 21 23.1 21 22V10H9V22ZM22 7H18.5L17.5 6H12.5L11.5 7H8V9H22V7Z"
+                              fill="white" />
+                    </mask>
+                    <g mask="url(#nav-delete)">
+                        <rect x="2" y="2" width="26" height="26" fill="#1875F0" />
+                    </g>
+                </svg>
+                <span>Корзина</span>
+            </router-link>
+
+        </ul>
         <li class="nav__item">
             <div class="nav__item-heading" id="navitem-3" data-toggle="collapse" data-target="#navcollapse-3"
                  aria-expanded="false" aria-controls="navcollapse-3">
@@ -124,16 +151,16 @@
                 </svg>
                 <span>Почта</span>
             </div>
-            <ul class="nav__item-container collapse" id="navcollapse-3" aria-labelledby="navitem-3"
-                data-parent="#nav-accordion">
-                <li>
-                    lorem
-                </li>
-                <li>
-                    ipsum
-                </li>
-            </ul>
         </li>
+        <ul class="nav__item-container collapse" id="navcollapse-3" aria-labelledby="navitem-3"
+            data-parent="#nav-accordion">
+            <li>
+                lorem
+            </li>
+            <li>
+                ipsum
+            </li>
+        </ul>
         <li class="nav__item">
             <div class="nav__item-heading" id="navitem-4" data-toggle="collapse" data-target="#navcollapse-4"
                  aria-expanded="false" aria-controls="navcollapse-4">
@@ -150,16 +177,16 @@
                 </svg>
                 <span>Календарь</span>
             </div>
-            <ul class="nav__item-container collapse" id="navcollapse-4" aria-labelledby="navitem-4"
-                data-parent="#nav-accordion">
-                <li>
-                    lorem
-                </li>
-                <li>
-                    ipsum
-                </li>
-            </ul>
         </li>
+        <ul class="nav__item-container collapse" id="navcollapse-4" aria-labelledby="navitem-4"
+            data-parent="#nav-accordion">
+            <li>
+                lorem
+            </li>
+            <li>
+                ipsum
+            </li>
+        </ul>
         <li class="nav__item">
             <div class="nav__item-heading" id="navitem-5" data-toggle="collapse" data-target="#navcollapse-5"
                  aria-expanded="false" aria-controls="navcollapse-5">
@@ -176,16 +203,16 @@
                 </svg>
                 <span>Фотографии</span>
             </div>
-            <ul class="nav__item-container collapse" id="navcollapse-5" aria-labelledby="navitem-5"
-                data-parent="#nav-accordion">
-                <li>
-                    lorem
-                </li>
-                <li>
-                    ipsum
-                </li>
-            </ul>
         </li>
+        <ul class="nav__item-container collapse" id="navcollapse-5" aria-labelledby="navitem-5"
+            data-parent="#nav-accordion">
+            <li>
+                lorem
+            </li>
+            <li>
+                ipsum
+            </li>
+        </ul>
         <li class="nav__item">
             <div class="nav__item-heading" id="navitem-6" data-toggle="collapse" data-target="#navcollapse-6"
                  aria-expanded="false" aria-controls="navcollapse-6">
@@ -202,16 +229,16 @@
                 </svg>
                 <span>Контакты</span>
             </div>
-            <ul class="nav__item-container collapse" id="navcollapse-6" aria-labelledby="navitem-6"
-                data-parent="#nav-accordion">
-                <li>
-                    lorem
-                </li>
-                <li>
-                    ipsum
-                </li>
-            </ul>
         </li>
+        <ul class="nav__item-container collapse" id="navcollapse-6" aria-labelledby="navitem-6"
+            data-parent="#nav-accordion">
+            <li>
+                lorem
+            </li>
+            <li>
+                ipsum
+            </li>
+        </ul>
         <li class="nav__item">
             <div class="nav__item-heading" id="navitem-7" data-toggle="collapse" data-target="#navcollapse-7"
                  aria-expanded="false" aria-controls="navcollapse-7">
@@ -228,17 +255,6 @@
                 </svg>
                 <span>Управление</span>
             </div>
-            <ul class="nav__item-container collapse" id="navcollapse-7" aria-labelledby="navitem-7"
-                data-parent="#nav-accordion">
-                <li>
-                    lorem
-                </li>
-                <li>
-                    ipsum
-                </li>
-            </ul>
-        </li>
-        <li class="nav__item">
         </li>
     </ul>
 </template>
@@ -250,5 +266,5 @@
 </script>
 
 <style scoped>
-
 </style>
+

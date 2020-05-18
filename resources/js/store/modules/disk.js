@@ -35,6 +35,8 @@ export default {
         },
         setEmptyFolderPath(state) {
             state.folderPath = [];
+            state.selectedFiles = [];
+            state.selectedFolders = [];
             state.curent_folder = {
                 'name': 'Диск',
                 'id': null
@@ -115,6 +117,11 @@ export default {
         getCurentFolder(state) {
             return state.curent_folder
         },
-
+        getSelectedFiles(state) {
+            return state.selectedFiles
+        },
+        getSelectedFolders(state) {
+            return state.selectedFolders
+        }
     }
 }

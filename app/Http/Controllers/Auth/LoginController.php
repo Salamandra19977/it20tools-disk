@@ -156,17 +156,19 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $access_token = Auth::user()->token;
+
+        $this->guard()->logout();
+        $request->session()->invalidate();
+
         $http = new Client;
-        $response = $http->request('GET', config('client_auth.server_uri').'/api/revokeToken', [
+        $response = $http->request('GET', config('client_auth.server_uri').'/api/client_logout', [
             'headers' => [
                 'Authorization' => 'Bearer '.$access_token,
                 'Accept' => 'application/json',
             ],
         ]);
-        $this->guard()->logout();
-        $request->session()->invalidate();
 
-        return redirect()->route('login');
+        return redirect(config('client_auth.server_uri').'/api/client_logout');
     }
 
     /**
