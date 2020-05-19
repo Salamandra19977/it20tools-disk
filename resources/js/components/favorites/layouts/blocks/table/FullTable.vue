@@ -95,11 +95,23 @@
             deleteFileFromFavorites(obj) {
                 const file = obj
                 axios.put("/favorites/${file.id}", {file: file})
-                console.log(file.id);               
+                .then(response => {
+                    console.log(response)
+                    if(response.status == 200){
+                        this.$store.dispatch('favorites/initFileFolder')               
+                    }
+                })
+                console.log(file.id)
             },
             deleteFolderFromFavorites(obj) {
                 const folder = obj
                 axios.put("/favorites/${folder.id}", {folder: folder})
+                .then(response => {
+                    console.log(response)
+                    if(response.status == 200){
+                        this.$store.dispatch('favorites/initFileFolder')               
+                    }
+                })
                 console.log(folder.id);               
             },
             selectFolder(obj) {
@@ -126,7 +138,15 @@
         },
         created() {
             this.setFavoriteFiles();
-        }
+        },
+        // mounted() {
+        //     this.$store.subscribe((mutation, state) => {
+        //         switch(mutation.type){
+        //             case 'favoriteFiles':
+        //             const FavoriteFiles = state.FavoriteFiles
+        //         }
+        //     })
+        // }
 
     }
 </script>

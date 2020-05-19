@@ -45,6 +45,8 @@
                             data-target="#exampleModal" id="asd1">Удалить</button>
                 </div>
             </div>
+                <button @click="addItemsFromFavorites([getSelectedFiles, getSelectedFolders])">Добавить в избранное</button>
+
         </form>
         <div class="option-view">
             <div class="option-view__bulleted">
@@ -99,8 +101,59 @@
     import OptionSearch from "./search/OptionSearch";
     export default {
         name: "ControlPanel",
-        components: {OptionSearch}
+        components: {OptionSearch},
+        computed: {
+            getSelectedFiles() {
+                return this.$store.getters['disk/getSelectedFiles']
+            },
+            getSelectedFolders() {
+                return this.$store.getters['disk/getSelectedFolders']
+            },
+        },
+        methods: {
+            addItemsFromFavorites(obj) {
+                const itemsArr = obj                
+                axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
+                .then(response => {
+                    // console.log(response)
+                    if(response.status == 200){
+                        this.$store.dispatch('disk/initFileFolder')               
+                    }
+                })       
+                // getSelectedFiles = []
+                // getSelectedFolders = []                     
+                // console.log(itemsArr[0], itemsArr[1]);               
+            },
+            selectFolder(obj) {
+                this.$store.commit('disk/selectFolder',obj);
+            },
+            openFolder(obj) {
+                this.$store.commit('disk/openFolder',obj);
+            },
+            selectFile(obj) {
+                this.$store.commit('disk/selectFile',obj);
+            },
+            setFiles(){
+                this.$store.dispatch('disk/initFileFolder')
+            },
+            checkSelectFolder(obj) {
+                if(this.$store.state.disk.selectedFolders.indexOf(obj) === -1) {
+                    return false;
+                }
+                return true;
+            },
+            checkSelectFile(obj) {
+                if(this.$store.state.disk.selectedFiles.indexOf(obj) === -1) {
+                    return false;
+                }
+                return true;
+            },
+        },
+        created() {
+            this.setFiles();
+        },
     }
+
 </script>
 
 <style scoped>

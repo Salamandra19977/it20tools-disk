@@ -49,8 +49,12 @@ class FavoritesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->folder['status_id']);
-        // dd($request->folder);
+        //itemsFavorite[0] = files
+        //itemsFavorite[1] = folders
+        $itemsFavorite = ($request->itemsFavorite);
+        
+        $selectedFavoriteFiles = ($itemsFavorite[0]);
+        $selectedFavoriteFolders = ($itemsFavorite[1]);
 
         if (isset($request->file['id'])) {
             $favoriteFiles = File::findOrFail($request->file['id']);
@@ -65,12 +69,9 @@ class FavoritesController extends Controller
                 return response(null, Response::HTTP_OK);
             }
         }
-        
-        
+      
         if (isset($request->folder['id'])) {
             $favoriteFolders = Folder::findOrFail($request->folder['id']);
-            // dd($favoriteFolders);
-
             if ($favoriteFolders->status_id == 1) {
                 $favoriteFolders->status_id = 3;
                 $favoriteFolders->save();
@@ -82,26 +83,37 @@ class FavoritesController extends Controller
                 return response(null, Response::HTTP_OK);
             }
         }
-        
 
-
-
-
-        // $favoriteFiles->status_id = 1;
-        // $favoriteFiles->save();
-        // return response(null, Response::HTTP_OK);
+        if (($itemsFavorite)) {
+            if (($selectedFavoriteFiles)) {
+                foreach ($selectedFavoriteFiles as $key => $selectedFavoriteFile) {   
+                    $selectedFavoriteFile = File::findOrFail($selectedFavoriteFile['id']);
+                    if ($selectedFavoriteFile->status_id == 1) {
+                        $selectedFavoriteFile->status_id = 3;
+                        $selectedFavoriteFile->save();
+                    }
+                    elseif ($selectedFavoriteFile->status_id == 3) {
+                        $selectedFavoriteFile->status_id = 1;
+                        $selectedFavoriteFile->save();
+                    }
+                }
+            }
+            if (($selectedFavoriteFolders)) {
+                foreach ($selectedFavoriteFolders as $key => $selectedFavoriteFolder) {   
+                    $selectedFavoriteFolder = Folder::findOrFail($selectedFavoriteFolder['id']);
+                    if ($selectedFavoriteFolder->status_id == 1) {
+                        $selectedFavoriteFolder->status_id = 3;
+                        $selectedFavoriteFolder->save();
+                    }
+                    elseif ($selectedFavoriteFolder->status_id == 3) {
+                        $selectedFavoriteFolder->status_id = 1;
+                        $selectedFavoriteFolder->save();
+                    }
+                }
+            }
+            return response(null, Response::HTTP_OK);
+        }       
     }
-
-    // public function addToFavorites(Request $request, $id)
-    // {
-    //     dd($request->file['status_id']);
-
-    //     $favoriteFiles = File::findOrFail($request->file['id']);
-    //     $favoriteFiles->status_id = 3;
-    //     $favoriteFiles->save();
-    //     return response(null, Response::HTTP_OK);
-    // }
-
 
     /**
      * Show the form for creating a new resource.

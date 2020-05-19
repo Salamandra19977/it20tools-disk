@@ -63,5 +63,11 @@ export default {
         getFavoriteFiles(state) {
             return state.FavoriteFiles
         },
+        getFavoriteSelectedFiles(state) {
+            return state.selectedFavoriteFiles
+        },
+        getFavoriteSelectedFolders(state) {
+            return state.selectedFavoriteFolders
+        }
     }
 }

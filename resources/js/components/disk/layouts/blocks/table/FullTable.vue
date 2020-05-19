@@ -78,11 +78,23 @@
             addFileToFavorites(obj) {
                 const file = obj
                 axios.put("/favorites/${fileId}", {file: file})
+                .then(response => {
+                    console.log(response)
+                    if(response.status == 200){
+                        this.$store.dispatch('disk/initFileFolder')               
+                    }
+                })   
                 console.log(file.id);               
             },
             addFolderToFavorites(obj) {
                 const folder = obj
                 axios.put("/favorites/${folder}", {folder: folder})
+                .then(response => {
+                    console.log(response)
+                    if(response.status == 200){
+                        this.$store.dispatch('disk/initFileFolder')               
+                    }
+                })   
                 console.log(folder.id);  
                 console.log(folder);   
             },
