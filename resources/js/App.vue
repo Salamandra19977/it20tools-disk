@@ -20,6 +20,7 @@
             DiskSize
         },
     }
+
 </script>
 
 <style scoped>
