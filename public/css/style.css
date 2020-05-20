@@ -11303,11 +11303,11 @@ ul {
     z-index: 1;
 }
 
-.modal .switch-on {
+.modal .switchOn {
     background: #1875F0;
 }
 
-.modal .switch-on::after {
+.modal .switchOn::after {
     left: 40px;
 }
 

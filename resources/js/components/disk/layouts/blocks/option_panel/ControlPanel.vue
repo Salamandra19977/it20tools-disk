@@ -32,7 +32,8 @@
         </form>
         <form class="option-delete" action="" id="delete-files" onsubmit="return false;">
             <button class="option-delete__link"
-                v-if="showLinks()">
+                v-if="showLinksBtn()"
+                v-on:click="openLinksModal()">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <mask id="option-linkk1" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="10"
@@ -107,8 +108,8 @@
                     </g>
                 </svg>
                 <div class="dropdown-menu" aria-labelledby="deleteDots" role="menu">
-                    <div v-if="showLinks()" class="dropdown-item delete-share"><span>Открыть доступ</span></div>
-                    <div v-if="showLinks()" class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span>
+                    <div v-if="showLinksBtn()" class="dropdown-item delete-share"><span>Открыть доступ</span></div>
+                    <div v-if="showLinksBtn()" v-on:click="openLinksModal()" class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span>
                     </div>
                     <div class="dropdown-item delete-rename"><span>Переименовать</span></div>
                     <div class="dropdown-item delete-star"><span>Добавить в избранное</span></div>
@@ -181,93 +182,21 @@
                 return this.$store.getters['disk/getSelectedFolders']
             },
         },
-        methods : {
-            showLinks() {
+        methods: {
+            showLinksBtn() {
                 if (this.selectedFiles.length == 1 && this.selectedFolders.length == 0) {
                     return true
                 }
                 return false
-            }
+            },
+            openLinksModal() {
+                this.$store.commit('disk/openLinksModal');
+            },
         },
         mounted() {
-            $(function(){
-                $('.header-nav-arrow').click(function() {
-                    $('.main-content').toggleClass('main-content-collapsed');
-                    $(this).toggleClass('arrow-active')
-                });
-                $('.fade-block').click(function() {
-                    $('.main-content').toggleClass('main-content-collapsed');
-                    $('.header-nav-arrow').toggleClass('arrow-active')
-                })
 
-
-                $(".nav__item").click(function() {
-                    $(".nav__item").removeClass("nav__item-active");
-                    $(this).addClass("nav__item-active");
-                    $(".nav__item-inner").removeClass("active");
-                })
-                $(".nav__item-inner").click(function() {
-                    $(".nav__item-inner").removeClass("active").eq($(this).index()).addClass("active");
-                    $(".nav__item").removeClass("nav__item-active");
-                })
-                //modal switcher
-                $('.modal-switcher').click(function() {
-                    $(this).toggleClass('switch-on')
-                    if ($(this).hasClass('switch-on')) {
-                        $(this).trigger('on.switch');
-                    } else {
-                        $(this).trigger('off.switch');
-                    }
-                })
-                //end of modal switcher
-                // invoke modals in dropdown menus
-                $('.delete-return').click(function() {
-                    $('#option-return-modal').modal();
-                })
-                $('.delete-delete').click(function() {
-                    $('#option-delete-modal').modal();
-                })
-                // $('.delete-rm').click(function() {
-                //     $('#option-rm-modal').modal();
-                // })
-                $('.delete-mkcopy').click(function() {
-                    $('#option-mkcopy-modal').modal();
-                })
-                $('.delete-rename').click(function() {
-                    $('#option-rename-modal').modal();
-                })
-                $('.option-delete__rename').click(function() {
-                    $('#option-rename-modal').modal();
-                })
-
-                $('.add-folder').click(function() {
-                    $('#option-create-modal').modal();
-                })
-                $('.delete-star').click(function() {
-                    $('#option-star-modal').modal();
-                })
-                $('.delete-share').click(function() {
-                    $('#option-access-modal').modal();
-                })
-                $('.option-delete__link').click(function() {
-                    $('#option-copylink-modal').modal();
-                })
-                $('.delete-link').click(function() {
-                    $('#option-copylink-modal').modal();
-                })
-                $('.delete-move').click(function() {
-                    $('#option-move-modal').modal();
-                })
-            });
         }
-
     }
-
-    $( document ).ready(function() {
-        $('.delete-rename').click(function() {
-            $('#option-rename-modal').modal();
-        })
-    });
 
 </script>
 

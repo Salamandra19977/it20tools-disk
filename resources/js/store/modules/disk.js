@@ -15,6 +15,27 @@ export default {
                     this.commit('disk/files', response.data.files);
                     this.commit('disk/folders', response.data.folders);
                 });
+        },
+        addLinks(state) {
+            console.log("+++");
+            axios.post('/api/disk/add/public/links', {
+                'file_id': state.state.selectedFiles[0].id,
+                'curent_folder': state.state.curent_folder.id
+            })
+                .then(response => {
+                    this.commit('disk/files', response.data.files);
+                    this.commit('disk/setEmptySelectedFiles')
+                });
+        },
+        removeLinks(state) {
+            axios.post('/api/disk/remove/public/links', {
+                'file_id': state.state.selectedFiles[0].id,
+                'curent_folder': state.state.curent_folder.id,
+            })
+                .then(response => {
+                    this.commit('disk/files', response.data.files);
+                    this.commit('disk/setEmptySelectedFiles')
+                });
         }
     },
     mutations:{
@@ -32,6 +53,10 @@ export default {
             else{
                 state.selectedFolders.splice(itemIndex, 1);
             }
+        },
+        setEmptySelectedFiles(state) {
+            state.selectedFiles = [];
+            state.selectedFolders = [];
         },
         setEmptyFolderPath(state) {
             state.folderPath = [];
@@ -79,6 +104,14 @@ export default {
                 state.selectedFiles.splice(itemIndex, 1);
             }
         },
+        openLinksModal(state) {
+            document.querySelector("#option-copylink-modal").style.display = "block";
+            state.showLinksModal = true;
+        },
+        closeLinksModal(state) {
+            document.querySelector("#option-copylink-modal").style.display = "none";
+            state.showLinksModal = false;
+        },
     },
     state:{
         Folders: [
@@ -102,7 +135,8 @@ export default {
         curent_folder: {
             'name': 'Диск',
             'id': null
-        }
+        },
+        showLinksModal: false,
     },
     getters:{
         getFolders(state) {
@@ -122,6 +156,9 @@ export default {
         },
         getSelectedFolders(state) {
             return state.selectedFolders
+        },
+        getShowLinksModal(state) {
+            return state.showLinksModal
         }
     }
 }

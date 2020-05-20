@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 import router from './routes'
 import axios from 'axios'
 import store from './store/index.js'
+import VueCryptojs from 'vue-cryptojs'
 
 import { VBModal } from 'bootstrap-vue'
 
@@ -23,6 +24,8 @@ Vue.use(IconsPlugin)
 
 
 Vue.use(VueRouter);
+Vue.use(VueCryptojs);
+
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 // Vue.config.devtools = false;

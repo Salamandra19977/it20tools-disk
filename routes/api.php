@@ -21,6 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/disk', 'Disk\DiskController@index');
     Route::get('/disk/show/{id}', 'Disk\DiskController@show');
+
+    Route::post('/disk/add/public/links', 'Disk\DiskController@addLinks');
+    Route::post('/disk/remove/public/links', 'Disk\DiskController@removeLinks');
+
+
     Route::get('/available', 'Available\AvailableController@index');
     Route::get('/available/show/{id}', 'Available\AvailableController@show');
 
