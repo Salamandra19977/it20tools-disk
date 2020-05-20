@@ -110,14 +110,14 @@
                         <div class="dropdown-item delete-share"><span>Открыть доступ</span></div>
                         <div class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span></div>
                         <div class="dropdown-item delete-rename"><span>Переименовать</span></div>
-                        <div class="dropdown-item delete-star"><span @click="deleteFolderFromFavorites(selectedFavoriteFolders)">Удалить из избранных</span></div>
+                        <div class="dropdown-item delete-star"><span @click="deleteFolderFromFavorites([getFavoriteSelectedFiles, getFavoriteSelectedFolders])">Удалить из избранных</span></div>
                         <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div>
                         <div class="dropdown-item delete-move"><span>Переместить</span></div>
                         <div class="dropdown-item delete-download bordered"><span>Скачать</span></div>
                         <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                     </div>
                 </div>
-                <button @click="deleteItemsFromFavorites([getFavoriteSelectedFiles, getFavoriteSelectedFolders])">Удалить из избранных</button>
+                <button @click="deleteItemsFromFavorites([getFavoriteSelectedFiles, getFavoriteSelectedFolders])">Del</button>
             </form>
             <div class="option-view">
                 <div class="option-view__bulleted">
@@ -184,43 +184,21 @@
         },
         methods: {
             deleteItemsFromFavorites(obj) {
-                const itemsArr = obj                
-                axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
-                .then(response => {
-                    console.log(response)
-                    if(response.status == 200){
-                        this.$store.dispatch('favorites/initFileFolder')               
-                    }
-                })       
-                // getFavoriteSelectedFiles = []
-                // getFavoriteSelectedFolders  = []                    
-                console.log(itemsArr[0], itemsArr[1]);               
-            },
-            selectFolder(obj) {
-                this.$store.commit('favorites/selectFavoriteFolders',obj);
-            },
-            selectFile(obj) {
-                this.$store.commit('favorites/selectFavoriteFiles',obj);
-            },
-            setFavoriteFiles(){
-                this.$store.dispatch('favorites/initFileFolder')
-            },
-            checkSelectFolder(obj) {
-                if(this.$store.state.favorites.selectedFavoriteFolders.indexOf(obj) === -1) {
-                    return false;
-                }
-                return true;
-            },
-            checkSelectFile(obj) {
-                if(this.$store.state.favorites.selectedFavoriteFiles.indexOf(obj) === -1) {
-                    return false;
-                }
-                return true;
+                const itemsArr = obj
+  
+                if (itemsArr[0].length > 0 || itemsArr[1].length > 0) {
+                    axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
+                    .then(response => {
+                        // this.commit('favorites/favoriteFiles', response.favoriteFiles)
+                        // this.commit('favorites/favoriteFolders', response.favoriteFolders)
+                        // console.log(response.favoriteFolders)
+                        if(response.status == 200){
+                            this.$store.dispatch('favorites/initFileFolder')               
+                        }
+                    }) 
+                }                                                 
             },
         },
-        created() {
-            this.setFavoriteFiles();
-        }
     }
 </script>
 

@@ -32,7 +32,7 @@
                         <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                     </div>
                 </div>
-                <button @click="addFolderToFavorites(folder)">{{folder.status_id == 3 ? 'Удалить из избранных' : 'Добавить в избранное'}}</button>
+                <button @click="addFolderToFavorites(folder)">{{folder.status_id == 3 ? 'Del' : 'Add fav'}}</button>
             </td>
         </tr>
         <tr  class="table-item table-item__file"
@@ -68,7 +68,7 @@
                         <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                     </div>
                 </div>
-                <button @click="addFileToFavorites(file)">{{file.status_id == 3 ? 'Удалить из избранных' : 'Добавить в избранное'}}</button>
+                <button @click="addFileToFavorites(file)">{{file.status_id == 3 ? 'Del' : 'Add fav'}}</button>
             </td>
         </tr>
     </table>
@@ -97,7 +97,6 @@
                         this.$store.dispatch('disk/initFileFolder')               
                     }
                 })   
-                console.log(file.id);               
             },
             addFolderToFavorites(obj) {
                 const folder = obj
@@ -107,9 +106,7 @@
                     if(response.status == 200){
                         this.$store.dispatch('disk/initFileFolder')               
                     }
-                })   
-                console.log(folder.id);  
-                console.log(folder);   
+                })      
             },
             selectFolder(obj) {
                 this.$store.commit('disk/selectFolder',obj);

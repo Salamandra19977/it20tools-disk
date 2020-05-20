@@ -6,6 +6,7 @@ export default {
                 .then(response => {
                     this.commit('favorites/favoriteFiles', response.data.favoriteFiles)
                     this.commit('favorites/favoriteFolders', response.data.favoriteFolders)
+                    this.commit('favorites/setEmptySelected')
                 });
         },
         showFolder(state) {
@@ -40,6 +41,15 @@ export default {
             else {
                 state.selectedFavoriteFiles.splice(itemtIndex, 1);
             }
+        },
+        setEmptySelected(state) {
+            state.folderPath = [];
+            state.selectedFavoriteFiles = [];
+            state.selectedFavoriteFolders = [];
+            state.curent_folder = {
+                'name': 'Избранное',
+                'id': null
+            };
         },
     },
     state:{

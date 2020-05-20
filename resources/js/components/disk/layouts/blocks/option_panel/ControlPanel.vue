@@ -118,7 +118,7 @@
                     <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                 </div>
             </div>
-            <button @click="addItemsFromFavorites([selectedFiles, selectedFolders])">Добавить в избранное</button>
+            <button @click="addItemsFromFavorites([selectedFiles, selectedFolders])">Add fav</button>
 
         </form>
         <div class="option-view">
@@ -185,41 +185,15 @@
         },
         methods : {
         	addItemsFromFavorites(obj) {
-                const itemsArr = obj                
-                axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
-                .then(response => {
-                    // console.log(response)
-                    if(response.status == 200){
-                        this.$store.dispatch('disk/initFileFolder')               
-                    }
-                })       
-                // getSelectedFiles = []
-                // getSelectedFolders = []                     
-                // console.log(itemsArr[0], itemsArr[1]);               
-            },
-            selectFolder(obj) {
-                this.$store.commit('disk/selectFolder',obj);
-            },
-            openFolder(obj) {
-                this.$store.commit('disk/openFolder',obj);
-            },
-            selectFile(obj) {
-                this.$store.commit('disk/selectFile',obj);
-            },
-            setFiles(){
-                this.$store.dispatch('disk/initFileFolder')
-            },
-            checkSelectFolder(obj) {
-                if(this.$store.state.disk.selectedFolders.indexOf(obj) === -1) {
-                    return false;
-                }
-                return true;
-            },
-            checkSelectFile(obj) {
-                if(this.$store.state.disk.selectedFiles.indexOf(obj) === -1) {
-                    return false;
-                }
-                return true;
+                const itemsArr = obj
+                if (itemsArr[0].length > 0 || itemsArr[1].length > 0) {
+                    axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
+                    .then(response => {
+                        if(response.status == 200){
+                          this.$store.dispatch('disk/initFileFolder')               
+                        }
+                    })  
+                }                                        
             },
             
             showLinks() {
@@ -229,78 +203,6 @@
                 return false
             }
         },
-        mounted() {
-            $(function(){
-                $('.header-nav-arrow').click(function() {
-                    $('.main-content').toggleClass('main-content-collapsed');
-                    $(this).toggleClass('arrow-active')
-                });
-                $('.fade-block').click(function() {
-                    $('.main-content').toggleClass('main-content-collapsed');
-                    $('.header-nav-arrow').toggleClass('arrow-active')
-                })
-
-
-                $(".nav__item").click(function() {
-                    $(".nav__item").removeClass("nav__item-active");
-                    $(this).addClass("nav__item-active");
-                    $(".nav__item-inner").removeClass("active");
-                })
-                $(".nav__item-inner").click(function() {
-                    $(".nav__item-inner").removeClass("active").eq($(this).index()).addClass("active");
-                    $(".nav__item").removeClass("nav__item-active");
-                })
-                //modal switcher
-                $('.modal-switcher').click(function() {
-                    $(this).toggleClass('switch-on')
-                    if ($(this).hasClass('switch-on')) {
-                        $(this).trigger('on.switch');
-                    } else {
-                        $(this).trigger('off.switch');
-                    }
-                })
-                //end of modal switcher
-                // invoke modals in dropdown menus
-                $('.delete-return').click(function() {
-                    $('#option-return-modal').modal();
-                })
-                $('.delete-delete').click(function() {
-                    $('#option-delete-modal').modal();
-                })
-                // $('.delete-rm').click(function() {
-                //     $('#option-rm-modal').modal();
-                // })
-                $('.delete-mkcopy').click(function() {
-                    $('#option-mkcopy-modal').modal();
-                })
-                $('.delete-rename').click(function() {
-                    $('#option-rename-modal').modal();
-                })
-                $('.option-delete__rename').click(function() {
-                    $('#option-rename-modal').modal();
-                })
-
-                $('.add-folder').click(function() {
-                    $('#option-create-modal').modal();
-                })
-                $('.delete-star').click(function() {
-                    $('#option-star-modal').modal();
-                })
-                $('.delete-share').click(function() {
-                    $('#option-access-modal').modal();
-                })
-                $('.option-delete__link').click(function() {
-                    $('#option-copylink-modal').modal();
-                })
-                $('.delete-link').click(function() {
-                    $('#option-copylink-modal').modal();
-                })
-                $('.delete-move').click(function() {
-                    $('#option-move-modal').modal();
-                })
-            });
-        }
-
     }
 
 

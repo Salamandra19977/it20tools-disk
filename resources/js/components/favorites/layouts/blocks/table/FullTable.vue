@@ -35,7 +35,7 @@
                         <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                     </div>
                 </div>    
-                <button @click="deleteFolderFromFavorites(folder)">Удалить из избранных</button>           
+                <button @click="deleteFolderFromFavorites(folder)">Del</button>           
             </td>
         </tr>
         <tr class="table-item table-item__file"
@@ -72,7 +72,7 @@
                         <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                     </div>
                 </div>  
-                <button @click="deleteFileFromFavorites(file)">Удалить из избранных</button>
+                <button @click="deleteFileFromFavorites(file)">Del</button>
             </td>
         </tr>
     </table>
