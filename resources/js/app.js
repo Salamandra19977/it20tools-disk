@@ -1,32 +1,66 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue'
+import App from './App.vue'
+import VueRouter from 'vue-router'
+import router from './routes'
+import axios from 'axios'
+import store from './store/index.js'
+import VueCryptojs from 'vue-cryptojs'
+import VueClipboard from 'vue-clipboard2'
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import { VBModal } from 'bootstrap-vue'
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Note: Vue automatically prefixes the directive name with 'v-'
+Vue.directive('b-modal', VBModal)
+// Vue.use(FileManager, {store})
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
+
+
+Vue.use(VueRouter);
+Vue.use(VueCryptojs);
+Vue.use(VueClipboard);
+
+Vue.prototype.$http = axios;
+Vue.config.productionTip = false;
+// Vue.config.devtools = false;
+// Vue.config.debug = false;
+// Vue.config.silent = true;
+Vue.filter('shortDate', function(str) {
+    let date = new Date(str);
+
+    let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    let month = (Number(date.getMonth()) + 1) < 10 ? '0' + (Number(date.getMonth()) + 1) : (Number(date.getMonth()) + 1);
+
+    return day + "." + month + "." + date.getFullYear();
+});
+
+Vue.filter('shortTime', function(str) {
+    let time = new Date(str);
+
+    let hour = time.getHours() < 10 ? '0' + time.getHours() : time.getHours();
+    let minutes = time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes();
+
+    return hour + ":" + minutes;
+});
+
+Vue.filter('convertSize', function(size) {
+    let i = Math.floor( Math.log(size) / Math.log(1024) );
+
+    return ( size / Math.pow(1024, i) ).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+});
+
+Vue.component('search', require('./components/Search.vue').default);
 
 const app = new Vue({
     el: '#app',
+    render:h => h(App),
+    router,store,VueClipboard
 });
