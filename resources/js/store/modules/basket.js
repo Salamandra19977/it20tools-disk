@@ -40,34 +40,6 @@ export default {
                 'id': null
             };
         },
-        openFolder(state, obj) {
-
-            let folder = {
-                'name': obj.name,
-                'id': obj.id
-            };
-            state.curent_folder = folder;
-            let indexFolderInPath = null;
-            for(let item in state.folderPath) {
-                if(JSON.stringify(state.folderPath[item])  === JSON.stringify(folder)) {
-                    indexFolderInPath = item;
-                    break;
-                }
-            }
-            if(indexFolderInPath === null) {
-                state.folderPath.push(folder);
-                this.dispatch('basket/showFolder');
-            }
-            else {
-                if(indexFolderInPath == Number(state.folderPath.length) - 1) {
-                    this.dispatch('basket/showFolder');
-                }
-                else {
-                    state.folderPath.splice(Number(indexFolderInPath) + 1, 9999);
-                    this.dispatch('basket/showFolder');
-                }
-            }
-        },
         selectFile(state, obj) {
             let itemIndex = state.selectedFiles.indexOf(obj);
             if( itemIndex === -1) {

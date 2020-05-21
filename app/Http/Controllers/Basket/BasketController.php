@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Basket;
 
 use App\Http\Controllers\Controller;
 use App\Models\File;
+use App\Models\Folder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
@@ -13,10 +15,11 @@ class BasketController extends Controller
         $files = File::with('user')
             ->where('user_id',Auth::id())
             ->where('folder_id', null)
+            ->where('status_id', 2)
             ->get();
         $folders = Folder::with('user')
             ->where('user_id',Auth::id())
-            ->where('parent_id', null)
+            ->where('status_id', 2)
             ->get();
 
         $data = [

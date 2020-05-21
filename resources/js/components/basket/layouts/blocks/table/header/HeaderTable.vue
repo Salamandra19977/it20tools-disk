@@ -1,5 +1,5 @@
 <template>
-    <tr class="table-head table-item table-item__folder">
+    <tr class="table-head table-item__folder">
         <td class="name">
             <span>Название</span>
             <i class="name-asc">
@@ -109,5 +109,7 @@
 </script>
 
 <style scoped>
-
+.table-head {
+    padding: 10px 0;
+}
 </style>

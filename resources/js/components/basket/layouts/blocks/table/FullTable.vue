@@ -22,7 +22,7 @@
             <td class="size-data">
                 <span>{{folder.size | convertSize}}</span>
                 <div class="dots-right" role="button" id="item0dots" data-toggle="dropdown"
-                     aria-haspopup="true" aria-expanded="false">
+                     aria-haspopup="true" aria-expanded="false" aria-disabled="true">
                     <div class="dropdown-menu" aria-labelledby="item0dots">
                         <div class="dropdown-item delete-return bordered"><span>Восстановить</span></div>
                         <div class="dropdown-item delete-delete bordered"><span>Удалить</span></div>
@@ -68,33 +68,30 @@
         components: {HeaderTable},
         computed: {
             files() {
-                return this.$store.getters['disk/getFiles']
+                return this.$store.getters['basket/getFiles']
             },
             folders() {
-                return this.$store.getters['disk/getFolders']
+                return this.$store.getters['basket/getFolders']
             },
         },
         methods: {
             selectFolder(obj) {
-                this.$store.commit('disk/selectFolder',obj);
-            },
-            openFolder(obj) {
-                this.$store.commit('disk/openFolder',obj);
+                this.$store.commit('basket/selectFolder',obj);
             },
             selectFile(obj) {
-                this.$store.commit('disk/selectFile',obj);
+                this.$store.commit('basket/selectFile',obj);
             },
             setFiles(){
-                this.$store.dispatch('disk/initFileFolder')
+                this.$store.dispatch('basket/initFileFolder')
             },
             checkSelectFolder(obj) {
-                if(this.$store.state.disk.selectedFolders.indexOf(obj) === -1) {
+                if(this.$store.state.basket.selectedFolders.indexOf(obj) === -1) {
                     return false;
                 }
                 return true;
             },
             checkSelectFile(obj) {
-                if(this.$store.state.disk.selectedFiles.indexOf(obj) === -1) {
+                if(this.$store.state.basket.selectedFiles.indexOf(obj) === -1) {
                     return false;
                 }
                 return true;
@@ -112,4 +109,7 @@
     position: relative;
     bottom: 10px;
  }
+.table-head i {
+    margin: 0 !important;
+}
 </style>
