@@ -6,6 +6,7 @@
             <full-table></full-table>
             <remove-object></remove-object>
             <restore-object></restore-object>
+            <modals />
         </div>
     </main>
 </template>
@@ -16,9 +17,11 @@
 
     import RemoveObject from "../layouts/blocks/modals/basket/RemoveObject";
     import RestoreObject from "../layouts/blocks/modals/basket/RestoreObject";
+    import Modals from "../layouts/blocks/modals/favorites/Modals";
+
     export default {
         name: "Index",
-        components: {FullTable, ControlPanel, RestoreObject, RemoveObject}
+        components: {FullTable, ControlPanel, RestoreObject, RemoveObject, Modals}
     }
 </script>
 

@@ -12257,6 +12257,12 @@ main .disk-usage__sm-only p {
   stroke: #d72062;
 }
 
+.public_link {
+  min-height: 700px;
+  left: 0px;
+  width: 95%
+}
+
 @media (min-width: 950px) and (max-width: 1130px) {
   .main-content main .main-table__options {
     -ms-flex-wrap: wrap;

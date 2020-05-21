@@ -60,7 +60,7 @@ class DiskController extends Controller
         $file = File::where('id', $request->file_id) -> first();
 
         $link = Link::create([
-            'patch' => md5($file->name),
+            'patch' => md5($file->name.$file->id),
             'folder_id' => null,
             'file_id' => $request->file_id,
         ]);
@@ -87,8 +87,13 @@ class DiskController extends Controller
     public function showFileLink($patch)
     {
         $link = Link::where("patch", $patch)->first();
+        if($link) {
+            $file = File::where("id",$link->file_id)->first();
 
-        return view('link', compact('link'));
+            return view('disk.link', compact('file'));
+        }
+
+        return view('disk.link');
     }
 
 }

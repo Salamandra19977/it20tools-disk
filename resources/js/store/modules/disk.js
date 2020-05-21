@@ -7,6 +7,7 @@ export default {
                     this.commit('disk/files', response.data.files);
                     this.commit('disk/folders', response.data.folders);
                     this.commit('disk/setEmptyFolderPath')
+                    this.commit('disk/setEmptySelectedFiles')
                 });
         },
         showFolder(state) {
@@ -14,6 +15,7 @@ export default {
                 .then(response => {
                     this.commit('disk/files', response.data.files);
                     this.commit('disk/folders', response.data.folders);
+                    this.commit('disk/setEmptySelectedFiles')
                 });
         },
         addLinks(state) {
@@ -68,7 +70,7 @@ export default {
             };
         },
         openFolder(state, obj) {
-
+            this.se
             let folder = {
                 'name': obj.name,
                 'id': obj.id

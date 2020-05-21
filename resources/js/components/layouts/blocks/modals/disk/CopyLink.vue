@@ -2,24 +2,28 @@
     <div class="modal fade" v-bind:class="{ show: showLinksModal}" id="option-copylink-modal" tabindex="-1" role="dialog"
          aria-labelledby="option-copylink-modal" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="option-copylink-modal">Доступ по ссылке включен</h5>
+                    <h5 class="modal-title" id="option-copylink-modal" v-if="status_link === status">Доступ по ссылке включен</h5>
+                    <h5 class="modal-title" id="option-copylink-modal" v-if="status_link != status">Доступ по ссылке отключен</h5>
                     <div class="modal-switcher"
                          v-on:click="selectPozition()"
                          v-bind:class="{ switchOn: status_link === status}"></div>
                 </div>
                 <div class="modal-body">
-                    <button class="copylink">Копировать ссылку</button>
-                    <a href="#">{{getLink()}}</a>
+                    <button class="copylink"
+                    v-clipboard:copy="getLink()">
+                        Копировать ссылку
+                    </button>
+                    <a v-on:click="routeToLink(getLink())" v-bind:href="getLink()">{{getLink()}}</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary"
-                        v-on:click="send()">Отправить</button>
+                        v-on:click="send()">Сохранить</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal"
                         v-on:click="closeLinksModals()">Отмена</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </template>
@@ -48,6 +52,9 @@
 
                 this.$store.commit('disk/closeLinksModal');
             },
+            routeToLink(str) {
+                window.location.href = str;
+            },
             getLink() {
                 if(this.selectedFiles[0] != null) {
                     if(this.selectedFiles[0].link != null) {
@@ -57,7 +64,7 @@
                         this.status_link = false;
                     }
 
-                    return "php.loc/DISK/" + this.CryptoJS.MD5(this.selectedFiles[0].name);
+                    return "http://php.loc/DISK/" + this.CryptoJS.MD5(this.selectedFiles[0].name + this.selectedFiles[0].id);
                 }
             },
             selectPozition() {

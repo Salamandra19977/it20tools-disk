@@ -7,6 +7,7 @@ import router from './routes'
 import axios from 'axios'
 import store from './store/index.js'
 import VueCryptojs from 'vue-cryptojs'
+import VueClipboard from 'vue-clipboard2'
 
 import { VBModal } from 'bootstrap-vue'
 
@@ -25,6 +26,7 @@ Vue.use(IconsPlugin)
 
 Vue.use(VueRouter);
 Vue.use(VueCryptojs);
+Vue.use(VueClipboard);
 
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
@@ -60,5 +62,5 @@ Vue.component('search', require('./components/Search.vue').default);
 const app = new Vue({
     el: '#app',
     render:h => h(App),
-    router,store
+    router,store,VueClipboard
 });

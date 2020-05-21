@@ -119,6 +119,8 @@
                     <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                 </div>
             </div>
+            <button @click="addItemsFromFavorites([selectedFiles, selectedFolders])">Добавить в избранное</button>
+
         </form>
         <div class="option-view">
             <div class="option-view__bulleted">
@@ -183,19 +185,31 @@
             },
         },
         methods: {
+            addItemsFromFavorites(obj) {
+                const itemsArr = obj
+                axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
+                    .then(response => {
+                        // console.log(response)
+                        if(response.status == 200){
+                            this.$store.dispatch('disk/initFileFolder')
+                        }
+                    })
+                // getSelectedFiles = []
+                // getSelectedFolders = []
+                // console.log(itemsArr[0], itemsArr[1]);
+            },
             showLinksBtn() {
                 if (this.selectedFiles.length == 1 && this.selectedFolders.length == 0) {
                     return true
                 }
                 return false
             },
+
             openLinksModal() {
                 this.$store.commit('disk/openLinksModal');
             },
         },
-        mounted() {
 
-        }
     }
 
 </script>

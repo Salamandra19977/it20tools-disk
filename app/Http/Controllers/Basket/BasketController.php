@@ -13,10 +13,12 @@ class BasketController extends Controller
         $files = File::with('user')
             ->where('user_id',Auth::id())
             ->where('folder_id', null)
+            ->where('status_id', 2)
             ->get();
         $folders = Folder::with('user')
             ->where('user_id',Auth::id())
             ->where('parent_id', null)
+            ->where('status_id', 2)
             ->get();
 
         $data = [
@@ -26,23 +28,17 @@ class BasketController extends Controller
 
         return response()->json($data, 200);
     }
-
-    public function show($id)
+    //перемещение файла/папки в корзину
+    public function removeToBasket()
     {
-        $files = File::with('user')
-            ->where('user_id',Auth::id())
-            ->where('folder_id', $id)
-            ->get();
-        $folders = Folder::with('user')
-            ->where('user_id',Auth::id())
-            ->where('parent_id', $id)
-            ->get();
 
-        $data = [
-            'files'=> $files,
-            'folders' => $folders,
-        ];
-
-        return response()->json($data, 200);
     }
+    //удаление файла/папки полность
+    public function removeFromBasket()
+    {
+
+    }
+
+
+
 }
