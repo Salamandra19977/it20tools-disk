@@ -3,7 +3,7 @@
     <option-create></option-create>
     <option-search></option-search>
     <form class="option-delete" action id="delete-files" onsubmit="return false;">
-      <button class="option-delete__return" data-toggle="modal" data-target="#option-return-modal">
+      <button class="option-delete__return" data-toggle="modal" data-target="#option-return-modal" :disabled="disabled">
         <svg
           width="30"
           height="30"
@@ -32,7 +32,7 @@
           </g>
         </svg>
       </button>
-      <button class="option-delete__delete" data-toggle="modal" data-target="#option-delete-modal">
+      <button class="option-delete__delete" data-toggle="modal" data-target="#option-delete-modal" :disabled="disabled">
         <svg
           width="30"
           height="30"
@@ -61,13 +61,14 @@
           </g>
         </svg>
       </button>
-      <div
+      <button
         class="option-delete__dots"
         role="button"
         id="deleteDots"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
+        :disabled="disabled"
       >
         <svg
           width="30"
@@ -108,7 +109,7 @@
             data-target="#exampleModal"
           >Удалить</button>
         </div>
-      </div>
+      </button>
     </form>
     <div class="option-view">
       <div class="option-view__bulleted">
@@ -209,10 +210,45 @@ import OptionSearch from "./search/OptionSearch";
 import OptionCreate from "./add/OptionCreate";
 export default {
   name: "ControlPanel",
-  components: { OptionSearch, OptionCreate }
+  components: { OptionSearch, OptionCreate },
+  data: function() {
+    return {
+      disabled: true
+    }
+  },             
+  computed: {
+    selectedFiles() {
+      return this.$store.getters['basket/getSelectedFiles']
+    },
+    selectedFolders() {
+      return this.$store.getters['basket/getSelectedFolders']
+    }
+  },
+  watch: {
+    selectedFiles:function() {
+      if(this.selectedFiles.length > 0) {
+        this.disabled = false
+      }
+      else {
+        this.disabled = true
+      }
+    },
+    selectedFolders:function() {
+      if(this.selectedFolders.length > 0) {
+        this.disabled = false
+      }
+      else {
+        this.disabled = true
+      }
+    }
+  }
 };
 </script>
 
 <style scoped>
-
+main .main-table__options .option-delete button[disabled]:hover svg rect {
+    stroke: #d8d8d8;
+    fill: #d8d8d8;
+    cursor: auto;
+}
 </style>

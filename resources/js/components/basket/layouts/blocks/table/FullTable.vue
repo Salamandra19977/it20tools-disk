@@ -22,7 +22,7 @@
             <td class="size-data">
                 <span>{{folder.size | convertSize}}</span>
                 <div class="dots-right" role="button" id="item0dots" data-toggle="dropdown"
-                     aria-haspopup="true" aria-expanded="false" aria-disabled="true">
+                     aria-haspopup="true" aria-expanded="false">
                     <div class="dropdown-menu" aria-labelledby="item0dots">
                         <div class="dropdown-item delete-return bordered"><span>Восстановить</span></div>
                         <div class="dropdown-item delete-delete bordered"><span>Удалить</span></div>

@@ -91,6 +91,12 @@ export default {
         getCurentFolder(state) {
             return state.curent_folder
         },
+        getSelectedFiles(state) {
+            return state.selectedFiles
+        },
+        getSelectedFolders(state) {
+            return state.selectedFolders
+        }
 
     }
 }
