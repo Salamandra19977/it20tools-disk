@@ -21,7 +21,9 @@
                     <button type="button" class="btn btn-primary"
                         v-on:click="send()">Сохранить</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal"
-                        v-on:click="closeLinksModals()">Отмена</button>
+                        v-on:click="closeLinksModals()">
+                        Отмена
+                    </button>
                 </div>
             </div>
         </div>

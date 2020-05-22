@@ -108,7 +108,7 @@
                     </g>
                 </svg>
                 <div class="dropdown-menu" aria-labelledby="deleteDots" role="menu">
-                    <div v-if="showLinksBtn()" class="dropdown-item delete-share"><span>Открыть доступ</span></div>
+                    <div v-if="showLinksBtn()" v-on:click="openAccessModal()" class="dropdown-item delete-share"><span>Открыть доступ</span></div>
                     <div v-if="showLinksBtn()" v-on:click="openLinksModal()" class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span>
                     </div>
                     <div class="dropdown-item delete-rename"><span>Переименовать</span></div>
@@ -204,9 +204,11 @@
                 }
                 return false
             },
-
             openLinksModal() {
                 this.$store.commit('disk/openLinksModal');
+            },
+            openAccessModal() {
+                this.$store.commit('disk/openAccessModal');
             },
         },
 

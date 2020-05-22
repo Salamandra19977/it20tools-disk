@@ -33,13 +33,13 @@
                             <span>{{$file->user->name}}</span>
                         </div>
                         <div class="date-data">
-                            <span>31.01.2018</span>
+                            <span>{{ $file->created_at->format('d.m.Y')}}</span>
                         </div>
                         <div class="time-data">
-                            <span>18:30</span>
+                            <span>{{ $file->created_at->format('i:s')}}</span>
                         </div>
                         <div class="size-data">
-                            <span>1451 MB</span>
+                            <span>{{$file->size}}</span>
                         </div>
                         <div class="dots-right" role="button" id="item4dots" data-toggle="dropdown"
                              aria-haspopup="true" aria-expanded="false">

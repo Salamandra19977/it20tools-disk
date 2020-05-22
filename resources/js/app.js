@@ -48,7 +48,7 @@ Vue.filter('shortTime', function(str) {
     let hour = time.getHours() < 10 ? '0' + time.getHours() : time.getHours();
     let minutes = time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes();
 
-    return hour + ":" + minutes;
+    return "00" + ":" + minutes;
 });
 
 Vue.filter('convertSize', function(size) {

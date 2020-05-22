@@ -6,8 +6,8 @@ export default {
                 .then(response => {
                     this.commit('disk/files', response.data.files);
                     this.commit('disk/folders', response.data.folders);
-                    this.commit('disk/setEmptyFolderPath')
-                    this.commit('disk/setEmptySelectedFiles')
+                    this.commit('disk/setEmptyFolderPath');
+                    this.commit('disk/setEmptySelectedFiles');
                 });
         },
         showFolder(state) {
@@ -19,7 +19,6 @@ export default {
                 });
         },
         addLinks(state) {
-            console.log("+++");
             axios.post('/api/disk/add/public/links', {
                 'file_id': state.state.selectedFiles[0].id,
                 'curent_folder': state.state.curent_folder.id
@@ -38,7 +37,32 @@ export default {
                     this.commit('disk/files', response.data.files);
                     this.commit('disk/setEmptySelectedFiles')
                 });
-        }
+        },
+        showAccesses(state) {
+            axios.get('/api/disk/show/accesses/'+ state.state.selectedFiles[0].id)
+                .then(response => {
+                    this.commit('disk/accesses', response.data);
+                });
+        },
+        removeAccesses(state, id) {
+            axios.get('/api/disk/remove/accesses/'+ id)
+                .then(response => {
+                    this.commit('disk/accesses', response.data);
+                });
+        },
+        addAccesses(state, email) {
+            axios.post('/api/disk/add/accesses', {
+                'email': email,
+                'file_id': state.state.selectedFiles[0].id
+            })
+                .then(response => {
+                    this.commit('disk/accesses', response.data);
+                })
+                .catch(error => {
+                    this.commit('disk/errorAccesse', error.response.status);
+            });
+        },
+
     },
     mutations:{
         files(state, obj) {
@@ -46,6 +70,14 @@ export default {
         },
         folders(state,obj) {
             state.Folders = obj;
+        },
+        accesses(state, obj) {
+            state.Accesses = obj;
+        },
+        errorAccesse(state, status) {
+            if (status === 400){
+                state.errorAccesse = "Не удалось найти пользователя с такими данными"
+            }
         },
         selectFolder(state, obj) {
             let itemIndex = state.selectedFolders.indexOf(obj);
@@ -70,7 +102,6 @@ export default {
             };
         },
         openFolder(state, obj) {
-            this.se
             let folder = {
                 'name': obj.name,
                 'id': obj.id
@@ -114,6 +145,17 @@ export default {
             document.querySelector("#option-copylink-modal").style.display = "none";
             state.showLinksModal = false;
         },
+        openAccessModal(state) {
+            this.dispatch('disk/showAccesses');
+            document.querySelector("#option-access-modal").style.display = "block";
+            state.showAccessModal = true;
+            state.errorAccesse = "";
+        },
+        closeAccessModal(state) {
+            state.Accesses = [];
+            document.querySelector("#option-access-modal").style.display = "none";
+            state.showAccessModal = false;
+        },
     },
     state:{
         Folders: [
@@ -126,7 +168,16 @@ export default {
                 user: {},
             },
         ],
-        selectedFiles: [],
+        Accesses: [
+            {
+                user: {},
+            }
+        ],
+        selectedFiles: [
+            {
+                user: {},
+            }
+        ],
         selectedFolders: [],
         folderPath: [
             {
@@ -139,10 +190,15 @@ export default {
             'id': null
         },
         showLinksModal: false,
+        showAccessModal: false,
+        errorAccesse: "",
     },
     getters:{
         getFolders(state) {
             return state.Folders
+        },
+        getErrorAccesse(state) {
+            return state.errorAccesse
         },
         getFiles(state) {
             return state.Files
@@ -161,6 +217,12 @@ export default {
         },
         getShowLinksModal(state) {
             return state.showLinksModal
-        }
+        },
+        getshowAccessModal(state) {
+            return state.showAccessModal
+        },
+        getAccesses(state) {
+            return state.Accesses
+        },
     }
 }

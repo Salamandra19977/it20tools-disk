@@ -22,9 +22,12 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/disk', 'Disk\DiskController@index');
     Route::get('/disk/show/{id}', 'Disk\DiskController@show');
 
+    Route::get('/disk/show/accesses/{id}', 'Disk\DiskController@showAccesses');
+    Route::get('/disk/remove/accesses/{id}', 'Disk\DiskController@removeAccesses');
+    Route::post('/disk/add/accesses/', 'Disk\DiskController@addAccesses');
+
     Route::post('/disk/add/public/links', 'Disk\DiskController@addLinks');
     Route::post('/disk/remove/public/links', 'Disk\DiskController@removeLinks');
-
 
     Route::get('/available', 'Available\AvailableController@index');
     Route::get('/available/show/{id}', 'Available\AvailableController@show');
