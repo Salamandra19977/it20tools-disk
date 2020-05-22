@@ -32,8 +32,7 @@
         </form>
         <form class="option-delete" action="" id="delete-files" onsubmit="return false;">
             <button class="option-delete__link"
-                v-if="showLinksBtn()"
-                v-on:click="openLinksModal()">
+                v-if="showLinks()">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <mask id="option-linkk1" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="10"

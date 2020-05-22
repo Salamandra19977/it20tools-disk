@@ -61,12 +61,12 @@ class FavoritesController extends Controller
             if ($favoriteFiles->status_id == 1) {
                 $favoriteFiles->status_id = 3;
                 $favoriteFiles->save();
-                return response(null, Response::HTTP_OK);
+                return response($this->index(), Response::HTTP_OK);
             }
             elseif ($favoriteFiles->status_id == 3) {
                 $favoriteFiles->status_id = 1;
                 $favoriteFiles->save();
-                return response(null, Response::HTTP_OK);
+                return response($this->index(), Response::HTTP_OK);
             }
         }
       
@@ -75,12 +75,12 @@ class FavoritesController extends Controller
             if ($favoriteFolders->status_id == 1) {
                 $favoriteFolders->status_id = 3;
                 $favoriteFolders->save();
-                return response(null, Response::HTTP_OK);
+                return response($this->index(), Response::HTTP_OK);
             }
             elseif ($favoriteFolders->status_id == 3) {
                 $favoriteFolders->status_id = 1;
                 $favoriteFolders->save();
-                return response(null, Response::HTTP_OK);
+                return response($this->index(), Response::HTTP_OK);
             }
         }
 
@@ -111,7 +111,7 @@ class FavoritesController extends Controller
                     }
                 }
             }
-            return response(null, Response::HTTP_OK);
+            return response($this->index(), Response::HTTP_OK);
         }       
     }
 
