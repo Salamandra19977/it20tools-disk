@@ -2,8 +2,69 @@
   <div class="main-table__options">
     <option-create></option-create>
     <option-search></option-search>
+    <div class="modal fade" id="option-delete-modal" tabindex="-1" role="dialog" aria-labelledby="option-delete-modal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="option-delete-modal">Удалить навсегда?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Вы уверены, что хотите удалить выбранный объект?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Удалить</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="option-return-modal" tabindex="-1" role="dialog" aria-labelledby="option-return-modal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="option-return-modal">Восстановить?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Восстановить выбранный объект?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Да</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="option-create-modal" tabindex="-1" role="dialog" aria-labelledby="option-create-modal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="option-create-modal">Новая папка</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Введите имя папки</p>
+                    <input type="text">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Создать</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <form class="option-delete" action id="delete-files" onsubmit="return false;">
-      <button class="option-delete__return" data-toggle="modal" data-target="#option-return-modal" :disabled="disabled">
+      <button @click="restoreItems()" class="option-delete__return" data-toggle="modal" data-target="#option-return-modal" :disabled="disabled">
         <svg
           width="30"
           height="30"
@@ -240,6 +301,11 @@ export default {
       else {
         this.disabled = true
       }
+    }
+  },
+  methods: {
+    restoreItems() {
+      this.$store.dispatch('basket/restoreFiles')
     }
   }
 };

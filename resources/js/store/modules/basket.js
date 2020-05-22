@@ -15,7 +15,14 @@ export default {
                     this.commit('basket/files', response.data.files);
                     this.commit('basket/folders', response.data.folders);
                 });
-        }
+        },
+        restoreFiles(state) {
+            axios.post('/api/update',{'files': state.state.selectedFiles, 'folders': state.state.selectedFolders})
+                .then(response => {
+                    this.commit('basket/files', response.data.files);
+                    this.commit('basket/folders', response.data.folders);
+                });
+        },
     },
     mutations:{
         files(state, obj) {

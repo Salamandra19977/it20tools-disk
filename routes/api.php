@@ -41,4 +41,5 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/basket', 'Basket\BasketController@index');
     Route::get('/basket/show/{id}', 'Basket\BasketController@show');
+    Route::post('update', 'Basket\BasketController@update');
 });
