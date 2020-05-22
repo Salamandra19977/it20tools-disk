@@ -1,6 +1,6 @@
 <header class="header">
     <a href="#" class="nav-brand">
-        <img src="img/logo_foot 2.png" alt="header-logo">
+        <img src="{{asset("img/logo_foot 2.png")}}" alt="header-logo">
     </a>
     <div class="header-nav-arrow active">
         <i>
@@ -16,10 +16,11 @@
             </svg>
         </i>
     </div>
+    @if(Route::currentRouteName() != "link")
     <div class="user-info">
         <a href="#" class="user-info__profile">
             <span class="user-info__name">{{ Auth::user()->name }}</span>
-            <img src="img/avatar.jpg" alt="user-img" class="user-info__img">
+            <img src="{{asset("img/avatar.jpg")}}" alt="user-img" class="user-info__img">
         </a>
         <div class="user-info__dropdown">
             <span role="button" id="user-info__list" data-toggle="dropdown" aria-haspopup="true"
@@ -50,4 +51,5 @@
             </div>
         </div>
     </div>
+    @endif
 </header>

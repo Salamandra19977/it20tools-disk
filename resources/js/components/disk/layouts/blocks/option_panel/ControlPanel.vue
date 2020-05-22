@@ -107,8 +107,8 @@
                     </g>
                 </svg>
                 <div class="dropdown-menu" aria-labelledby="deleteDots" role="menu">
-                    <div v-if="showLinks()" class="dropdown-item delete-share"><span>Открыть доступ</span></div>
-                    <div v-if="showLinks()" class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span>
+                    <div v-if="showLinksBtn()" v-on:click="openAccessModal()" class="dropdown-item delete-share"><span>Открыть доступ</span></div>
+                    <div v-if="showLinksBtn()" v-on:click="openLinksModal()" class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span>
                     </div>
                     <div class="dropdown-item delete-rename"><span>Переименовать</span></div>
                     <div class="dropdown-item delete-star"><span>Добавить в избранное</span></div>
@@ -118,7 +118,7 @@
                     <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                 </div>
             </div>
-            <button @click="addItemsFromFavorites([selectedFiles, selectedFolders])">Add fav</button>
+            <button @click="addItemsFromFavorites([selectedFiles, selectedFolders])">Добавить в избранное</button>
 
         </form>
         <div class="option-view">
@@ -183,34 +183,35 @@
                 return this.$store.getters['disk/getSelectedFolders']
             },
         },
-        methods : {
-        	addItemsFromFavorites(obj) {
+        methods: {
+            addItemsFromFavorites(obj) {
                 const itemsArr = obj
-                if (itemsArr[0].length > 0 || itemsArr[1].length > 0) {
-                    axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
+                axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
                     .then(response => {
+                        // console.log(response)
                         if(response.status == 200){
-                          this.$store.dispatch('disk/initFileFolder')               
+                            this.$store.dispatch('disk/initFileFolder')
                         }
-                    })  
-                }                                        
+                    })
+                // getSelectedFiles = []
+                // getSelectedFolders = []
+                // console.log(itemsArr[0], itemsArr[1]);
             },
-            
-            showLinks() {
+            showLinksBtn() {
                 if (this.selectedFiles.length == 1 && this.selectedFolders.length == 0) {
                     return true
                 }
                 return false
-            }
+            },
+            openLinksModal() {
+                this.$store.commit('disk/openLinksModal');
+            },
+            openAccessModal() {
+                this.$store.commit('disk/openAccessModal');
+            },
         },
+
     }
-
-
-    $( document ).ready(function() {
-        $('.delete-rename').click(function() {
-            $('#option-rename-modal').modal();
-        })
-    });
 
 </script>
 

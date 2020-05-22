@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
+    protected $fillable = [
+        'path', 'folder_id','file_id'
+    ];
+
     protected $guarded = [];
 
     public static function create(array $data):self
@@ -38,9 +42,9 @@ class File extends Model
         return $this->belongsTo('App\Models\Folder');
     }
 
-    public function liks()
+    public function link()
     {
-        return $this->hasMany('App\Models\Link');
+        return $this->hasOne('App\Models\Link');
     }
 
     public function statuse()

@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-logo-block">
-            <a href="#"><img src="img/logo_foot 2.png" alt="footer-logo"></a>
+            <a href="#"><img src="{{asset("img/logo_foot 2.png")}}" alt="footer-logo"></a>
             <p class="rights">Все права защищены</p>
             <p>© OOO «IT 2.0»</p>
         </div>

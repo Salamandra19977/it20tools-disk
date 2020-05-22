@@ -11303,11 +11303,11 @@ ul {
     z-index: 1;
 }
 
-.modal .switch-on {
+.modal .switchOn {
     background: #1875F0;
 }
 
-.modal .switch-on::after {
+.modal .switchOn::after {
     left: 40px;
 }
 
@@ -12535,6 +12535,29 @@ main .disk-usage__sm-only p {
 .footer .footer-contacts-block .social .instagram:hover svg rect {
     fill: #d72062;
     stroke: #d72062;
+}
+
+.public_link {
+    min-height: 700px;
+    left: 0px;
+    width: 95%
+}
+
+.message_not_found {
+    display: flex;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    color: #000000;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 130px;
+}
+
+.message_not_found > span {
+    display: flex;
 }
 
 @media (min-width: 950px) and (max-width: 1130px) {

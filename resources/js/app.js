@@ -6,6 +6,9 @@ import VueRouter from 'vue-router'
 import router from './routes'
 import axios from 'axios'
 import store from './store/index.js'
+import VueCryptojs from 'vue-cryptojs'
+import VueClipboard from 'vue-clipboard2'
+
 import { VBModal } from 'bootstrap-vue'
 
 const VueUploadComponent = require('vue-upload-component')
@@ -24,6 +27,9 @@ Vue.use(IconsPlugin)
 
 
 Vue.use(VueRouter);
+Vue.use(VueCryptojs);
+Vue.use(VueClipboard);
+
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 // Vue.config.devtools = false;
@@ -44,7 +50,7 @@ Vue.filter('shortTime', function(str) {
     let hour = time.getHours() < 10 ? '0' + time.getHours() : time.getHours();
     let minutes = time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes();
 
-    return hour + ":" + minutes;
+    return "00" + ":" + minutes;
 });
 
 Vue.filter('convertSize', function(size) {
@@ -55,10 +61,8 @@ Vue.filter('convertSize', function(size) {
 
 Vue.component('search', require('./components/Search.vue').default);
 
-
-
 const app = new Vue({
     el: '#app',
     render:h => h(App),
-    router,store
+    router,store,VueClipboard
 });
