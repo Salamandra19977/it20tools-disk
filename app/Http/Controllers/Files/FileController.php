@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FileController extends Controller
 {
@@ -16,22 +17,22 @@ class FileController extends Controller
      */
     public function index()
     {
-        $files = File::with('user')
-            ->where('user_id',Auth::id())
-            ->where('folder_id', null)
-            ->get();
+        // $files = File::with('user')
+        //     ->where('user_id',Auth::id())
+        //     ->where('folder_id', null)
+        //     ->get();
 
-        return response()->json($files, 200);
+        // return response()->json($files, 200);
     }
 
     public function showDiskFileInFolder($id)
     {
-        $files = File::with('user')
-            ->where('user_id',Auth::id())
-            ->where('folder_id', $id)
-            ->get();
+        // $files = File::with('user')
+        //     ->where('user_id',Auth::id())
+        //     ->where('folder_id', $id)
+        //     ->get();
 
-        return response()->json($files, 200);
+        // return response()->json($files, 200);
     }
 
     /**
@@ -41,7 +42,7 @@ class FileController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -52,7 +53,7 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -86,7 +87,7 @@ class FileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

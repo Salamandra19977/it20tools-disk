@@ -6,6 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
+    protected $guarded = [];
+
+    public static function create(array $data):self
+    {
+        $file = new self();
+        $file->name = $data['name'];
+        $file->size = $data['size'];
+        $file->extension = $data['extension'];
+        $file->patch = $data['patch'];
+        $file->user_id = $data['user_id'];
+        $file->status_id = $data['status_id'];
+        
+        $file->save();
+        // dd($file);
+        return $file;
+    }
+    
     public function accesses()
     {
         return $this->hasMany('App\Models\Accesse');

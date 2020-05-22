@@ -35,13 +35,13 @@
                 <button @click="addFolderToFavorites(folder)">{{folder.status_id == 3 ? 'Del' : 'Add fav'}}</button>
             </td>
         </tr>
-        <tr  class="table-item table-item__file"
+        <tr class="table-item table-item__file"
             v-for="(file, index) in files"
             v-on:click="selectFile(file)"
             v-bind:class="{ selected: checkSelectFile(file)}"
             :file = file>
             <td class="name-data">
-                <i class="file"></i><span>{{file.name}}</span>
+                <i class="file"></i><span>{{file.name}}.{{file.extension}}</span>
             </td>
             <td class="owner-data">
                 <span>{{file.user.name}}</span>

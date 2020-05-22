@@ -6,9 +6,10 @@ import VueRouter from 'vue-router'
 import router from './routes'
 import axios from 'axios'
 import store from './store/index.js'
-
 import { VBModal } from 'bootstrap-vue'
 
+const VueUploadComponent = require('vue-upload-component')
+Vue.component('file-upload', VueUploadComponent)
 
 // Note: Vue automatically prefixes the directive name with 'v-'
 Vue.directive('b-modal', VBModal)
@@ -53,6 +54,8 @@ Vue.filter('convertSize', function(size) {
 });
 
 Vue.component('search', require('./components/Search.vue').default);
+
+
 
 const app = new Vue({
     el: '#app',
