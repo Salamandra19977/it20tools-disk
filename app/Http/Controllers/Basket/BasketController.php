@@ -7,7 +7,6 @@ use App\Models\File;
 use App\Models\Folder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\Files\FileController;
 use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
@@ -78,9 +77,16 @@ class BasketController extends Controller
         $arrFiles = $request["files"];
         $arrFolders = $request["folders"];
 
+        // dd($arrFiles);
         foreach($arrFiles as $value) {
             $arrFile = File::findOrFail($value["id"]);
-            Storage::disk('public')->delete($arrFile->patch);
+            $delete = Storage::disk('public')->delete($arrFile->patch);
+            dd($delete);
+            // $missing = Storage::disk('public')->exists($arrFile->patch);
+            // dd($missing);
+            // if($missing) {
+            //     $arrFile->delete();
+            // }
         }
         foreach($arrFolders as $value) {
             $arrFolder = Folder::findOrFail($value["id"]);
