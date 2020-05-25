@@ -32,7 +32,8 @@
         </form>
         <form class="option-delete" action="" id="delete-files" onsubmit="return false;">
             <button class="option-delete__link"
-                v-if="showLinks()">
+                v-if="showLinksBtn()"
+                v-on:click="openLinksModal()">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <mask id="option-linkk1" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="10"
@@ -119,7 +120,6 @@
                 </div>
             </div>
             <button @click="addItemsFromFavorites([selectedFiles, selectedFolders])">Добавить в избранное</button>
-
         </form>
         <div class="option-view">
             <div class="option-view__bulleted">
@@ -169,7 +169,6 @@
         </div>
     </div>
 </template>
-
 <script>
     import OptionSearch from "./search/OptionSearch";
     export default {
@@ -186,16 +185,15 @@
         methods: {
             addItemsFromFavorites(obj) {
                 const itemsArr = obj
-                axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
-                    .then(response => {
-                        // console.log(response)
-                        if(response.status == 200){
-                            this.$store.dispatch('disk/initFileFolder')
-                        }
-                    })
-                // getSelectedFiles = []
-                // getSelectedFolders = []
-                // console.log(itemsArr[0], itemsArr[1]);
+                if (itemsArr[0].length > 0 || itemsArr[1].length > 0) {
+                    axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
+                        .then(response => {
+                            // console.log(response)
+                            if(response.status == 200){
+                                this.$store.dispatch('disk/initFileFolder')
+                            }
+                        })
+                }
             },
             showLinksBtn() {
                 if (this.selectedFiles.length == 1 && this.selectedFolders.length == 0) {
@@ -210,11 +208,7 @@
                 this.$store.commit('disk/openAccessModal');
             },
         },
-
     }
-
 </script>
-
 <style scoped>
-
 </style>

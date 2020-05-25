@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class File extends Model
 {
     protected $fillable = [
-        'path', 'folder_id','file_id'
+        'path', 'folder_id','file_id',
     ];
 
     protected $guarded = [];

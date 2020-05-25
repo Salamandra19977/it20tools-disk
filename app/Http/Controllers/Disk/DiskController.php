@@ -19,6 +19,11 @@ class DiskController extends Controller
 {
     public function index()
     {
+        // $folders = Folder::whereNull('folder_id')
+        // ->with('childrenFolders')
+        // ->get();
+        // dd($folders);
+// dd(Auth::id());
         $files = File::with('user')
             ->with('link')
             ->where('user_id',Auth::id())
@@ -28,7 +33,7 @@ class DiskController extends Controller
 
         $folders = Folder::with('user')
             ->where('user_id',Auth::id())
-            ->where('parent_id', null)
+            ->where('folder_id', null)
             ->where('status_id', '!=' , 2)
             ->get();
 
@@ -49,7 +54,7 @@ class DiskController extends Controller
             ->get();
         $folders = Folder::with('user')
             ->where('user_id', Auth::id())
-            ->where('parent_id', $id)
+            ->where('folder_id', $id)
             ->where('status_id',1)
             ->get();
 
@@ -66,21 +71,43 @@ class DiskController extends Controller
         $data = [];
         $userId = Auth::user()->id;
         $item = $request->file;
-
         $fileOriginalName = $item->getClientOriginalName();   
         $fileName = pathinfo($fileOriginalName, PATHINFO_FILENAME);
+        $fileExtension = pathinfo($fileOriginalName, PATHINFO_EXTENSION );
+        $filePath = $request->request;
+        $parameters = $request->request->all()['baseUrl'] ?? '' ;
 
+        // dd($fileName);
 
         $data['name'] = $fileName;
         $data['size'] = $item->getSize();
-        $data['extension'] = $item->extension();
+        $data['extension'] = $fileExtension;
         $data['patch'] = $item->store('/'.$userId);
         $data['user_id'] =  Auth::user()->id;
         $data['status_id'] = 1;
+        // dd($request);
 
         $file = File::create( $data );
+        return response()->json($this->index(), 200);
+    }
+
+    public function download(Request $request)
+    {   
+        // dd($request->id);
+        $fileId = $request->id;
+        $file = File::find($fileId);
+
+        $headers = [
+              'Type' => $file->extension,
+              'name' => $file->name,
+           ];
+
+        // dd($file);
+        return Storage::disk('files')->download($file->patch, $file->name.'.'.$file->extension, $headers);
 
     }
+
+
 
     public function addLinks(Request $request)
     {

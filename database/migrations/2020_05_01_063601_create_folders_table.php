@@ -19,7 +19,7 @@ class CreateFoldersTable extends Migration
             $table->unsignedInteger('size');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('status_id');
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->unsignedBigInteger('folder_id')->nullable();
             $table->timestamps();
         });
 
@@ -32,7 +32,7 @@ class CreateFoldersTable extends Migration
                 ->references('id')
                 ->on('statuses')
                 ->onDelete('cascade');
-            $table->foreign('parent_id')
+            $table->foreign('folder_id')
                 ->references('id')
                 ->on('folders')
                 ->onDelete('cascade');
