@@ -42,6 +42,7 @@ class LoginController extends Controller
             'response_type' => 'code',
             'scope' => '',
         ]);
+
         return redirect(config('client_auth.server_uri').'/oauth/authorize?'.$query);
     }
 
@@ -55,7 +56,7 @@ class LoginController extends Controller
                 'client_id' => config('client_auth.client_id'),
                 'client_secret' => config('client_auth.client_secret'),
                 'redirect_uri' => config('client_auth.redirect_uri'),
-                'code' => $request->code,
+                'code' => substr($request->getRequestUri(),20),
             ],
         ]);
 
@@ -63,21 +64,17 @@ class LoginController extends Controller
 
         if (isset($access->access_token) && $access->access_token) {
             $access_token = $access->access_token;
-            $ch = curl_init();
-            $url = config('client_auth.server_uri').'/api/user';
-            $header = array(
-                'Authorization: Bearer ' . $access_token
-            );
 
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-            $result = curl_exec($ch);
-            curl_close($ch);
+            $response = $http->get(config('client_auth.server_uri').'/api/user', [
+                'headers' => [
+                    'Authorization' => 'Bearer '.$access_token,
+                ],
+            ]);
 
-            $response = json_decode($result, true);
+            $data = json_decode((string)$response->getBody());
 
-            $user = User::where('email',$response['email'])->first();
+            $user = User::where('email',$data -> email)->first();
+
             if($user){
                 $user->update([
                     'email' => $user->email,
@@ -90,8 +87,8 @@ class LoginController extends Controller
             }
             else {
                 $user = User::firstOrCreate([
-                        'email' => $response['email'],
-                        'name' => $response['name'],
+                        'email' => $data->email,
+                        'name' => $data->name,
                         'password' => Hash::make('gfhjkm'),
                         'token' => $access->access_token
                     ]
