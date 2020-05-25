@@ -11,6 +11,8 @@ import VueClipboard from 'vue-clipboard2'
 
 import { VBModal } from 'bootstrap-vue'
 
+const VueUploadComponent = require('vue-upload-component')
+Vue.component('file-upload', VueUploadComponent)
 
 // Note: Vue automatically prefixes the directive name with 'v-'
 Vue.directive('b-modal', VBModal)

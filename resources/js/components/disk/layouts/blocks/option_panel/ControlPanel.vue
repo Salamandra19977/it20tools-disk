@@ -120,7 +120,6 @@
                 </div>
             </div>
             <button @click="addItemsFromFavorites([selectedFiles, selectedFolders])">Добавить в избранное</button>
-
         </form>
         <div class="option-view">
             <div class="option-view__bulleted">
@@ -170,7 +169,6 @@
         </div>
     </div>
 </template>
-
 <script>
     import OptionSearch from "./search/OptionSearch";
     export default {
@@ -208,11 +206,7 @@
                 this.$store.commit('disk/openAccessModal');
             },
         },
-
     }
-
 </script>
-
 <style scoped>
-
 </style>

@@ -68,7 +68,7 @@ export default {
         files(state, obj) {
             state.Files = obj;
         },
-        folders(state,obj) {
+        folders(state, obj) {
             state.Folders = obj;
         },
         accesses(state, obj) {
@@ -168,6 +168,9 @@ export default {
                 user: {},
             },
         ],
+        files: [],
+        
+        selectedFiles: [],
         Accesses: [
             {
                 user: {},
