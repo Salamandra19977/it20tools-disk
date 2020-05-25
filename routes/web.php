@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/redirect','Auth\LoginController@redirect')->name('login');
-Route::get('/auth/callback', 'Auth\LoginController@callback')->name('callback');
+Route::get('auth/callback', 'Auth\LoginController@callback')->name('callback');
 Route::get('/token', 'Auth\LoginController@authByToken');
 
 Route::get('/DISK/{patch}', 'Disk\DiskController@showFileLink')->name('link');

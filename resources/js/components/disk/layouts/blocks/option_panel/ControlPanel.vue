@@ -32,7 +32,8 @@
         </form>
         <form class="option-delete" action="" id="delete-files" onsubmit="return false;">
             <button class="option-delete__link"
-                v-if="showLinks()">
+                v-if="showLinksBtn()"
+                v-on:click="openLinksModal()">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <mask id="option-linkk1" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="10"
@@ -193,9 +194,6 @@
                             this.$store.dispatch('disk/initFileFolder')
                         }
                     })
-                // getSelectedFiles = []
-                // getSelectedFolders = []
-                // console.log(itemsArr[0], itemsArr[1]);
             },
             showLinksBtn() {
                 if (this.selectedFiles.length == 1 && this.selectedFolders.length == 0) {
