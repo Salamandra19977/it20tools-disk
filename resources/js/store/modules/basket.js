@@ -17,7 +17,7 @@ export default {
                 });
         },
         restoreFiles(state) {
-            axios.post('/api/update',{'files': state.state.selectedFiles, 'folders': state.state.selectedFolders})
+            axios.get('/api/update',{'files': state.state.selectedFiles, 'folders': state.state.selectedFolders})
                 .then(response => {
                     this.commit('basket/files', response.data.files);
                     this.commit('basket/folders', response.data.folders);

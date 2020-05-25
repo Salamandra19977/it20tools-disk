@@ -316,5 +316,5 @@ main .main-table__options .option-delete button[disabled]:hover svg rect {
     stroke: #d8d8d8;
     fill: #d8d8d8;
     cursor: auto;
-}
+} 
 </style>
