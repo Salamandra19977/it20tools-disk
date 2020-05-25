@@ -16,7 +16,7 @@
                     Вы уверены, что хотите удалить выбранный объект?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Удалить</button>
+                    <button @click="deleteFiles()" type="button" class="btn btn-primary">Удалить</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                     Восстановить выбранный объект?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Да</button>
+                    <button @click="restoreFiles()" type="button" class="btn btn-primary">Да</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                 </div>
             </div>
@@ -64,7 +64,7 @@
         </div>
     </div>
     <form class="option-delete" action id="delete-files" onsubmit="return false;">
-      <button @click="restoreItems()" class="option-delete__return" data-toggle="modal" data-target="#option-return-modal" :disabled="disabled">
+      <button class="option-delete__return" data-toggle="modal" data-target="#option-return-modal" :disabled="disabled">
         <svg
           width="30"
           height="30"
@@ -304,8 +304,11 @@ export default {
     }
   },
   methods: {
-    restoreItems() {
+    restoreFiles() {
       this.$store.dispatch('basket/restoreFiles')
+    },
+    deleteFiles() {
+      this.$store.dispatch('basket/deleteFiles')
     }
   }
 };

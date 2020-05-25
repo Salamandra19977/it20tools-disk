@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\File;
 use App\Models\Folder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Files\FileController;
 use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
@@ -53,16 +55,38 @@ class BasketController extends Controller
 
     public function update(Request $request)
     {
-        $arrFiles = $request->files;
-        $arrFolders = $request->folders;
+        $arrFiles = $request["files"];
+        $arrFolders = $request["folders"];
 
-        foreach($arrFiles as $key => $arrFile) {
-            $arrFile = File::findOrFail($arrFile['id']);
+        foreach($arrFiles as $value) {
+            $arrFile = File::findOrFail($value["id"]);
             $arrFile->status_id = 1;
             $arrFile->save();
         }
-        dd($request);
-        return response($this->index(), Response::HTTP_OK);
+
+        foreach($arrFolders as $value) {
+            $arrFolder = Folder::findOrFail($value["id"]);
+            $arrFolder->status_id = 1;
+            $arrFolder->save();
+        }
+
+        return $this->index();
     }
 
+    public function delete(Request $request)
+    {
+        $arrFiles = $request["files"];
+        $arrFolders = $request["folders"];
+
+        foreach($arrFiles as $value) {
+            $arrFile = File::findOrFail($value["id"]);
+            Storage::disk('public')->delete($arrFile->patch);
+        }
+        foreach($arrFolders as $value) {
+            $arrFolder = Folder::findOrFail($value["id"]);
+            Storage::disk('public')->delete($arrFolder->patch);
+        }
+
+        return $this->index();
+    }
 }
