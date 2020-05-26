@@ -130,6 +130,7 @@
         aria-haspopup="true"
         aria-expanded="false"
         :disabled="disabled"
+        @click="openModal()"
       >
         <svg
           width="30"
@@ -160,7 +161,7 @@
         </svg>
         <div class="dropdown-menu" aria-labelledby="deleteDots">
           <div
-            class="dropdown-item delete-return"
+            class="dropdown-item delete-return" @click="openDeleteModal()"
           >Восстановить</div>
           <div
             class="dropdown-item delete-delete"
@@ -305,15 +306,18 @@ export default {
     },
     deleteFiles() {
       this.$store.dispatch('basket/deleteFiles')
+    },
+    openModal() {
+      $('.delete-delete').click(function() {
+        $('#option-delete-modal').modal();
+      })
+      $('.delete-return').click(function() {
+       $('#option-return-modal').modal();
+      })
     }
   }
 };
-// $('.delete-return').click(function() {
-//     $('#option-return-modal').modal();
-// })
-// $('.delete-delete').click(function() {
-//     $('#option-delete-modal').modal();
-// })
+
 </script>
 
 <style scoped>
