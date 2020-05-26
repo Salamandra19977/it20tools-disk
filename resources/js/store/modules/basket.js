@@ -19,15 +19,22 @@ export default {
         restoreFiles(state) {
             axios.post('/api/update',{'files': state.state.selectedFiles, 'folders': state.state.selectedFolders})
                 .then(response => {
-                    this.commit('basket/files', response.data.files);
-                    this.commit('basket/folders', response.data.folders);
+                    this.commit('basket/files', response.data.original.files);
+                    this.commit('basket/folders', response.data.original.folders);
+                    this.commit('basket/setEmptyFolderPath')
                 });
         },
         deleteFiles(state) {
             axios.post('/api/delete',{'files': state.state.selectedFiles, 'folders': state.state.selectedFolders})
                 .then(response => {
-                    this.commit('basket/files', response.data.files);
-                    this.commit('basket/folders', response.data.folders);
+                    if (response.status == 200) {
+                        // console.log(response.data.original.files)
+                        this.commit('basket/files', response.data.original.files);
+                        this.commit('basket/folders', response.data.original.folders);
+                        this.commit('basket/setEmptyFolderPath')
+
+                    }
+                    
                 });
         },
     },

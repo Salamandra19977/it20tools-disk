@@ -66,7 +66,7 @@
                         this.status_link = false;
                     }
 
-                    return "http://php.loc/DISK/" + this.CryptoJS.MD5(this.selectedFiles[0].name + this.selectedFiles[0].id);
+                    return "http://it20tools-disk.dtdgma.org.ua/DISK/" + this.CryptoJS.MD5(this.selectedFiles[0].name + this.selectedFiles[0].id);
                 }
             },
             selectPozition() {
@@ -74,20 +74,16 @@
             },
             send() {
                 if(this.selectedFiles[0].link != null && this.status == true) {
-                    console.log(1)
                     this.closeLinksModals();
                 }
                 if(this.selectedFiles[0].link != null && this.status == false) {
-                    console.log(2)
                     this.$store.dispatch('disk/removeLinks');
                     this.closeLinksModals();
                 }
                 if(this.selectedFiles[0].link == null && this.status == false) {
-                    console.log(3)
                     this.closeLinksModals();
                 }
                 if(this.selectedFiles[0].link == null && this.status == true) {
-                    console.log(4)
                     this.$store.dispatch('disk/addLinks');
                     this.closeLinksModals();
                 }

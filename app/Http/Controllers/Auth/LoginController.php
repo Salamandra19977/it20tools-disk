@@ -73,12 +73,13 @@ class LoginController extends Controller
 
             $data = json_decode((string)$response->getBody());
 
-            $user = User::where('email',$data -> email)->first();
+            $user = User::where('email',$data->email)->first();
 
             if($user){
                 $user->update([
                     'email' => $user->email,
                     'name' => $user->name,
+                    'avatar_url' => $user->avatar_url,
                     'password' => $user->password,
                     'token' => $access->access_token
                 ]);
@@ -88,7 +89,8 @@ class LoginController extends Controller
             else {
                 $user = User::firstOrCreate([
                         'email' => $data->email,
-                        'name' => $data->name,
+                        'name' => $data->name." ".$data->surname,
+                        'avatar_url' => $data->avatar_url,
                         'password' => Hash::make('gfhjkm'),
                         'token' => $access->access_token
                     ]
@@ -103,44 +105,41 @@ class LoginController extends Controller
 
     public function authByToken(Request $request)
     {
-        $access_token = $request->access_token;
+        $access_token = substr($request->getRequestUri(),20);
 
         if(empty($access_token)){
             return response()->redirectTo('/redirect');
         }
-        // use above token to make further api calls in this session or until the access token expires
-        $ch = curl_init();
-        $url = config('client_auth.server_uri').'/api/user';
-        $header = array(
-            'Authorization: Bearer '. $access_token
-        );
 
+        $http = new Client;
+        $response = $http->get(config('client_auth.server_uri').'/api/user', [
+            'headers' => [
+                'Authorization' => 'Bearer '.$access_token,
+            ],
+        ]);
 
-        curl_setopt($ch,CURLOPT_URL, $url );
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-        $result = curl_exec($ch);
-        curl_close($ch);
+        $data = json_decode((string)$response->getBody());
 
-        $response = json_decode($result, true);
+        $user = User::where('email',$data->email)->first();
 
-        $user = User::where('email',$response['email'])->first();
         if($user){
             $user->update([
                 'email' => $user->email,
                 'name' => $user->name,
                 'password' => $user->password,
-                'token' => $access_token
+                'avatar_url' => $user->avatar_url,
+                'token' => $access_token,
             ]);
 
             Auth::login($user);
         }
         else {
             $user = User::firstOrCreate([
-                    'email' => $response['email'],
-                    'name' => $response['name'],
+                    'email' => $data->email,
+                    'name' => $data->name." ".$data->surname,
                     'password' => Hash::make('gfhjkm'),
-                    'token' => $access_token
+                    'avatar_url' => $data->avatar_url,
+                    'token' => $access_token,
                 ]
             );
 

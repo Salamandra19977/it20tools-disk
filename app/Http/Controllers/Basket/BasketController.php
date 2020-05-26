@@ -70,7 +70,7 @@ class BasketController extends Controller
             $arrFolder->save();
         }
 
-        return $this->index();
+        return response()->json($this->index(), 200);
     }
 
     public function delete(Request $request)
@@ -79,21 +79,20 @@ class BasketController extends Controller
         $arrFolders = $request["folders"];
         foreach($arrFiles as $value) {
             $arrFile = File::findOrFail($value["id"]);
+            $delete = Storage::disk('files')->delete($arrFile->patch);
+            // dd($delete);
             $missing = Storage::disk('files')->missing($arrFile->patch);
-            Storage::disk('files')->delete($arrFile->patch);
+            // dd($missing);
             if($missing) {
                 $arrFile->delete();
             }
         }
-        foreach($arrFolders as $value) {
-            $arrFolder = Folder::findOrFail($value["id"]);
-            $missing = Storage::disk('files')->missing($arrFile->patch);
-            Storage::disk('files')->delete($arrFolder->patch);
-            if($missing) {
-                $arrFolder->delete();
-            }
-        }
+        // foreach($arrFolders as $value) {
+        //     $arrFolder = Folder::findOrFail($value["id"]);
+        //     Storage::disk('public')->delete($arrFolder->patch);
+        // }
 
-        return $this->index();
+        return response()->json($this->index(), 200);
+        
     }
 }

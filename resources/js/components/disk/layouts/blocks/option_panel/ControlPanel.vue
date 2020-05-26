@@ -1,15 +1,6 @@
 <template>
     <div class="main-table__options">
-        <div class="option-create">
-            <a href="#" class="option-create__btn" role="button" id="createDropdown" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">Создать</a>
-            <div class="dropdown-menu" aria-labelledby="createDropdown">
-                <a class="dropdown-item add-folder" href="#">Папку</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item upload-file" href="#">Загрузить файлы</a>
-                <a class="dropdown-item upload-folder" href="#">Загрузить папку</a>
-            </div>
-        </div>
+        <option-create></option-create>
         <form action="" class="option-search" id="search-files">
             <div class="option-search__field-container">
                 <input type="text" class="option-search__field" placeholder="Поиск на Диске">
@@ -171,9 +162,11 @@
 </template>
 <script>
     import OptionSearch from "./search/OptionSearch";
+    import OptionCreate from "./add/OptionCreate";
+
     export default {
         name: "ControlPanel",
-        components: {OptionSearch},
+        components: {OptionSearch, OptionCreate},
         computed: {
             selectedFiles() {
                 return this.$store.getters['disk/getSelectedFiles']
