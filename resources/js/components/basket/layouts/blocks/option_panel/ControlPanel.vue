@@ -16,7 +16,7 @@
                     Вы уверены, что хотите удалить выбранный объект?
                 </div>
                 <div class="modal-footer">
-                    <button @click.prevent="deleteFiles()" type="button" class="btn btn-primary">Удалить</button>
+                    <button @click="deleteFiles()" type="button" class="btn btn-primary" data-dismiss="modal">Удалить</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                     Восстановить выбранный объект?
                 </div>
                 <div class="modal-footer">
-                    <button @click="restoreFiles()" type="button" class="btn btn-primary">Да</button>
+                    <button @click="restoreFiles()" type="button" class="btn btn-primary" data-dismiss="modal">Да</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                 </div>
             </div>
@@ -162,12 +162,12 @@
           <button
             class="dropdown-item delete-return"
             data-toggle="modal"
-            data-target="#exampleModal"
+            data-target="#option-return-modal"
           >Восстановить</button>
           <button
             class="dropdown-item delete-delete"
             data-toggle="modal"
-            data-target="#exampleModal"
+            data-target="option-delete-modal"
           >Удалить</button>
         </div>
       </button>
