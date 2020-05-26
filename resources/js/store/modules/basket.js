@@ -22,16 +22,17 @@ export default {
                     this.commit('basket/files', response.data.original.files);
                     this.commit('basket/folders', response.data.original.folders);
                     this.commit('basket/setEmptyFolderPath')
+                    this.commit('basket/setEmptySelectedFiles');
                 });
         },
         deleteFiles(state) {
             axios.post('/api/delete',{'files': state.state.selectedFiles, 'folders': state.state.selectedFolders})
                 .then(response => {
                     if (response.status == 200) {
-                        // console.log(response.data.original.files)
                         this.commit('basket/files', response.data.original.files);
                         this.commit('basket/folders', response.data.original.folders);
                         this.commit('basket/setEmptyFolderPath')
+                        this.commit('basket/setEmptySelectedFiles');
 
                     }
                     
@@ -69,6 +70,10 @@ export default {
             else {
                 state.selectedFiles.splice(itemIndex, 1);
             }
+        },
+        setEmptySelectedFiles(state) {
+            state.selectedFiles = [];
+            state.selectedFolders = [];
         },
     },
     state:{
