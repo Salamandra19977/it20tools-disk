@@ -79,7 +79,7 @@ class LoginController extends Controller
                 $user->update([
                     'email' => $user->email,
                     'name' => $user->name,
-                    'avatar_url' => $user->avatar_url,
+                    'avatar_url' => $data->avatar_url,
                     'password' => $user->password,
                     'token' => $access->access_token
                 ]);
@@ -127,7 +127,7 @@ class LoginController extends Controller
                 'email' => $user->email,
                 'name' => $user->name,
                 'password' => $user->password,
-                'avatar_url' => $user->avatar_url,
+                'avatar_url' => $data->avatar_url,
                 'token' => $access_token,
             ]);
 

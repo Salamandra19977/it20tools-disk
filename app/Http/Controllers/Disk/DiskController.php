@@ -93,7 +93,7 @@ class DiskController extends Controller
 
     public function download(Request $request)
     {   
-        // dd($request->id);
+//         dd($request->id);
         $fileId = $request->id;
         $file = File::find($fileId);
 

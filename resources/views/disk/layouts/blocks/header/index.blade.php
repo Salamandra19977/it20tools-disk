@@ -20,7 +20,11 @@
     <div class="user-info">
         <a href="#" class="user-info__profile">
             <span class="user-info__name">{{ Auth::user()->name }}</span>
-            <img src="https://team1-group-project.azurewebsites.net/avatars/{{Auth::user()->avatar_url}}" alt="user-img" class="user-info__img">
+            @if(Auth::user()->avatar_url != null)
+                <img src="https://team1-group-project.azurewebsites.net/avatars/{{Auth::user()->avatar_url}}" alt="user-img" class="user-info__img">
+            @else
+                <img src="https://semantica.in/wp-content/uploads/2018/08/av-427845-1.png" alt="user-img" class="user-info__img">
+            @endif
         </a>
         <div class="user-info__dropdown">
             <span role="button" id="user-info__list" data-toggle="dropdown" aria-haspopup="true"
