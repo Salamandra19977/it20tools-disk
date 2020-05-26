@@ -61,6 +61,6 @@
 <script>
  $('.header-nav-arrow').click(function () {
      $('.header-nav-arrow i').toggleClass('active');
-     $('.main-content').toggleClass('main-content-collapsed')
+     $('.main-content').toggleClass('main-content-collapsed');
  })
 </script>
