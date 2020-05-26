@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('user/{id}/disk/stats', 'Disk\DiskController@stats');
+    Route::get('user/{email}/disk/stats', 'Disk\DiskController@stats');
     Route::resource('/disk', 'Disk\DiskController');
 
     Route::get('/disk', 'Disk\DiskController@index');

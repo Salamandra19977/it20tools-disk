@@ -181,20 +181,24 @@ class DiskController extends Controller
         return response()->json($message, 400);
     }
 
-    public function stats($id)
+    public function stats($email)
     {
-        $user = User::with('files')->where('id', $id)->first();
+        $user = User::with('files')->where('email', $email)->first();
+        if($user) {
+            $sizeDisk = "15GB";
+            $usingSize = $this->formatBytes($user->files->sum('size')) ;
+            $freeSize = $this->formatBytes(16106127360 - $user->files->sum('size'));
+            $data = [
+                "all_size" => $sizeDisk,
+                "using_size" => $usingSize,
+                "free_size" => $freeSize,
+            ];
 
-        $sizeDisk = "15GB";
-        $usingSize = $this->formatBytes($user->files->sum('size')) ;
-        $freeSize = $this->formatBytes(16106127360 - $user->files->sum('size'));
-        $data = [
-            "all_size" => $sizeDisk,
-            "using_size" => $usingSize,
-            "free_size" => $freeSize,
-        ];
+            return response()->json($data, 200,[],JSON_UNESCAPED_UNICODE);
+        }
 
-        return response()->json($data, 200,[],JSON_UNESCAPED_UNICODE);
+        return response()->json("not found user", 400,[],JSON_UNESCAPED_UNICODE);
+
     }
 
     public function formatBytes($bytes, $precision = 3) {
