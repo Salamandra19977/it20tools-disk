@@ -4,7 +4,7 @@
         <copy-link></copy-link>
         <open-access></open-access>
         <navigate-folder></navigate-folder>
-        <upload></upload>
+        <!-- <upload></upload> -->
         <!-- <new-upload></new-upload>    -->
         <h2 class="main-heading">{{nameFolder.name}}</h2>
         <div class="main-table main-table-disk">
