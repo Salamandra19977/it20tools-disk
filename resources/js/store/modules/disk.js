@@ -72,6 +72,7 @@ export default {
             state.Folders = obj;
         },
         accesses(state, obj) {
+            state.errorAccesse = "";
             state.Accesses = obj;
         },
         errorAccesse(state, status) {
