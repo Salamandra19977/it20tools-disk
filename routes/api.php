@@ -19,10 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth'], function() {
+    Route::get('user/{id}/disk/stats', 'Disk\DiskController@stats');
     Route::resource('/disk', 'Disk\DiskController');
 
     Route::get('/disk', 'Disk\DiskController@index');
     Route::get('/disk/show/{id}', 'Disk\DiskController@show');
+
 
     Route::get('/disk/show/accesses/{id}', 'Disk\DiskController@showAccesses');
     Route::get('/disk/remove/accesses/{id}', 'Disk\DiskController@removeAccesses');

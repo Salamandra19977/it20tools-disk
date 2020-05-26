@@ -14,6 +14,7 @@
             </td>
             <td class="date-data">
                 <span>{{file.created_at | shortDate}}</span>
+                <button @click="downloadFile(file.id)">D</button>
             </td>
         </tr>
     </table>
@@ -30,6 +31,23 @@
             },
         },
         methods: {
+            downloadFile(id) {
+                axios({
+                    url: '/api/disk/download/'+ id,
+                    method: 'GET',
+                    responseType: 'blob',
+                }).then((response) => {
+                    var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+                    var fileLink = document.createElement('a');
+                    let type = response.headers.type
+                    let name = response.headers.name
+                    fileLink.href = fileURL;
+                    fileLink.setAttribute('download', name+'.'+type);
+                    document.body.appendChild(fileLink);
+
+                    fileLink.click();
+                });
+            },
             selectFolder(obj) {
                 this.$store.commit('available/selectFolder',obj);
             },

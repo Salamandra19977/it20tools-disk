@@ -98,19 +98,19 @@ export default {
             }
             return `${(Math.round(size * 100) / 100)} ${fSExt[i]}`;
         },
-        upload() {
-            const formData = new FormData();
-            
-            this.files.forEach(file => {
-                formData.append('images[]', file, file.name);
-            });
-            axios.post('/api/disk/upload', formData)
-                .then(response => {
-                    console.log('All images uplaoded successfully');
-                    this.images = [];
-                    this.files = [];
-                })
-        }
+        // upload() {
+        //     const formData = new FormData();
+        //
+        //     this.files.forEach(file => {
+        //         formData.append('images[]', file, file.name);
+        //     });
+        //     axios.post('/api/disk/upload', formData)
+        //         .then(response => {
+        //             console.log(response);
+        //             this.images = [];
+        //             this.files = [];
+        //         })
+        // }
     }
 }
 </script>

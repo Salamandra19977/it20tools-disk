@@ -107,8 +107,6 @@ class DiskController extends Controller
 
     }
 
-
-
     public function addLinks(Request $request)
     {
         $file = File::where('id', $request->file_id) -> first();
@@ -143,7 +141,7 @@ class DiskController extends Controller
         $link = Link::where("patch", $patch)->first();
         if($link) {
             $file = File::where("id",$link->file_id)->first();
-
+            $file->size = $this->formatBytes($file->size);
             return view('disk.link', compact('file'));
         }
 
@@ -179,6 +177,29 @@ class DiskController extends Controller
             return $this->showAccesses($request->file_id);
         }
         $message = "Пользователь не найден";
+
         return response()->json($message, 400);
+    }
+
+    public function stats($id)
+    {
+        $user = User::with('files')->where('id', $id)->first();
+
+        $sizeDisk = "15GB";
+        $usingSize = $this->formatBytes($user->files->sum('size')) ;
+        $freeSize = $this->formatBytes(16106127360 - $user->files->sum('size'));
+        $data = [
+            "all_size" => $sizeDisk,
+            "using_size" => $usingSize,
+            "free_size" => $freeSize,
+        ];
+
+        return response()->json($data, 200,[],JSON_UNESCAPED_UNICODE);
+    }
+
+    public function formatBytes($bytes, $precision = 3) {
+        $unit = ["B", "kB", "MB", "GB"];
+        $exp = floor(log($bytes, 1024)) | 0;
+        return round($bytes / (pow(1024, $exp)), $precision).$unit[$exp];
     }
 }

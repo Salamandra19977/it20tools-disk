@@ -76,8 +76,6 @@ class BasketController extends Controller
     {
         $arrFiles = $request["files"];
         $arrFolders = $request["folders"];
-
-        // dd($arrFiles);
         foreach($arrFiles as $value) {
             $arrFile = File::findOrFail($value["id"]);
             $delete = Storage::disk('files')->delete($arrFile->patch);
