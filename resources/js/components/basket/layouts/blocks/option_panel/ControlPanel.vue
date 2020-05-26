@@ -16,7 +16,7 @@
                     Вы уверены, что хотите удалить выбранный объект?
                 </div>
                 <div class="modal-footer">
-                    <button @click="deleteFiles()" type="button" class="btn btn-primary">Удалить</button>
+                    <button @click.prevent="deleteFiles()" type="button" class="btn btn-primary">Удалить</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                 </div>
             </div>
