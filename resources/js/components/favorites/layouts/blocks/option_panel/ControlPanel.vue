@@ -189,11 +189,10 @@
                 if (itemsArr[0].length > 0 || itemsArr[1].length > 0) {
                     axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
                     .then(response => {
-                        // this.commit('favorites/favoriteFiles', response.favoriteFiles)
-                        // this.commit('favorites/favoriteFolders', response.favoriteFolders)
-                        // console.log(response.favoriteFolders)
                         if(response.status == 200){
-                            this.$store.dispatch('favorites/initFileFolder')               
+                            // this.$store.dispatch('favorites/initFileFolder')   
+                            // this.commit('favorites/files', response.data.files)            
+                            // this.commit('favorites/folders', response.data.folders)            
                         }
                     }) 
                 }                                                 

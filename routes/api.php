@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth'], function() {
-    // Route::resource('/disk', 'Disk\DiskController');
+    Route::resource('/disk', 'Disk\DiskController');
 
     Route::get('/disk', 'Disk\DiskController@index');
     Route::get('/disk/show/{id}', 'Disk\DiskController@show');
@@ -32,6 +32,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/disk/remove/public/links', 'Disk\DiskController@removeLinks');
 
     Route::post('/disk/upload', 'Disk\DiskController@upload')->name('upload_file');
+	Route::get('/disk/download/{id}', 'Disk\DiskController@download')->name('download');
+
+    // Route::get('/disk/download/{file}', 'Disk\DiskController@download')->name('download_file');
     
     Route::get('/available', 'Available\AvailableController@index');
     Route::get('/available/show/{id}', 'Available\AvailableController@show');

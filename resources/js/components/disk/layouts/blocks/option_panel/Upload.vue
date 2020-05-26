@@ -3,12 +3,19 @@
     <div class="upload">
       <ul v-if="files.length">
         <li v-for="(file, index) in files" :key="file.id">
-          <span>{{file.name}}</span> -
-          <span>PROGRESS: {{file.progress}}</span> -
-          <span>{{file.size | convertSize}}</span> -
+          <span>{{file.name}}</span>
+          <div class="progress-tooltip">
+            <progress class="progress" :value=file.progress max="100"></progress>
+          </div>
+          <span>Size: {{file.size | convertSize}}</span>
+          
+          <span v-if="file.error">{{file.error}}</span>
+          <span v-else-if="file.success">Выполнено</span>
+          <span v-else-if="file.active">Загрузка</span>
+          <span v-else></span>
           <div class="btn-group">
             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button">
-              Action
+              Действие
             </button>
             <div class="dropdown-menu">
               <a :class="{'dropdown-item': true, disabled: !file.active}" href="#" @click.prevent="file.active ? $refs.upload.update(file, {error: 'Отменено'}) : false">Отмена</a>
@@ -21,10 +28,6 @@
               <a class="dropdown-item" href="#" @click.prevent="$refs.upload.remove(file)">Удалить</a>
             </div>
           </div>
-          <span v-if="file.error">{{file.error}}</span>
-          <span v-else-if="file.success">Выполнено</span>
-          <span v-else-if="file.active">Загрузка</span>
-          <span v-else></span>
         </li>
       </ul>
 
@@ -41,23 +44,27 @@
           :headers="headers"
           :data="data"
           :drop="drop"
+          :response="response"
           :drop-directory="dropDirectory"
           :add-index="addIndex"
           v-model="files"
           ref="upload">
           <i class="fa fa-plus"></i>
-          Select files
+          Добавить файлы
         </file-upload>
 
-        <button type="button" class="btn btn-primary" @click="onAddFolader">Add folder</button><br /><br />
-        <button type="button" class="btn btn-success" v-if="!$refs.upload || !$refs.upload.active" @click.prevent="$refs.upload.active = true">
-          <i class="fa fa-arrow-up" aria-hidden="true"></i>
-          Start Upload
-        </button>
-        <button type="button" class="btn btn-danger"  v-else @click.prevent="$refs.upload.active = false">
-          <i class="fa fa-stop" aria-hidden="true"></i>
-          Stop Upload
-        </button>
+        <button type="button" class="btn btn-primary" @click="onAddFolader">Добавить папку</button><br /><br />
+        <div v-show="files.length">
+            <button type="button" class="btn btn-success" v-if="!$refs.upload || !$refs.upload.active" @click.prevent="$refs.upload.active = true">
+              <i class="fa fa-arrow-up" aria-hidden="true"></i>
+              Загрузить
+            </button>
+            <button type="button" class="btn btn-danger"  v-else @click.prevent="$refs.upload.active = false">
+              <i class="fa fa-stop" aria-hidden="true"></i>
+              Остановить
+            </button>
+        </div>
+
       </div>
     </div>
   </div>
@@ -66,99 +73,140 @@
 <script>
 import FileUpload from 'vue-upload-component'
 export default {
-  components: {
-    FileUpload,
-  },
-  data() {
-    return {
-      files: [],
-      accept: 'image/png,image/gif,image/jpeg,image/webp',
-      extensions: 'gif,jpg,jpeg,png,webp',
-      // extensions: ['gif', 'jpg', 'jpeg','png', 'webp'],
-      // extensions: /\.(gif|jpe?g|png|webp)$/i,
-      minSize: 1024,
-      size: 1024 * 1024 * 10,
-      multiple: true,
-      directory: false,
-      drop: true,
-      dropDirectory: true,
-      addIndex: false,
-      thread: 3,
-      name: 'file',
-      postAction: '/api/disk/upload',
-      putAction: '/upload/put',
-      headers: {
-        'X-Csrf-Token': this.token(),
-      },
-      data: {
-        '_csrf_token': this.token(),
-      },
+    components: {
+        FileUpload,
+    },
+    data() {
+        return {
+            files: [],
+            accept: 'image/png,image/gif,image/jpeg,image/webp',
+            extensions: 'gif,jpg,jpeg,png,webp',
+            // extensions: ['gif', 'jpg', 'jpeg','png', 'webp'],
+            // extensions: /\.(gif|jpe?g|png|webp)$/i,
+            minSize: 1024,
+            size: 1024 * 1024 * 10,
+            multiple: true,
+            directory: false,
+            drop: true,
+            dropDirectory: true,
+            addIndex: true,
+            thread: 3,
+            name: 'file',
+            response: 'response',
+            postAction: '/api/disk/upload',
+            putAction: '/upload/put',
+            headers: {
+            'X-Csrf-Token': this.token(),
+            },
+            data: {
+            '_csrf_token': this.token(),
+            'baseUrl': this.token(),
+            },
 
-      autoCompress: 1024 * 1024,
-      uploadAuto: false,
-      isOption: false,
+            autoCompress: 1024 * 1024,
+            uploadAuto: false,
+            isOption: false,
 
-      addData: {
-        show: false,
-        name: '',
-        type: '',
-        content: '',
-      },
+            addData: {
+            show: false,
+            name: '',
+            type: '',
+            content: '',
+            },
 
-      editFile: {
-        show: false,
-        name: '',
-      }
-    }
-  },
-  methods: {
-      // add folader
-      onAddFolader() {
-        if (!this.$refs.upload.features.directory) {
-          this.alert('Your browser does not support')
-          return
-        }
-
-        let input = this.$refs.upload.$el.querySelector('input')
-        input.directory = true
-        input.webkitdirectory = true
-        this.directory = true
-
-        input.onclick = null
-        input.click()
-        input.onclick = (e) => {
-          this.directory = false
-          input.directory = false
-          input.webkitdirectory = false
-        }
-      },
-      onEditFileShow(file) {
-        this.editFile = { ...file, show: true }
-        this.$refs.upload.update(file, { error: 'edit' })
-      },
-      token() {
-        let token = document.head.querySelector('meta[name="csrf-token"]');
-
-        if (token) {
-              window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-            } else {
-             console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+            editFile: {
+            show: false,
+            name: '',
             }
-        console.log(token.content)
-        // window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-        // window.axios = require('axios');
+        }
+    },
+    computed: {     
+        reversedMessage() {
+          // `this` указывает на экземпляр vm
+          return this.file.name.split('').reverse().join('')
+        }
+    },
+    watch: {
+        files: {
+            handler(files){
+                let dataReload
+                for (var i = files.length - 1; i >= 0; i--) {
+                    if (files[i].success) {
+                        dataReload = files[i].success
+                    }
+                }
+                
+                if (dataReload) {
+                    setTimeout(() => { return this.$store.dispatch('disk/initFileFolder')}, 2500)
+                }
 
-        // window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-        // token = document.head.querySelector('meta[name="csrf-token"]');
-        // console.log(token)
+            },
+        },
+        name: {
+            handler(files){
+                for (var i = files.length - 1; i >= 0; i--) {
+                }
+                console.log(files[i].name)
+                return files[i].name
 
-        return token.content;
-      },
-  }
+            },
+            // setTimeout(handler, 1000)
+        }
+    },
+    methods: {
+        // add folader
+        onAddFolader() {
+            if (!this.$refs.upload.features.directory) {
+                this.alert('Your browser does not support')
+                return
+            }
+
+            let input = this.$refs.upload.$el.querySelector('input')
+            input.directory = true
+            input.webkitdirectory = true
+            this.directory = true
+
+            input.onclick = null
+            input.click()
+            input.onclick = (e) => {
+                this.directory = false
+                input.directory = false
+                input.webkitdirectory = false
+            }
+        },
+        onEditFileShow(file) {
+            this.editFile = { ...file, show: true }
+            this.$refs.upload.update(file, { error: 'edit' })
+        },
+        token() {
+            let token = document.head.querySelector('meta[name="csrf-token"]');
+
+            if (token) {
+                  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+                } else {
+                 console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+                }
+            return token.content;
+        },
+    }
 }
 </script>
 
 <style>
+.progress {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: $progress-border-radius;
+  display: block;
+  font-family: $progress-font-family;
+  height: 5px;
+  background-color: blue;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 100%  ;
+}
 .btn-group .dropdown-menu {
   display: block;
   visibility: hidden;

@@ -26,7 +26,7 @@ class FavoritesController extends Controller
 
         $favoriteFolders = Folder::with('user')
             ->where('user_id',Auth::id())
-            ->where('parent_id', null)
+            ->where('folder_id', null)
             ->where('status_id', 3)
             ->get();
 
@@ -84,8 +84,8 @@ class FavoritesController extends Controller
             }
         }
 
-        if (($itemsFavorite)) {
-            if (($selectedFavoriteFiles)) {
+        if ($itemsFavorite) {
+            if ($selectedFavoriteFiles) {
                 foreach ($selectedFavoriteFiles as $key => $selectedFavoriteFile) {   
                     $selectedFavoriteFile = File::findOrFail($selectedFavoriteFile['id']);
                     if ($selectedFavoriteFile->status_id == 1) {
@@ -98,7 +98,7 @@ class FavoritesController extends Controller
                     }
                 }
             }
-            if (($selectedFavoriteFolders)) {
+            if ($selectedFavoriteFolders) {
                 foreach ($selectedFavoriteFolders as $key => $selectedFavoriteFolder) {   
                     $selectedFavoriteFolder = Folder::findOrFail($selectedFavoriteFolder['id']);
                     if ($selectedFavoriteFolder->status_id == 1) {

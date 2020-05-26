@@ -20,7 +20,7 @@
                 <span>{{folder.created_at | shortTime}}</span>
             </td>
             <td class="size-data">
-                <span>{{folder.size | convertSize}}</span>
+                <span>-</span>
                 <div class="dots-right" role="button" id="item0dots" data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false">
                     <div class="dropdown-menu" aria-labelledby="item0dots">
@@ -41,7 +41,7 @@
             v-bind:class="{ selected: checkSelectFile(file)}"
             :file = file>
             <td class="name-data">
-                <i class="file"></i><span>{{file.name}}</span>
+                <i class="file"></i><span>{{file.name}}.{{file.extension}}</span>
                 <div v-if="file.link != null" class="icon">
                     <svg data-v-0d5efb88="" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask data-v-0d5efb88="" id="nav-contacts1" mask-type="alpha" maskUnits="userSpaceOnUse" x="4" y="8" width="22" height="14">
@@ -82,6 +82,7 @@
                     </div>
                 </div>
                 <button @click="addFileToFavorites(file)">{{file.status_id == 3 ? 'Del' : 'Add fav'}}</button>
+                <button @click="downloadFile(file.id)">D</button>
             </td>
         </tr>
     </table>
@@ -103,9 +104,9 @@
         methods: {
             addFileToFavorites(obj) {
                 const file = obj
-                axios.put("/favorites/${fileId}", {file: file})
+                axios.put("/favorites/${file}", {file: file})
                 .then(response => {
-                    console.log(response)
+                    // console.log(response)
                     if(response.status == 200){
                         this.$store.dispatch('disk/initFileFolder')               
                     }
@@ -115,12 +116,41 @@
                 const folder = obj
                 axios.put("/favorites/${folder}", {folder: folder})
                 .then(response => {
-                    console.log(response)
+                    // console.log(response)
                     if(response.status == 200){
                         this.$store.dispatch('disk/initFileFolder')               
                     }
                 })      
             },
+            // downloadFile(id) {
+            //     // const downloadFile = id
+            //     console.log(id)
+            //     axios.get('/api/disk/download/'+ id)
+            //     .then((response) => {
+            //         console.log(response)
+            //     });
+            //     // axios.get('/api/disk/download'+ downloadFile)
+            //     // axios.get("/api/disk/download/${id}", {downloadFile: downloadFile})
+            // },
+
+            downloadFile(id) {
+                axios({
+                    url: '/api/disk/download/'+ id,
+                    method: 'GET',
+                    responseType: 'blob',
+                }).then((response) => {
+                    var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+                    var fileLink = document.createElement('a');
+                    let type = response.headers.type
+                    let name = response.headers.name
+                    fileLink.href = fileURL;
+                    fileLink.setAttribute('download', name+'.'+type);
+                    document.body.appendChild(fileLink);
+
+                    fileLink.click();
+                });
+            },
+            
             selectFolder(obj) {
                 this.$store.commit('disk/selectFolder',obj);
             },

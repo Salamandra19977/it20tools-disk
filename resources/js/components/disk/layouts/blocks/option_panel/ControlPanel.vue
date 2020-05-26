@@ -185,13 +185,15 @@
         methods: {
             addItemsFromFavorites(obj) {
                 const itemsArr = obj
-                axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
-                    .then(response => {
-                        // console.log(response)
-                        if(response.status == 200){
-                            this.$store.dispatch('disk/initFileFolder')
-                        }
-                    })
+                if (itemsArr[0].length > 0 || itemsArr[1].length > 0) {
+                    axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
+                        .then(response => {
+                            // console.log(response)
+                            if(response.status == 200){
+                                this.$store.dispatch('disk/initFileFolder')
+                            }
+                        })
+                }
             },
             showLinksBtn() {
                 if (this.selectedFiles.length == 1 && this.selectedFolders.length == 0) {

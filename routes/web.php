@@ -18,8 +18,8 @@ Route::get('auth/callback', 'Auth\LoginController@callback')->name('callback');
 Route::get('/token', 'Auth\LoginController@authByToken');
 
 Route::get('/DISK/{patch}', 'Disk\DiskController@showFileLink')->name('link');
+// Route::get('/disk/download/{file}', 'Disk\DiskController@download')->name('download');
 
-Route::get('/template', 'TemplateController@index')->name('template');
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('files','Files\FileController');
     Route::post('/files','Files\FileController@store');
