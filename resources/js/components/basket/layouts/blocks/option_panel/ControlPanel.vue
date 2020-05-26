@@ -159,16 +159,12 @@
           </g>
         </svg>
         <div class="dropdown-menu" aria-labelledby="deleteDots">
-          <button
+          <div
             class="dropdown-item delete-return"
-            data-toggle="modal"
-            data-target="#option-return-modal"
-          >Восстановить</button>
-          <button
+          >Восстановить</div>
+          <div
             class="dropdown-item delete-delete"
-            data-toggle="modal"
-            data-target="option-delete-modal"
-          >Удалить</button>
+          >Удалить</div>
         </div>
       </button>
     </form>
@@ -312,6 +308,12 @@ export default {
     }
   }
 };
+// $('.delete-return').click(function() {
+//     $('#option-return-modal').modal();
+// })
+// $('.delete-delete').click(function() {
+//     $('#option-delete-modal').modal();
+// })
 </script>
 
 <style scoped>

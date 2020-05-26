@@ -11495,6 +11495,11 @@ header .header-nav-arrow i {
     width: 30px;
 }
 
+header .header-nav-arrow .active {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
 header .header-nav-arrow:hover svg rect {
     fill: #999999;
     stroke: #999999;
