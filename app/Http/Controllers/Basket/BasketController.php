@@ -80,17 +80,16 @@ class BasketController extends Controller
         foreach($arrFiles as $value) {
             $arrFile = File::findOrFail($value["id"]);
             $delete = Storage::disk('files')->delete($arrFile->patch);
-            // dd($delete);
             $missing = Storage::disk('files')->missing($arrFile->patch);
-            // dd($missing);
             if($missing) {
                 $arrFile->delete();
             }
         }
-        // foreach($arrFolders as $value) {
-        //     $arrFolder = Folder::findOrFail($value["id"]);
-        //     Storage::disk('public')->delete($arrFolder->patch);
-        // }
+        
+        foreach($arrFolders as $value) {
+            $arrFolder = Folder::findOrFail($value["id"]);
+            $arrFolder->delete();
+        }
 
         return response()->json($this->index(), 200);
         

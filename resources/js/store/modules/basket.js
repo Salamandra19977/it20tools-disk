@@ -84,11 +84,7 @@ export default {
         ],
         Files: [
             {
-                file: {
-                    user: {
-
-                    }
-                },
+                user: {},
             },
         ],
         selectedFiles: [],

@@ -19,5 +19,7 @@
 </script>
 
 <style scoped>
-
+.progress-bar {
+    height: 5px;
+}
 </style>
