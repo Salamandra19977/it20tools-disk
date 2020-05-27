@@ -24,18 +24,18 @@
                 <div class="dots-right" role="button" id="item0dots" data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false">
                     <div class="dropdown-menu" aria-labelledby="item0dots">
-                        <a class="dropdown-item delete-delete" href="#">Удалить</a>
+<!--                         <a class="dropdown-item delete-delete" href="#">Удалить</a>
                         <div class="dropdown-item delete-share"><span>Открыть доступ</span></div>
                         <div class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span></div>
-                        <div class="dropdown-item delete-rename"><span>Переименовать</span></div>
-                        <div class="dropdown-item delete-star"><span @click="deleteFolderFromFavorites(folder)">Удалить из избранных</span></div>
-                        <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div>
+                        <div class="dropdown-item delete-rename"><span>Переименовать</span></div> -->
+                        <div class="dropdown-item delete-star" @click="deleteFolderFromFavorites(folder)"><span>Удалить из избранных</span></div>
+<!--                         <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div>
                         <div class="dropdown-item delete-move"><span>Переместить</span></div>
                         <div class="dropdown-item delete-download bordered"><span>Скачать</span></div>
-                        <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
+                        <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div> -->
                     </div>
                 </div>    
-                <button @click="deleteFolderFromFavorites(folder)">Del</button>           
+                <!-- <button @click="deleteFolderFromFavorites(folder)">Del</button>            -->
             </td>
         </tr>
         <tr class="table-item table-item__file"
@@ -61,18 +61,18 @@
                 <div class="dots-right" role="button" id="item0dots" data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false">
                     <div class="dropdown-menu" aria-labelledby="item0dots">
-                        <a class="dropdown-item delete-delete" href="#">Удалить</a>
-                        <div class="dropdown-item delete-share"><span>Открыть доступ</span></div>
+                        <!-- <a class="dropdown-item delete-delete" href="#">Удалить</a> -->
+<!--                         <div class="dropdown-item delete-share"><span>Открыть доступ</span></div>
                         <div class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span></div>
-                        <div class="dropdown-item delete-rename"><span>Переименовать</span></div>
-                        <div class="dropdown-item delete-star"><span @click="deleteFileFromFavorites(file)">Удалить из избранных</span></div>
-                        <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div>
+                        <div class="dropdown-item delete-rename"><span>Переименовать</span></div> -->
+                        <div class="dropdown-item delete-star" @click="deleteFileFromFavorites(file)"><span>Удалить из избранных</span></div>
+<!--                         <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div>
                         <div class="dropdown-item delete-move"><span>Переместить</span></div>
                         <div class="dropdown-item delete-download bordered"><span>Скачать</span></div>
-                        <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
+                        <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div> -->
                     </div>
                 </div>  
-                <button @click="deleteFileFromFavorites(file)">Del</button>
+                <!-- <button @click="deleteFileFromFavorites(file)">Del</button> -->
             </td>
         </tr>
     </table>

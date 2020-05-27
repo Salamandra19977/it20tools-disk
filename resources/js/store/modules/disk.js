@@ -62,6 +62,13 @@ export default {
                     this.commit('disk/errorAccesse', error.response.status);
             });
         },
+        // download(state){
+        //     axios.get('/api/disk/downloadFiles', {
+        //         'files': state.state.selectedFiles,
+        //         'folders': state.state.selectedFolders
+        //     })
+        //     console.log('sdadsad')
+        // }
 
     },
     mutations:{
@@ -157,6 +164,14 @@ export default {
             document.querySelector("#option-access-modal").style.display = "none";
             state.showAccessModal = false;
         },
+        openFavoritesModal(state) {
+            document.querySelector("#option-star-modal").style.display = "block";
+            state.showFavoritesModal = true;
+        },
+        closeFavoritesModal(state) {
+            document.querySelector("#option-star-modal").style.display = "none";
+            state.showFavoritesModal = false;
+        },
     },
     state:{
         Folders: [
@@ -196,6 +211,9 @@ export default {
         showLinksModal: false,
         showAccessModal: false,
         errorAccesse: "",
+        showFavoritesModal: false,
+
+
     },
     getters:{
         getFolders(state) {
@@ -227,6 +245,9 @@ export default {
         },
         getAccesses(state) {
             return state.Accesses
+        },
+        getShowFavoritesModal(state) {
+            return state.showFavoritesModal
         },
     }
 }

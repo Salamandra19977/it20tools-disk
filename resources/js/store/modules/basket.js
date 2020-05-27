@@ -7,6 +7,7 @@ export default {
                     this.commit('basket/files', response.data.files);
                     this.commit('basket/folders', response.data.folders);
                     this.commit('basket/setEmptyFolderPath')
+                    this.commit('basket/setEmptySelectedFiles');
                 });
         },
         showFolder(state) {
@@ -21,7 +22,6 @@ export default {
                 .then(response => {
                     this.commit('basket/files', response.data.original.files);
                     this.commit('basket/folders', response.data.original.folders);
-                    this.commit('basket/setEmptyFolderPath')
                     this.commit('basket/setEmptySelectedFiles');
                 });
         },
@@ -31,11 +31,8 @@ export default {
                     if (response.status == 200) {
                         this.commit('basket/files', response.data.original.files);
                         this.commit('basket/folders', response.data.original.folders);
-                        this.commit('basket/setEmptyFolderPath')
                         this.commit('basket/setEmptySelectedFiles');
-
-                    }
-                    
+                    }                    
                 });
         },
     },
@@ -54,6 +51,10 @@ export default {
             else{
                 state.selectedFolders.splice(itemIndex, 1);
             }
+        },
+        setEmptySelectedFiles(state) {
+            state.selectedFiles = [];
+            state.selectedFolders = [];
         },
         setEmptyFolderPath(state) {
             state.folderPath = [];

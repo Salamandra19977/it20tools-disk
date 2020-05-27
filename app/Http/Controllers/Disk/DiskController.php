@@ -13,6 +13,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Files\FileController;
+use ZipArchive;
 
 
 class DiskController extends Controller
@@ -206,4 +207,64 @@ class DiskController extends Controller
         $exp = floor(log($bytes, 1024)) | 0;
         return round($bytes / (pow(1024, $exp)), $precision).$unit[$exp];
     }
+
+    public function downloadFiles(Request $request)
+    {
+        //fileArr[0] = files
+        //fileArr[1] = folders
+        $fileArr = ($request->fileArr);
+        
+        $selectedFiles = ($fileArr[0]);
+        $selectedFolders = ($fileArr[1]);
+
+        // $zip_file = 'invoices.zip'; // Name of our archive to download
+        // // Initializing PHP class
+        // $zip = new \ZipArchive();
+        // $zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+
+        // // $invoice_file = 'invoices/aaa001.pdf';
+
+        // // Adding file: second parameter is what will the path inside of the archive
+        // // So it will create another folder called "storage/" inside ZIP, and put the file there.
+        // foreach ($selectedFiles as $key => $file) {
+        //     $file = File::find($file['id']);
+        //     $zip->addFile($file->patch, $file->name);
+        //     // dd($zip);
+        // }
+        // // dd($zip);
+        // $zip->close();
+
+        $zip_file = 'invoices.zip'; // Name of our archive to download
+
+        // Initializing PHP class
+        $zip = new \ZipArchive();
+        $zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+        $invoice_file = $selectedFiles[0]['patch'];
+        // dd($selectedFiles[0]['patch']);
+        // dd('/'.$invoice_file);
+        // Adding file: second parameter is what will the path inside of the archive
+        // So it will create another folder called "storage/" inside ZIP, and put the file there.
+        // $zip->addFile('/'.$invoice_file, $invoice_file);
+        dd($zip->addFile('/'.$invoice_file, $invoice_file));
+        $zip->close();
+        // dd($zip_file);
+        // We return the file immediately after download
+        return response()->download($zip_file);
+
+        // $zip = new ZipArchive;
+        // if ($zip->open('test.zip') === TRUE) {
+        //     $zip->addFile($selectedFiles[0]['patch'], $selectedFiles[0]['patch']);
+        //     $zip->close();
+        //     return response()->download('test.zip');
+        // } else {
+        //     dd('dwadsa');
+        // }
+
+
+        // We return the file immediately after download
+        // return response()->download($zip);
+
+        // return response(null, Response::HTTP_OK);
+    }
+    
 }

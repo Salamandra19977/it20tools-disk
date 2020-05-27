@@ -25,14 +25,14 @@
                      aria-haspopup="true" aria-expanded="false">
                     <div class="dropdown-menu" aria-labelledby="item0dots">
                         <div class="dropdown-item delete-rename"><span>Переименовать</span></div>
-                        <div class="dropdown-item delete-star"><span>Добавить в избранное</span></div>
+                        <div class="dropdown-item delete-star"><span @click="addFolderToFavorites(folder)">{{folder.status_id == 3 ? 'Удалить из избранного' : 'Добавить в избранное'}}</span></div>
                         <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div>
                         <div class="dropdown-item delete-move"><span>Переместить</span></div>
                         <div class="dropdown-item delete-download bordered"><span>Скачать</span></div>
                         <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                     </div>
                 </div>
-                <button @click="addFolderToFavorites(folder)">{{folder.status_id == 3 ? 'Del' : 'Add fav'}}</button>
+                <!-- <button @click="addFolderToFavorites(folder)">{{folder.status_id == 3 ? 'Del' : 'Add fav'}}</button> -->
             </td>
         </tr>
         <tr  class="table-item table-item__file"
@@ -73,16 +73,16 @@
                         <div class="dropdown-item delete-share"><span>Открыть доступ</span></div>
                         <div class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span>
                         </div>
-                        <div class="dropdown-item delete-rename"><span>Переименовать</span></div>
-                        <div class="dropdown-item delete-star"><span>Добавить в избранное</span></div>
-                        <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div>
-                        <div class="dropdown-item delete-move"><span>Переместить</span></div>
-                        <div class="dropdown-item delete-download bordered"><span>Скачать</span></div>
+                        <!-- <div class="dropdown-item delete-rename"><span>Переименовать</span></div> -->
+                        <div class="dropdown-item delete-star" @click="addFileToFavorites(file)"><span>{{file.status_id == 3 ? 'Удалить из избранного' : 'Добавить в избранное'}}</span></div>
+                        <!-- <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div> -->
+                        <!-- <div class="dropdown-item delete-move"><span>Переместить</span></div> -->
+                        <div class="dropdown-item delete-download bordered" @click="downloadFile(file.id)"><span>Скачать</span></div>
                         <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                     </div>
                 </div>
-                <button @click="addFileToFavorites(file)">{{file.status_id == 3 ? 'Del' : 'Add fav'}}</button>
-                <button @click="downloadFile(file.id)">D</button>
+                <!-- <button @click="addFileToFavorites(file)">{{file.status_id == 3 ? 'Del' : 'Add fav'}}</button> -->
+                <!-- <button @click="downloadFile(file.id)">D</button> -->
             </td>
         </tr>
     </table>

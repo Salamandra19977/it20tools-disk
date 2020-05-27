@@ -35,6 +35,9 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::post('/disk/upload', 'Disk\DiskController@upload')->name('upload_file');
 	Route::get('/disk/download/{id}', 'Disk\DiskController@download')->name('download');
+    Route::post('/disk/downloadFiles', 'Disk\DiskController@downloadFiles')->name('downloadFiles');
+
+    
 
     // Route::get('/disk/download/{file}', 'Disk\DiskController@download')->name('download_file');
     
