@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/disk/download/{id}', 'Disk\DiskController@download')->name('download');
     Route::post('/disk/downloadFiles', 'Disk\DiskController@downloadFiles')->name('downloadFiles');
 
+    Route::post('remove', 'Disk\DiskController@remove');
+
     
 
     // Route::get('/disk/download/{file}', 'Disk\DiskController@download')->name('download_file');
