@@ -53,3 +53,15 @@
     </div>
     @endif
 </header>
+
+<style>
+    .header-nav-arrow i {transform: rotateY(180deg)}
+    .header-nav-arrow .active{ transform: rotateY(180)};
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script>
+ $('.header-nav-arrow').click(function () {
+     $('.header-nav-arrow i').toggleClass('active');
+     $('.main-content').toggleClass('main-content-collapsed')
+ })
+</script>

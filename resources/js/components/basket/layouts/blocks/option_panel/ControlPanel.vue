@@ -16,7 +16,7 @@
                     Вы уверены, что хотите удалить выбранный объект?
                 </div>
                 <div class="modal-footer">
-                    <button @click.prevent="deleteFiles()" type="button" class="btn btn-primary">Удалить</button>
+                    <button @click="deleteFiles()" type="button" class="btn btn-primary" data-dismiss="modal">Удалить</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                     Восстановить выбранный объект?
                 </div>
                 <div class="modal-footer">
-                    <button @click="restoreFiles()" type="button" class="btn btn-primary">Да</button>
+                    <button @click="restoreFiles()" type="button" class="btn btn-primary" data-dismiss="modal">Да</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                 </div>
             </div>
@@ -130,6 +130,7 @@
         aria-haspopup="true"
         aria-expanded="false"
         :disabled="disabled"
+        @click="openModal()"
       >
         <svg
           width="30"
@@ -159,16 +160,12 @@
           </g>
         </svg>
         <div class="dropdown-menu" aria-labelledby="deleteDots">
-          <button
-            class="dropdown-item delete-return"
-            data-toggle="modal"
-            data-target="#exampleModal"
-          >Восстановить</button>
-          <button
+          <div
+            class="dropdown-item delete-return" @click="openDeleteModal()"
+          >Восстановить</div>
+          <div
             class="dropdown-item delete-delete"
-            data-toggle="modal"
-            data-target="#exampleModal"
-          >Удалить</button>
+          >Удалить</div>
         </div>
       </button>
     </form>
@@ -309,9 +306,18 @@ export default {
     },
     deleteFiles() {
       this.$store.dispatch('basket/deleteFiles')
+    },
+    openModal() {
+      $('.delete-delete').click(function() {
+        $('#option-delete-modal').modal();
+      })
+      $('.delete-return').click(function() {
+       $('#option-return-modal').modal();
+      })
     }
   }
 };
+
 </script>
 
 <style scoped>

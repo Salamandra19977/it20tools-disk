@@ -22,8 +22,8 @@
 </style> -->
 
 <template>
-	<div>
-	    <div class="option-create">
+	<div class="option-create">
+	    <div>
 	        <a href="#" class="option-create__btn" role="button" id="createDropdown" data-toggle="dropdown"
 	            aria-haspopup="true" aria-expanded="false">Создать</a>
 	        <div class="dropdown-menu" aria-labelledby="createDropdown">

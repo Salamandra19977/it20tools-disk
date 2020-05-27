@@ -38,7 +38,7 @@
                     </g>
                 </svg>
             </button>
-            <button class="option-delete__download">
+            <button class="option-delete__download" @click="download()">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <g id="3. Icons/ic_cloud_download">
@@ -103,14 +103,14 @@
                     <div v-if="showLinksBtn()" v-on:click="openLinksModal()" class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span>
                     </div>
                     <div class="dropdown-item delete-rename"><span>Переименовать</span></div>
-                    <div class="dropdown-item delete-star"><span>Добавить в избранное</span></div>
+
+                    <div class="dropdown-item delete-star" v-on:click="openFavoritesModal()"><span>Добавить в избранное</span></div>
                     <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div>
                     <div class="dropdown-item delete-move"><span>Переместить</span></div>
                     <div class="dropdown-item delete-download bordered"><span>Скачать</span></div>
                     <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                 </div>
             </div>
-            <button @click="addItemsFromFavorites([selectedFiles, selectedFolders])">Добавить в избранное</button>
         </form>
         <div class="option-view">
             <div class="option-view__bulleted">
@@ -176,17 +176,8 @@
             },
         },
         methods: {
-            addItemsFromFavorites(obj) {
-                const itemsArr = obj
-                if (itemsArr[0].length > 0 || itemsArr[1].length > 0) {
-                    axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
-                        .then(response => {
-                            // console.log(response)
-                            if(response.status == 200){
-                                this.$store.dispatch('disk/initFileFolder')
-                            }
-                        })
-                }
+            addItemsToFavorites(){
+                this.$store.commit('disk/addItemsToFavorites');
             },
             showLinksBtn() {
                 if (this.selectedFiles.length == 1 && this.selectedFolders.length == 0) {
@@ -194,12 +185,41 @@
                 }
                 return false
             },
+            // download() {
+            //     this.$store.commit('disk/download');
+            //     console.log('ddsadsa')
+            // },
+                
+            download() {
+                const fileArr = [this.selectedFiles, this.selectedFolders]
+                axios.post('/api/disk/downloadFiles', {'fileArr': fileArr})
+                console.log(fileArr)
+                // axios({
+                //     url: 'api/disk/downloadFiles' + fileArr,
+                //     method: 'GET',
+                //     // responseType: 'blob',
+                // })
+                // .then((response) => {
+                //     var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+                //     var fileLink = document.createElement('a');
+                //     let type = response.headers.type
+                //     let name = response.headers.name
+                //     fileLink.href = fileURL;
+                //     fileLink.setAttribute('download', name+'.'+type);
+                //     document.body.appendChild(fileLink);
+
+                //     fileLink.click();
+                // });
+            },
             openLinksModal() {
                 this.$store.commit('disk/openLinksModal');
             },
             openAccessModal() {
                 this.$store.commit('disk/openAccessModal');
             },
+            openFavoritesModal() {
+                this.$store.commit('disk/openFavoritesModal');
+            }
         },
     }
 </script>
