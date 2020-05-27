@@ -185,8 +185,8 @@ export default {
             },
         ],
         files: [],
-        
-        selectedFiles: [],
+        //
+        // selectedFiles: [],
         Accesses: [
             {
                 user: {},

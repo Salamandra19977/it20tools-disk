@@ -36,17 +36,19 @@
                             <span>{{ $file->created_at->format('d.m.Y')}}</span>
                         </div>
                         <div class="time-data">
-                            <span>{{ $file->created_at->format('i:s')}}</span>
+                            <span>{{ $file->created_at->format('H:i')}}</span>
                         </div>
                         <div class="size-data">
-                            <span>{{$file->size}}</span>
-                        </div>
-                        <div class="dots-right" role="button" id="item4dots" data-toggle="dropdown"
-                             aria-haspopup="true" aria-expanded="false">
-                            <div class="dropdown-menu" aria-labelledby="item4dots">
-                                <a class="dropdown-item delete-return" href="#">Восстановить</a>
-                                <a class="dropdown-item delete-delete" href="#">Удалить навсегда</a>
-                            </div>
+                            <span>{{$file->size}} </span>
+                            <a class="" href=""
+                                onclick="event.preventDefault();
+                                document.getElementById('download').submit();">
+                                {{ __('  Скачать') }}
+                            </a>
+                            <form id="download" action="{{route('download',$file->id)}}" method="GET" style="display: none;">
+                                <input name="id" value="{{$file->id}}" type="hidden">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -20,7 +20,7 @@
 
 @include("disk.layouts.blocks.footer.index")
 
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>--}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> --}}
 <script src="{{ mix('/js/app.js') }}"></script>
 {{--<script src="{{ asset('/js/main.js') }}"></script>--}}
 

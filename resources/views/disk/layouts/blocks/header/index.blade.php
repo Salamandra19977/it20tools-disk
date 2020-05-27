@@ -2,8 +2,8 @@
     <a href="#" class="nav-brand">
         <img src="{{asset("img/logo_foot 2.png")}}" alt="header-logo">
     </a>
-    <div class="header-nav-arrow active">
-        <i>
+    <div class="header-nav-arrow">
+        <i class="active">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="nav-brand-arrow" mask-type="alpha" maskUnits="userSpaceOnUse" x="11" y="9" width="8"
                     height="12">
@@ -20,7 +20,11 @@
     <div class="user-info">
         <a href="#" class="user-info__profile">
             <span class="user-info__name">{{ Auth::user()->name }}</span>
-            <img src="https://team1-group-project.azurewebsites.net/avatars/{{Auth::user()->avatar_url}}" alt="user-img" class="user-info__img">
+            @if(Auth::user()->avatar_url != null)
+                <img src="https://team1-group-project.azurewebsites.net/avatars/{{Auth::user()->avatar_url}}" alt="user-img" class="user-info__img">
+            @else
+                <img src="https://semantica.in/wp-content/uploads/2018/08/av-427845-1.png" alt="user-img" class="user-info__img">
+            @endif
         </a>
         <div class="user-info__dropdown">
             <span role="button" id="user-info__list" data-toggle="dropdown" aria-haspopup="true"
@@ -53,15 +57,10 @@
     </div>
     @endif
 </header>
-
-<style>
-    .header-nav-arrow i {transform: rotateY(180deg)}
-    .header-nav-arrow .active{ transform: rotateY(180)};
-</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script>
  $('.header-nav-arrow').click(function () {
-     $('.header-nav-arrow i').toggleClass('active');
-     $('.main-content').toggleClass('main-content-collapsed')
+     $(this).toggleClass('arrow-active');
+     $('.main-content').toggleClass('main-content-collapsed');
  })
 </script>

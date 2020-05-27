@@ -54,6 +54,7 @@
                     <div class="dropdown-menu" aria-labelledby="item0dots">
                         <div class="dropdown-item delete-return bordered"><span>Восстановить</span></div>
                         <div class="dropdown-item delete-delete bordered"><span>Удалить</span></div>
+                        <div class="dropdown-item delete-information" href="#">Подробнее</div>
                     </div>
                 </div>
             </td>
@@ -105,10 +106,12 @@
 </script>
 
 <style scoped>
- .name-data span {
-    position: relative;
-    bottom: 10px;
- }
+@media (min-width: 630px) {
+    .name-data span {
+       position: relative;
+       bottom: 10px;
+    }
+}
 .table-head i {
     margin: 0 !important;
 }

@@ -72,6 +72,10 @@ export default {
                 state.selectedFiles.splice(itemIndex, 1);
             }
         },
+        setEmptySelectedFiles(state) {
+            state.selectedFiles = [];
+            state.selectedFolders = [];
+        },
     },
     state:{
         Folders: [
