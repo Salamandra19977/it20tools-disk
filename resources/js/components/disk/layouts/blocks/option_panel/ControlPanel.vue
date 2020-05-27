@@ -192,8 +192,11 @@
                 
             download() {
                 const fileArr = [this.selectedFiles, this.selectedFolders]
-                axios.post('/api/disk/downloadFiles', {'fileArr': fileArr})
-                console.log(fileArr)
+                if (this.selectedFiles.length > 0 || this.selectedFolders.length > 0 ) {
+                    axios.post('/api/disk/downloadFiles', {'fileArr': fileArr})
+                }
+                
+                // console.log(fileArr)
                 // axios({
                 //     url: 'api/disk/downloadFiles' + fileArr,
                 //     method: 'GET',

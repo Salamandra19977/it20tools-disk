@@ -53,19 +53,67 @@
 	        	</div>
 	    	</div>
 	    </div>
-	    <div v-show="files.length">
-	        <button type="button" class="btn btn-success" v-if="!$refs.upload || !$refs.upload.active" @click.prevent="$refs.upload.active = true">
-	          <i class="fa fa-arrow-up" aria-hidden="true"></i>
-	          Загрузить
-	        </button>
-	        <button type="button" class="btn btn-danger"  v-else @click.prevent="$refs.upload.active = false">
-	          <i class="fa fa-stop" aria-hidden="true"></i>
-	          Остановить
-	        </button>
+	    <div class="modal fade" id="option-upload-modal" tabindex="-1" role="dialog" aria-labelledby="option-upload-modal"
+        aria-hidden="true">
+	        <div class="modal-dialog" role="document">
+	            <div class="modal-content uploading">
+	                <div class="modal-header">
+	                    <span>Загрузка файлов</span>
+	                    <div v-show="files.length">
+					        <button type="button" class="btn btn-primary" v-if="!$refs.upload || !$refs.upload.active" @click.prevent="$refs.upload.active = true">
+					          <i class="fa fa-arrow-up" aria-hidden="true"></i>
+					          Загрузить
+					        </button>
+					        <button type="button" class="btn btn-primary" v-else @click.prevent="$refs.upload.active = false">
+					          <i class="fa fa-stop" aria-hidden="true"></i>
+					          Остановить
+					        </button>
+					        <button type="button" class="btn btn-primary" data-dismiss="modal">
+					          Закрыть
+					        </button>
+					        <!-- data-dismiss="modal" -->
+					    </div>
+	                    <!-- <button class="btn btn-primary" data-dismiss="modal">Отменить</button> -->
+	                </div>
+	                <div class="modal-body" v-for="(file, index) in files" :key="file.id">
+	                    <div class="item item-file">
+	                        <div class="info">
+	                            <div class="name">
+	                                <span>{{file.name}}</span>
+	                                <span>{{file.size | convertSize}}</span>
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="progress-tooltip">
+							    <progress class="progress" :value=file.progress max="100"></progress>
+							</div>
+
+
+	                    </div>
+	                </div>
+
+	            </div>
+	        </div>
 	    </div>
+	    <div class="modal fade" id="option-cancelupload-modal" tabindex="-1" role="dialog" aria-labelledby="option-cancelupload-modal"
+	        aria-hidden="true">
+	        <div class="modal-dialog" role="document">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <h5 class="modal-title" id="option-cancelupload-modal">Отменить загрузку?</h5>
+	                </div>
+	                <div class="modal-body"></div>
+	                <div class="modal-footer">
+	                    <button type="button" class="btn btn-primary" data-dismiss="modal">Закрыть</button>
+	                    <button type="button" class="btn btn-default">Отмена</button>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    
         <div class="example-drag">
             <div class="upload">
-				<ul v-if="files.length">
+				<!-- <ul v-if="files.length">
 					<li v-for="(file, index) in files" :key="file.id">
 					  <span>{{file.name}}</span>
 					  <div class="progress-tooltip">
@@ -93,12 +141,11 @@
 					    </div>
 					  </div>
 					</li>
-				</ul>
+				</ul> -->
 
 				<div v-show="$refs.upload && $refs.upload.dropActive" class="drop-active">
 					<h3>Загрузить файлы на диск</h3>
-				</div>
-              
+				</div>            
 
             </div>
         </div>
@@ -158,10 +205,6 @@ export default {
         }
     },
     computed: {     
-        reversedMessage() {
-          // `this` указывает на экземпляр vm
-          return this.file.name.split('').reverse().join('')
-        }
     },
     watch: {
         files: {
@@ -172,11 +215,11 @@ export default {
                         dataReload = files[i].success
                     }
                 }
+                $('#option-upload-modal').modal();
                 
                 if (dataReload) {
                     setTimeout(() => { return this.$store.dispatch('disk/initFileFolder')}, 2500)
                 }
-
             },
         },
         name: {
@@ -191,6 +234,19 @@ export default {
         }
     },
     methods: {
+    	// openConfirmModal() {
+	    //   // $('.modal-dialog').click(function() {
+	    //   //   $('#option-upload-modal').modal();
+	    //   // })
+	    //   $('.modal-dialog').click(function() {
+	    //   	this.file = 0
+	    //    $('#option-cancelupload-modal').modal();
+	    //   })
+	    // },
+	    // openConfirmModal() {
+	    // 	$('#option-cancelupload-modal').modal();
+	    // },
+
         // add folader
         onAddFolader() {
             if (!this.$refs.upload.features.directory) {
@@ -230,7 +286,72 @@ export default {
 </script>
 
 <style>
-.progress {
+.modal .uploading .modal-header {
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.modal .uploading .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.modal .uploading .item i {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+
+.modal .uploading .item-file i {
+  /*background: url("../img/ic_insert_drive_file.svg");*/
+}
+
+.modal .uploading .item-folder i {
+  /*background: url("../img/ic_folder.svg");*/
+}
+
+.modal .uploading .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal .uploading .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modal .uploading .name span:first-child {
+  font-size: 13px;
+  color: #999;
+}
+
+.modal .uploading .name span:nth-child(2) {
+  font-size: 14px;
+  color: #333;
+}
+
+.modal .uploading .progress {
+  width: 185px;
+  height: 5px;
+}
+/*.progress {
   -moz-appearance: none;
   -webkit-appearance: none;
   border: none;
@@ -243,7 +364,7 @@ export default {
   padding: 0;
   position: relative;
   width: 100%  ;
-}
+}*/
 .btn-group .dropdown-menu {
   display: block;
   visibility: hidden;
