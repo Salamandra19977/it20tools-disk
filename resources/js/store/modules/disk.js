@@ -62,6 +62,14 @@ export default {
                     this.commit('disk/errorAccesse', error.response.status);
             });
         },
+        removeFiles(state) {
+            axios.post('/api/remove',{'files': state.state.selectedFiles, 'folders': state.state.selectedFolders})
+                .then(response => {
+                    this.commit('disk/files', response.data.original.files);
+                    this.commit('disk/folders', response.data.original.folders);
+                    this.commit('disk/setEmptySelectedFiles');
+                });
+        },
         // download(state){
         //     axios.get('/api/disk/downloadFiles', {
         //         'files': state.state.selectedFiles,

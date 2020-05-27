@@ -107,6 +107,25 @@ class DiskController extends Controller
         return Storage::disk('files')->download($file->patch, $file->name.'.'.$file->extension, $headers);
 
     }
+    public function remove(Request $request)
+    {
+        $arrFiles = $request["files"];
+        $arrFolders = $request["folders"];
+
+        foreach($arrFiles as $value) {
+            $arrFile = File::findOrFail($value["id"]);
+            $arrFile->status_id = 2;
+            $arrFile->save();
+        }
+
+        foreach($arrFolders as $value) {
+            $arrFolder = Folder::findOrFail($value["id"]);
+            $arrFolder->status_id = 2;
+            $arrFolder->save();
+        }
+
+        return response()->json($this->index(), 200);
+    }
 
     public function addLinks(Request $request)
     {

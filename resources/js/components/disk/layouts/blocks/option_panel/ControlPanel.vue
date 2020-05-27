@@ -1,5 +1,25 @@
 <template>
     <div class="main-table__options">
+        <div class="modal fade" id="option-remove-modal" tabindex="-1" role="dialog" aria-labelledby="option-remove-modal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="option-remove-modal">Удалить объекты в корзину?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Вы уверены, что хотите переместить в корзину выбранные объекты?
+                </div>
+                <div class="modal-footer">
+                    <button @click="removeFiles()" type="button" class="btn btn-primary" data-dismiss="modal">Да</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                </div>
+            </div>
+        </div>
+        </div>
         <option-create></option-create>
         <form action="" class="option-search" id="search-files">
             <div class="option-search__field-container">
@@ -24,7 +44,8 @@
         <form class="option-delete" action="" id="delete-files" onsubmit="return false;">
             <button class="option-delete__link"
                 v-if="showLinksBtn()"
-                v-on:click="openLinksModal()">
+                v-on:click="openLinksModal()"
+                >
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <mask id="option-linkk1" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="10"
@@ -70,7 +91,7 @@
                     </g>
                 </svg>
             </button>
-            <button class="option-delete__delete" data-toggle="modal" data-target="#option-rm-modal">
+            <button class="option-delete__delete" data-toggle="modal" data-target="#option-remove-modal">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <mask id="option-delete" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6"
@@ -176,6 +197,9 @@
             },
         },
         methods: {
+            removeFiles() {
+                this.$store.dispatch('disk/removeFiles')
+            },
             addItemsToFavorites(){
                 this.$store.commit('disk/addItemsToFavorites');
             },
