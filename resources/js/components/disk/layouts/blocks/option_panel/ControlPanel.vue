@@ -102,12 +102,12 @@
                     <div v-if="showLinksBtn()" v-on:click="openAccessModal()" class="dropdown-item delete-share"><span>Открыть доступ</span></div>
                     <div v-if="showLinksBtn()" v-on:click="openLinksModal()" class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span>
                     </div>
-                    <div class="dropdown-item delete-rename"><span>Переименовать</span></div>
+                    <!-- <div class="dropdown-item delete-rename"><span>Переименовать</span></div> -->
 
                     <div class="dropdown-item delete-star" v-on:click="openFavoritesModal()"><span>Добавить в избранное</span></div>
-                    <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div>
-                    <div class="dropdown-item delete-move"><span>Переместить</span></div>
-                    <div class="dropdown-item delete-download bordered"><span>Скачать</span></div>
+                    <!-- <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div> -->
+                    <!-- <div class="dropdown-item delete-move"><span>Переместить</span></div> -->
+                    <!-- <div class="dropdown-item delete-download bordered"><span>Скачать</span></div> -->
                     <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
                 </div>
             </div>

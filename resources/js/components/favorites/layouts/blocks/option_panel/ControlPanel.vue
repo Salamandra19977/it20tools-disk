@@ -107,17 +107,17 @@
                         </g>
                     </svg>
                     <div class="dropdown-menu" aria-labelledby="deleteDots" role="menu">
-                        <div class="dropdown-item delete-share"><span>Открыть доступ</span></div>
+                        <!-- <div class="dropdown-item delete-share"><span>Открыть доступ</span></div>
                         <div class="dropdown-item delete-link"><span>Копировать ссылку общего доступа</span></div>
-                        <div class="dropdown-item delete-rename"><span>Переименовать</span></div>
-                        <div class="dropdown-item delete-star"><span @click="deleteFolderFromFavorites([getFavoriteSelectedFiles, getFavoriteSelectedFolders])">Удалить из избранных</span></div>
-                        <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div>
+                        <div class="dropdown-item delete-rename"><span>Переименовать</span></div> -->
+                        <div class="dropdown-item delete-star" @click="deleteItemsFromFavorites([getFavoriteSelectedFiles, getFavoriteSelectedFolders])"><span>Удалить из избранных</span></div>
+<!--                         <div class="dropdown-item delete-mkcopy"><span>Создать копию</span></div>
                         <div class="dropdown-item delete-move"><span>Переместить</span></div>
                         <div class="dropdown-item delete-download bordered"><span>Скачать</span></div>
-                        <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div>
+                        <div class="dropdown-item delete-rm bordered"><span>Удалить</span></div> -->
                     </div>
                 </div>
-                <button @click="deleteItemsFromFavorites([getFavoriteSelectedFiles, getFavoriteSelectedFolders])">Del</button>
+                <!-- <button @click="deleteItemsFromFavorites([getFavoriteSelectedFiles, getFavoriteSelectedFolders])">Del</button> -->
             </form>
             <div class="option-view">
                 <div class="option-view__bulleted">
@@ -190,7 +190,7 @@
                     axios.put("/favorites/itemsFavorite", {itemsFavorite: itemsArr})
                     .then(response => {
                         if(response.status == 200){
-                            // this.$store.dispatch('favorites/initFileFolder')   
+                            this.$store.dispatch('favorites/initFileFolder')   
                             // this.commit('favorites/files', response.data.files)            
                             // this.commit('favorites/folders', response.data.folders)            
                         }
