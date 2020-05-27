@@ -161,7 +161,7 @@
         </svg>
         <div class="dropdown-menu" aria-labelledby="deleteDots">
           <div
-            class="dropdown-item delete-return" @click="openDeleteModal()"
+            class="dropdown-item delete-return"
           >Восстановить</div>
           <div
             class="dropdown-item delete-delete"
