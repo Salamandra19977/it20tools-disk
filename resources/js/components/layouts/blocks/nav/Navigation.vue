@@ -1,6 +1,6 @@
 <template>
     <ul class="nav" id="nav-accordion">
-        <li class="nav__item">
+        <li class="nav__item"><a href="https://team1-group-project.azurewebsites.net/">
             <div class="nav__item-heading" id="navitem-1" data-toggle="collapse" data-target="#navcollapse-1"
                  aria-expanded="false" aria-controls="navcollapse-1">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +14,7 @@
                     </g>
                 </svg>
                 <span>Главная страница</span>
-            </div>
+            </div></a>
         </li>
         <!--<ul class="nav__item-container collapse show" id="navcollapse-1"-->
             <!--aria-labelledby="navitem-1" data-parent="#nav-accordion">-->
@@ -117,7 +117,7 @@
             </router-link>
 
         </ul>
-        <li class="nav__item">
+        <li class="nav__item"><a href="http://cu66460.tmweb.ru/">
             <div class="nav__item-heading" id="navitem-3" data-toggle="collapse" data-target="#navcollapse-3"
                  aria-expanded="false" aria-controls="navcollapse-3">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,18 +132,9 @@
                     </g>
                 </svg>
                 <span>Почта</span>
-            </div>
+            </div></a>
         </li>
-        <ul class="nav__item-container collapse" id="navcollapse-3" aria-labelledby="navitem-3"
-            data-parent="#nav-accordion">
-            <li>
-                lorem
-            </li>
-            <li>
-                ipsum
-            </li>
-        </ul>
-        <li class="nav__item">
+        <li class="nav__item"><a href="http://laravelproject.s-host.net/">
             <div class="nav__item-heading" id="navitem-4" data-toggle="collapse" data-target="#navcollapse-4"
                  aria-expanded="false" aria-controls="navcollapse-4">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,18 +149,10 @@
                     </g>
                 </svg>
                 <span>Календарь</span>
-            </div>
+            </div></a>
         </li>
-        <ul class="nav__item-container collapse" id="navcollapse-4" aria-labelledby="navitem-4"
-            data-parent="#nav-accordion">
-            <li>
-                lorem
-            </li>
-            <li>
-                ipsum
-            </li>
-        </ul>
-        <li class="nav__item">
+        
+        <li class="nav__item"><a href="https://it20-tools-photogallery.azurewebsites.net/">
             <div class="nav__item-heading" id="navitem-5" data-toggle="collapse" data-target="#navcollapse-5"
                  aria-expanded="false" aria-controls="navcollapse-5">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -184,18 +167,9 @@
                     </g>
                 </svg>
                 <span>Фотографии</span>
-            </div>
+            </div></a>
         </li>
-        <ul class="nav__item-container collapse" id="navcollapse-5" aria-labelledby="navitem-5"
-            data-parent="#nav-accordion">
-            <li>
-                lorem
-            </li>
-            <li>
-                ipsum
-            </li>
-        </ul>
-        <li class="nav__item">
+        <li class="nav__item"><a href="https://contacts.s-host.net/ ">
             <div class="nav__item-heading" id="navitem-6" data-toggle="collapse" data-target="#navcollapse-6"
                  aria-expanded="false" aria-controls="navcollapse-6">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -210,17 +184,8 @@
                     </g>
                 </svg>
                 <span>Контакты</span>
-            </div>
+            </div></a>
         </li>
-        <ul class="nav__item-container collapse" id="navcollapse-6" aria-labelledby="navitem-6"
-            data-parent="#nav-accordion">
-            <li>
-                lorem
-            </li>
-            <li>
-                ipsum
-            </li>
-        </ul>
         <li class="nav__item">
             <div class="nav__item-heading" id="navitem-7" data-toggle="collapse" data-target="#navcollapse-7"
                  aria-expanded="false" aria-controls="navcollapse-7">

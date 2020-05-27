@@ -8,11 +8,11 @@
         <div class="footer-tools-block">
             <h3>Инструменты</h3>
             <ul>
-                <li><a href="#">Диск</a></li>
-                <li><a href="#">Календарь</a></li>
-                <li><a href="#">Контакты</a></li>
-                <li><a href="#">Почта</a></li>
-                <li><a href="#">Фото</a></li>
+                <li><a href="http://it20tools-disk.dtdgma.org.ua/disk">Диск</a></li>
+                <li><a href="http://laravelproject.s-host.net/">Календарь</a></li>
+                <li><a href="https://contacts.s-host.net/">Контакты</a></li>
+                <li><a href="http://cu66460.tmweb.ru/">Почта</a></li>
+                <li><a href="https://it20-tools-photogallery.azurewebsites.net/">Фото</a></li>
             </ul>
         </div>
         <div class="footer-contacts-block">

@@ -14,7 +14,7 @@
             </td>
             <td class="date-data">
                 <span>{{file.created_at | shortDate}}</span>
-                <button @click="downloadFile(file.id)">D</button>
+                <a @click="downloadFile(file.file_id)">Скчать</a>
             </td>
         </tr>
     </table>
